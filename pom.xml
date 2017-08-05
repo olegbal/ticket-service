@@ -49,6 +49,16 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
+            <plugin>
+                <groupId>com.versioneye</groupId>
+                <artifactId>versioneye-maven-plugin</artifactId>
+                <version>3.11.4</version>
+                <configuration>
+                    <apiKey>a32fe7b9246d1596094b</apiKey>
+                    <organisation>Oleg-Balakhanov</organisation>
+                    <team>DreamTEam</team>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
