@@ -1,23 +1,23 @@
-language: java
-jdk:
-  - oraclejdk8
-services:
-  - mongodb
-  - redis
-  - cassandra
-sudo: required
-cache:
-  directories:
-    - $HOME/.m2
-install: true
-before_script: travis_wait 45 ./mvnw install -q -U -DskipTests=true -Pfast -Dmaven.test.redirectTestOutputToFile=true
-script: ./mvnw install -q -nsu -Dmaven.test.redirectTestOutputToFile=true -P '!integration'
+matrix:
+  include:
+  -language: java
+  jdk:
+    - oraclejdk8
+  services:
+    - mongodb
+  sudo: required
+  cache:
+    directories:
+      - $HOME/.m2
+  install: true
+  before_script: travis_wait 45 ./mvnw install -q -U -DskipTests=true -Pfast -Dmaven.test.redirectTestOutputToFile=true
+  script: ./mvnw install -q -nsu -Dmaven.test.redirectTestOutputToFile=true -P '!integration'
 
 
-language: node_js
-node_js:
-  - "7.10"
-before_script: cd src/main//resources/client && npm install -g @angular/cli
+  -language: node_js
+  node_js:
+    - "7.10"
+  before_script: cd src/main//resources/client && npm install -g @angular/cli
 
-script:
-  -cd src/main//resources/client && ng build --prod
+  script:
+    -cd src/main//resources/client && ng build --prod
