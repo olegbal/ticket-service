@@ -1,20 +1,15 @@
-matrix:
-  include:
-    -language: java
-    jdk:
-      - oraclejdk8
-    services:
-      - mongodb
-    sudo: required
-    install: true
-    before_script: travis_wait 45 mvn install -q -U -DskipTests=true -Pfast -Dmaven.test.redirectTestOutputToFile=true
-    script: mvn install -q -nsu -Dmaven.test.redirectTestOutputToFile=true -P '!integration'
-
-
-    -language: node_js
-    node_js:
-      - "7.10"
-    before_script: cd src/main/resources/client && npm install -g @angular/cli
-
-    script:
-      -cd src/main//resources/client && ng build --prod
+language: java
+jdk:
+  - oraclejdk8
+node_js:
+  - "7.10"
+services:
+  - mongodb
+sudo: required
+install: true
+before_script:
+  -travis_wait 45 mvn install -q -U -DskipTests=true -Pfast -Dmaven.test.redirectTestOutputToFile=true
+  -cd src/main/resources/client && npm install -g @angular/cli
+script:
+  -mvn install -q -nsu -Dmaven.test.redirectTestOutputToFile=true -P '!integration'
+  -cd src/main//resources/client && ng build --prod
