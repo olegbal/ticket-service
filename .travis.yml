@@ -15,3 +15,6 @@ before_script:
 script:
   - ng build --prod
   - cd ../../../../ && mvn install -q -nsu -Dmaven.test.redirectTestOutputToFile=true -P '!integration'
+
+after_success:
+  - mvn clean test jacoco:report coveralls:report
