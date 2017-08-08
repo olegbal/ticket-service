@@ -8,7 +8,6 @@ services:
 sudo: required
 install: true
 before_script:
-  -travis_wait 45 mvn install -q -U -DskipTests=true -Pfast -Dmaven.test.redirectTestOutputToFile=true
   -cd src/main/resources/client && npm install -g @angular/cli
 script:
   -mvn install -q -nsu -Dmaven.test.redirectTestOutputToFile=true -P '!integration'
