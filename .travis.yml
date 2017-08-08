@@ -14,4 +14,4 @@ before_script:
   - cd src/main/resources/client && npm install -g @angular/cli
 script:
   - ng build --prod
-  -cd ../../../../ && mvn install -q -nsu -Dmaven.test.redirectTestOutputToFile=true -P '!integration'
+  - cd ../../../../ && mvn install -q -nsu -Dmaven.test.redirectTestOutputToFile=true -P '!integration'
