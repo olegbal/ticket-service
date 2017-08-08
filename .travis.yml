@@ -11,7 +11,7 @@ before_install:
 install: true
 before_script:
   - travis_wait 45 mvn install -q -U -DskipTests=true -Pfast -Dmaven.test.redirectTestOutputToFile=true
-  - npm install -g @angular/cli
+  - cd src/main/resources/client && npm install -g @angular/cli
 script:
   - mvn install -q -nsu -Dmaven.test.redirectTestOutputToFile=true -P '!integration'
-  - ng build --prod
+  - cd src/main/resources/client && ng build --prod
