@@ -4,8 +4,14 @@ jdk:
 services:
   - mongodb
 sudo: required
+env:
+  - NODE_VERSION="7.10"
+before_install:
+  - nvm install $NODE_VERSION
 install: true
 before_script:
-  -travis_wait 45 mvn install -q -U -DskipTests=true -Pfast -Dmaven.test.redirectTestOutputToFile=true
+  - travis_wait 45 mvn install -q -U -DskipTests=true -Pfast -Dmaven.test.redirectTestOutputToFile=true
+  - npm install -g @angular/cli
 script:
-  -mvn install -q -nsu -Dmaven.test.redirectTestOutputToFile=true -P '!integration'
+  - mvn install -q -nsu -Dmaven.test.redirectTestOutputToFile=true -P '!integration'
+  - ng build --prod
