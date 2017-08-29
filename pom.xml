@@ -4,12 +4,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.github.olegbal.mbls</groupId>
-    <artifactId>mbls</artifactId>
+    <artifactId>Ticket-service-main</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
 
-    <name>mbls</name>
-    <description>Demo project for Spring Boot</description>
+    <name>Ticket-service</name>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
