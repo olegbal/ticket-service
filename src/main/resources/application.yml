@@ -1,0 +1,14 @@
+spring:
+  devtools:
+    livereload:
+      enabled: false
+  data:
+    mongodb:
+      username: user
+      password: user123
+      authentication-database: ticket_service
+      port: 27017
+      host: 127.0.0.1
+      repositories:
+        enabled: true
+      database: ticket_service
