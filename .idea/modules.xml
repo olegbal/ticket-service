@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Ticket-service-main.iml" filepath="$PROJECT_DIR$/Ticket-service-main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ticket-service-backend/ticket-service-backend.iml" filepath="$PROJECT_DIR$/ticket-service-backend/ticket-service-backend.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ticket-service-frontend/ticket-service-frontend.iml" filepath="$PROJECT_DIR$/ticket-service-frontend/ticket-service-frontend.iml" />
     </modules>
   </component>
 </project>
