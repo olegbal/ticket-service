@@ -1,8 +1,5 @@
 # Created by .ignore support plugin (hsz.mobi)
 /.idea
 *iml
-!.idea/compiler.xml
 !.idea/modules.xml
-!.idea/vcs.xml
-!.idea/mongoSettings.xml
 !.idea/runConfigurations
