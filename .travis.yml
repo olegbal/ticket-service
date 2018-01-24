@@ -7,16 +7,15 @@ sudo: required
 env:
   - NODE_VERSION="7.10"
   - FRONTEND_SOURCE="ticket-service-frontend/angular/"
-  - BACKEND_SOURCE="ticket-service-backend/"
 before_install:
   - nvm install $NODE_VERSION
 install: true
 before_script:
-  - cd $FRONTEND_SOURCE && npm install -g @angular/cli
+  - cd $FRONTEND_SOURCE && npm install -g @angular/cli@1.6.4
   - npm install
 script:
   - ng build --prod
-  - cd ../../$BACKEND_SOURCE && mvn install -q -nsu -Dmaven.test.redirectTestOutputToFile=true -P '!integration'
+  - cd ../../ticket-service-backend/ && mvn install -q -nsu -Dmaven.test.redirectTestOutputToFile=true -P '!integration'
 
 after_success:
   - mvn clean test jacoco:report coveralls:report
