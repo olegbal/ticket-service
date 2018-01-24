@@ -1,5 +1,7 @@
 # Created by .ignore support plugin (hsz.mobi)
-/.idea
 *iml
-!.idea/modules.xml
-!/.idea/runConfigurations/
+/.idea/libraries/
+/.idea/misc.xml
+/.idea/workspace.xml
+/.idea/encodings.xml
+/.idea/checkstyle-idea.xml

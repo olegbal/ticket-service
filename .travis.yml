@@ -12,10 +12,10 @@ install: true
 
 before_script:
   - npm install -g @angular/cli@1.6.4
-  - cd $TRAVIS_BUILD_DIR/project/ticket-service-frontend/angular/ && npm install
+  - cd $TRAVIS_BUILD_DIR/ticket-service-frontend/angular/ && npm install
 script:
   - ng build --prod
-  - cd $TRAVIS_BUILD_DIR/project/ticket-service-backend && mvn install -q -nsu -Dmaven.test.redirectTestOutputToFile=true -P '!integration'
+  - cd $TRAVIS_BUILD_DIR/ticket-service-backend && mvn install -q -nsu -Dmaven.test.redirectTestOutputToFile=true -P '!integration'
 
 after_success:
   - mvn clean test jacoco:report coveralls:report
