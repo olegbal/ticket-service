@@ -11,7 +11,7 @@ before_install:
 install: true
 
 before_script:
-  - npm install -g @angular/cli@1.6.4
+  - npm install -g @angular/cli@1.6.5
   - cd $TRAVIS_BUILD_DIR/ticket-service-frontend/angular/ && npm install
 script:
   - ng build
