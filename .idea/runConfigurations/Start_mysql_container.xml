@@ -2,7 +2,6 @@
   <configuration default="false" name="Start mysql container" type="docker-deploy" factoryName="Docker Deployment" singleton="true" server-name="Docker">
     <deployment type="docker-image">
       <settings>
-
         <option name="JSONFilePath" value="" />
         <option name="command" value="" />
         <option name="containerName" value="ticket-service-mysql-database" />
@@ -29,6 +28,16 @@
         </option>
         <option name="envVarsExpanded" value="true" />
         <option name="imageTag" value="mysql:latest" />
+        <option name="portBindings">
+          <list>
+            <DockerPortBindingImpl>
+              <option name="containerPort" value="3306" />
+              <option name="hostIp" value="127.0.0.1" />
+              <option name="hostPort" value="3306" />
+            </DockerPortBindingImpl>
+          </list>
+        </option>
+        <option name="portBindingsExpanded" value="true" />
         <option name="startBrowserSettings">
           <browser url="http://127.0.0.1" />
         </option>
