@@ -14,7 +14,7 @@ before_script:
   - npm install -g @angular/cli@1.6.4
   - cd $TRAVIS_BUILD_DIR/ticket-service-frontend/angular/ && npm install
 script:
-  - ng build --prod
+  - ng build
   - cd $TRAVIS_BUILD_DIR/ticket-service-backend && mvn install -q -nsu -Dmaven.test.redirectTestOutputToFile=true -P '!integration'
 
 after_success:
