@@ -10,7 +10,7 @@
           <list>
             <DockerEnvVarImpl>
               <option name="name" value="MYSQL_DATABASE" />
-              <option name="value" value="ticket-service" />
+              <option name="value" value="ticket_service" />
             </DockerEnvVarImpl>
             <DockerEnvVarImpl>
               <option name="name" value="MYSQL_USER" />
