@@ -32,8 +32,9 @@ public class JWTHandler implements TokenHandler {
                     .parseClaimsJws(token)
                     .getBody()
                     .getSubject();
-            return  userInfoService.loadUserByUsername(username);
-        } catch (ExpiredJwtException ex) {
+            return userInfoService.loadUserByUsername(username);
+        } catch (ExpiredJwtException | IllegalArgumentException ex) {
+            //FIXME handle expiration of JWT
             return null;
         }
     }

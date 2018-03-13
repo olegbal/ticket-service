@@ -34,7 +34,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http
+        http.exceptionHandling().and()
+                .anonymous().and()
+                .servletApi().and()
+                .headers().and()
                 .authorizeRequests()
                 //permitting access to all resources
                 .antMatchers("/", "/favicon.ico", "/**.html", "/**.css", "/**.js").permitAll()

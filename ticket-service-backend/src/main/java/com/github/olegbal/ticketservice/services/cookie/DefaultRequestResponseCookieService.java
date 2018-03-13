@@ -19,8 +19,12 @@ public class DefaultRequestResponseCookieService implements RequestResponseCooki
 
         Cookie[] cookies = request.getCookies();
 
+        if (cookies == null) {
+            return new Cookie(cookieName, null);
+        }
+
         return Arrays.stream(cookies)
                 .filter(x -> x.getName().equals(cookieName))
-                .findAny().orElse(new Cookie(cookieName, ""));
+                .findAny().orElse(new Cookie(cookieName, null));
     }
 }
