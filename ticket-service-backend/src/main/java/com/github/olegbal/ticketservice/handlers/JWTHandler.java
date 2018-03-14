@@ -6,13 +6,13 @@ import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
-@Component
+@Service
 public class JWTHandler implements TokenHandler {
 
     //TODO Get it from properties
@@ -33,8 +33,7 @@ public class JWTHandler implements TokenHandler {
                     .getBody()
                     .getSubject();
             return userInfoService.loadUserByUsername(username);
-        } catch (ExpiredJwtException | IllegalArgumentException ex) {
-            //FIXME handle expiration of JWT
+        } catch (IllegalArgumentException ex) {
             return null;
         }
     }
@@ -42,7 +41,7 @@ public class JWTHandler implements TokenHandler {
     @Override
     public String createTokenForUser(User user) {
         Date now = new Date();
-        Date expiration = new Date(now.getTime() + TimeUnit.HOURS.toMillis(1L));
+        Date expiration = new Date(now.getTime() + TimeUnit.SECONDS.toMillis(1L));
         return Jwts.builder()
                 .setId(UUID.randomUUID().toString())
                 .setSubject(user.getUsername())
