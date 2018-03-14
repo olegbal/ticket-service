@@ -41,7 +41,7 @@ public class JWTHandler implements TokenHandler {
     @Override
     public String createTokenForUser(User user) {
         Date now = new Date();
-        Date expiration = new Date(now.getTime() + TimeUnit.SECONDS.toMillis(1L));
+        Date expiration = new Date(now.getTime() + TimeUnit.HOURS.toMillis(2L));
         return Jwts.builder()
                 .setId(UUID.randomUUID().toString())
                 .setSubject(user.getUsername())

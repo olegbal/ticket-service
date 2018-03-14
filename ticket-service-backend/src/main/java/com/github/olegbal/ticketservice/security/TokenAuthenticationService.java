@@ -53,6 +53,10 @@ public class TokenAuthenticationService {
 
         Cookie authCookie = reqResCookieService.getCookieFromRequest(authCookieService.getCookieName(), request);
 
+        if (authCookie == null) {
+            return null;
+        }
+
         String token = authCookie.getValue();
         final User user = tokenHandler.parseUserFromToken(token);
         if (user != null) {
