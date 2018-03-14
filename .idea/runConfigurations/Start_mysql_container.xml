@@ -1,5 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <component name="ProjectRunConfigurationManager">
-  <configuration default="false" name="Start mysql container" type="docker-deploy" factoryName="Docker Deployment" singleton="true" server-name="Docker">
+  <configuration default="false" name="Start mysql container" type="docker-deploy" factoryName="docker-image" singleton="true" server-name="Docker">
     <deployment type="docker-image">
       <settings>
         <option name="JSONFilePath" value="" />
@@ -46,3 +47,4 @@
     <method />
   </configuration>
 </component>
+
