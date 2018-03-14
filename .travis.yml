@@ -3,6 +3,7 @@ jdk:
   - oraclejdk8
 services:
   - mysql
+  - docker
 sudo: required
 env:
   - NODE_VERSION="7.10"
