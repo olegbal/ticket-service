@@ -2,6 +2,7 @@ package com.github.olegbal.ticketservice.security;
 
 import com.github.olegbal.ticketservice.filters.JWTAuthenticationFilter;
 import com.github.olegbal.ticketservice.services.user.UserInfoService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -16,21 +17,12 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 import static com.github.olegbal.ticketservice.enums.ApiVersioningUrlPrefix.V1;
 
 @EnableWebSecurity
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private UserInfoService userDetailsService;
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final UserInfoService userDetailsService;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
     private final JWTAuthenticationFilter jwtAuthenticationFilter;
-
-    @Autowired
-    public SecurityConfig(UserInfoService userDetailsService, BCryptPasswordEncoder bCryptPasswordEncoder,
-                          JWTAuthenticationFilter jwtAuthenticationFilter) {
-
-        super(true);
-        this.userDetailsService = userDetailsService;
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-        this.jwtAuthenticationFilter = jwtAuthenticationFilter;
-    }
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {

@@ -5,6 +5,7 @@ import com.github.olegbal.ticketservice.handlers.TokenHandler;
 import com.github.olegbal.ticketservice.helpers.cookie.AuthCookieHelper;
 import com.github.olegbal.ticketservice.services.cookie.DefaultRequestResponseCookieService;
 import com.github.olegbal.ticketservice.services.user.UserInfoService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -15,25 +16,14 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 @Component
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class TokenAuthenticationService {
 
-    private UserInfoService userService;
-    private TokenHandler tokenHandler;
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
-    private AuthCookieHelper authCookieService;
-    private DefaultRequestResponseCookieService reqResCookieService;
-
-    @Autowired
-    public TokenAuthenticationService(UserInfoService userService, TokenHandler tokenHandler,
-                                      BCryptPasswordEncoder bCryptPasswordEncoder,
-                                      AuthCookieHelper authCookieService,
-                                      DefaultRequestResponseCookieService reqResCookieService) {
-        this.userService = userService;
-        this.tokenHandler = tokenHandler;
-        this.bCryptPasswordEncoder = bCryptPasswordEncoder;
-        this.authCookieService = authCookieService;
-        this.reqResCookieService = reqResCookieService;
-    }
+    private final UserInfoService userService;
+    private final TokenHandler tokenHandler;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final AuthCookieHelper authCookieService;
+    private final DefaultRequestResponseCookieService reqResCookieService;
 
     public boolean checkLogin(HttpServletResponse response, User authCheckDto) {
 

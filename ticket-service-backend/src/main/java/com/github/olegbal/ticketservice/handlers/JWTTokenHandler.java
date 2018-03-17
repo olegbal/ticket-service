@@ -5,6 +5,7 @@ import com.github.olegbal.ticketservice.services.user.UserInfoService;
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,16 +14,13 @@ import java.util.UUID;
 import java.util.concurrent.TimeUnit;
 
 @Service
-public class JWTHandler implements TokenHandler {
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
+public class JWTTokenHandler implements TokenHandler {
 
     //TODO Get it from properties
     private final String TOKEN_SECRET = "MY_SECRET_TSSS";
-    private UserInfoService userInfoService;
 
-    @Autowired
-    public JWTHandler(UserInfoService userInfoService) {
-        this.userInfoService = userInfoService;
-    }
+    private final UserInfoService userInfoService;
 
     @Override
     public User parseUserFromToken(String token) {

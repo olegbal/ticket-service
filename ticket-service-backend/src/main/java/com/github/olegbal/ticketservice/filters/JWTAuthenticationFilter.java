@@ -2,6 +2,7 @@ package com.github.olegbal.ticketservice.filters;
 
 import com.github.olegbal.ticketservice.security.TokenAuthenticationService;
 import io.jsonwebtoken.ExpiredJwtException;
+import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,14 +20,10 @@ import java.io.IOException;
 import static com.github.olegbal.ticketservice.enums.ApiVersioningUrlPrefix.V1;
 
 @Component
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class JWTAuthenticationFilter extends GenericFilterBean {
 
     private final TokenAuthenticationService authenticationService;
-
-    @Autowired
-    public JWTAuthenticationFilter(TokenAuthenticationService authenticationService) {
-        this.authenticationService = authenticationService;
-    }
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain filterChain)
