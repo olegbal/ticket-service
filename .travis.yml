@@ -20,7 +20,7 @@ before_script:
   - cd $TRAVIS_BUILD_DIR/ticket-service-frontend/angular/ && npm install
 script:
   - ng build
-  - cd $TRAVIS_BUILD_DIR/ticket-service-backend && mvn install -q -nsu -Dmaven.test.redirectTestOutputToFile=true -P '!integration'
+  - cd $TRAVIS_BUILD_DIR/ticket-service-backend && mvn install -DskipTests=true
 
 after_success:
-  - mvn clean test jacoco:report coveralls:report
+  - mvn clean test -Dmaven.test.redirectTestOutputToFile=true -P '!integration' jacoco:report coveralls:report
