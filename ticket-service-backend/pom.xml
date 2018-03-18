@@ -26,6 +26,13 @@
             <optional>true</optional>
         </dependency>
 
+        <!--Spring annotation processor-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
+
         <!-- Spring data jpa -->
         <dependency>
             <groupId>org.springframework.boot</groupId>

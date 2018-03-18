@@ -1,5 +1,6 @@
 package com.github.olegbal.ticketservice.handlers;
 
+import com.github.olegbal.ticketservice.configurations.security.SecurityProperties;
 import com.github.olegbal.ticketservice.entities.User;
 import com.github.olegbal.ticketservice.services.user.UserInfoService;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -17,16 +18,14 @@ import java.util.concurrent.TimeUnit;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class JWTTokenHandler implements TokenHandler {
 
-    //TODO Get it from properties
-    private final String TOKEN_SECRET = "MY_SECRET_TSSS";
-
+    private final SecurityProperties securityProperties;
     private final UserInfoService userInfoService;
 
     @Override
     public User parseUserFromToken(String token) {
         try {
             String username = Jwts.parser()
-                    .setSigningKey(TOKEN_SECRET)
+                    .setSigningKey(securityProperties.getSecret())
                     .parseClaimsJws(token)
                     .getBody()
                     .getSubject();
@@ -45,7 +44,7 @@ public class JWTTokenHandler implements TokenHandler {
                 .setSubject(user.getUsername())
                 .setIssuedAt(now)
                 .setExpiration(expiration)
-                .signWith(SignatureAlgorithm.HS512, TOKEN_SECRET)
+                .signWith(SignatureAlgorithm.HS512, securityProperties.getSecret())
                 .compact();
     }
 }

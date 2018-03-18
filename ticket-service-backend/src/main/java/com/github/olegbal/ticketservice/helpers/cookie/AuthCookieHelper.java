@@ -1,5 +1,8 @@
 package com.github.olegbal.ticketservice.helpers.cookie;
 
+import com.github.olegbal.ticketservice.configurations.security.SecurityProperties;
+import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.Cookie;
@@ -7,12 +10,12 @@ import javax.servlet.http.Cookie;
 import static com.github.olegbal.ticketservice.enums.ApiVersioningUrlPrefix.V1;
 
 @Component
+@RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class AuthCookieHelper implements CookieHelper {
 
     private static final String AUTH_COOKIE_PATH = V1;
 
-    //TODO ADD GETTIng VALUE FROM PREPERTIES FILE.
-    private static final String AUTH_COOKIE_NAME = "authToken";
+    private final SecurityProperties securityProperties;
 
     @Override
     public Cookie createCookie(String value) {
@@ -23,7 +26,7 @@ public class AuthCookieHelper implements CookieHelper {
 
     @Override
     public String getCookieName() {
-        return AUTH_COOKIE_NAME;
+        return securityProperties.getCookieName();
     }
 }
 

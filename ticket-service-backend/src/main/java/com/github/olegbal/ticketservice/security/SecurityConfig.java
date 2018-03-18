@@ -29,6 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.exceptionHandling().and()
                 .anonymous().and()
                 .servletApi().and()
+                .csrf().disable()
                 .headers().and()
                 .authorizeRequests()
                 //permitting access to all resources
