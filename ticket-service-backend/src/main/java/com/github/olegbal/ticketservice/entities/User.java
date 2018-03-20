@@ -26,6 +26,21 @@ public class User implements UserDetails {
     @Column(name = "user_password")
     private String password;
 
+    @Column(name = "user_first_name")
+    private String firstName;
+
+    @Column(name = "user_last_name")
+    private String lastName;
+
+    @Column(name = "user_organization")
+    private String organization;
+
+    @Column(name = "user_phone")
+    private String phoneNumber;
+
+    @Column(name = "user_email")
+    private String email;
+
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH})
     @JoinTable(name = "user_roles", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {@JoinColumn(name = "role_id")})
     private Set<Role> roles;

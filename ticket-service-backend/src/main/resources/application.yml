@@ -15,3 +15,6 @@ spring:
 token:
   cookie-name: auth
   secret: MY_SECRET_TSS
+registration-codes:
+#next fields are equal to role names in db
+  organizer: organizer123

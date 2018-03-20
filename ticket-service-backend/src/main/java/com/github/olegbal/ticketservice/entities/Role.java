@@ -1,5 +1,6 @@
 package com.github.olegbal.ticketservice.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
 
@@ -15,11 +16,12 @@ public class Role implements GrantedAuthority {
     @Column(name = "role_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long roleId;
-
+    
     @Column(name = "role_name")
     private String roleName;
 
     @Override
+    @JsonIgnore
     public String getAuthority() {
         return getRoleName();
     }

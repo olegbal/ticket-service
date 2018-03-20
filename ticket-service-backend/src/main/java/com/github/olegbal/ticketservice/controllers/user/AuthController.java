@@ -1,7 +1,11 @@
 package com.github.olegbal.ticketservice.controllers.user;
 
+import com.github.olegbal.ticketservice.data.auth.LoginAndPasswordDto;
+import com.github.olegbal.ticketservice.data.auth.RegistrationDto;
+import com.github.olegbal.ticketservice.data.auth.UserDto;
 import com.github.olegbal.ticketservice.entities.User;
-import com.github.olegbal.ticketservice.security.TokenAuthenticationService;
+import com.github.olegbal.ticketservice.services.auth.LoginService;
+import com.github.olegbal.ticketservice.services.auth.RegistrationService;
 import com.github.olegbal.ticketservice.services.user.UserInfoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
+import javax.validation.Valid;
 
 import static com.github.olegbal.ticketservice.enums.ApiVersioningUrlPrefix.V1;
 
@@ -22,21 +27,30 @@ import static com.github.olegbal.ticketservice.enums.ApiVersioningUrlPrefix.V1;
 public class AuthController {
 
     private final UserInfoService userInfoService;
-    private final TokenAuthenticationService tokenAuthenticationService;
+    private final RegistrationService registrationService;
+    private final LoginService loginService;
 
     @PostMapping(path = "/register")
-    public ResponseEntity signUp(@RequestBody final User user) {
-        userInfoService.createUser(user);
+    public ResponseEntity signUp(@RequestBody @Valid final RegistrationDto registrationDto) {
+
+        User registeredUser = registrationService.registerUser(registrationDto);
+
+        if (registeredUser == null) {
+            //TODO THROW EXCEPTION
+            return new ResponseEntity(HttpStatus.NOT_ACCEPTABLE);
+        }
+
         return new ResponseEntity(HttpStatus.OK);
     }
 
     @PostMapping(path = "/login")
-    public ResponseEntity signIn(HttpServletResponse httpServletResponse, @RequestBody final User user) {
+    public ResponseEntity signIn(HttpServletResponse response, @RequestBody @Valid final LoginAndPasswordDto loginForm) {
 
-        if (tokenAuthenticationService.checkLogin(httpServletResponse, user)) {
-            return new ResponseEntity<>(userInfoService.getUserByLogin(user.getLogin()).getRoles(), HttpStatus.ACCEPTED);
+        UserDto user = loginService.logIn(loginForm, response);
+
+        if (user != null) {
+            return new ResponseEntity<>(user, HttpStatus.ACCEPTED);
         }
-
         return new ResponseEntity(HttpStatus.UNAUTHORIZED);
     }
 }
