@@ -3,10 +3,8 @@ package com.github.olegbal.ticketservice.controllers.user;
 import com.github.olegbal.ticketservice.data.auth.LoginAndPasswordDto;
 import com.github.olegbal.ticketservice.data.auth.RegistrationDto;
 import com.github.olegbal.ticketservice.data.auth.UserDto;
-import com.github.olegbal.ticketservice.entities.User;
 import com.github.olegbal.ticketservice.services.auth.LoginService;
 import com.github.olegbal.ticketservice.services.auth.RegistrationService;
-import com.github.olegbal.ticketservice.services.user.UserInfoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -26,14 +24,13 @@ import static com.github.olegbal.ticketservice.enums.ApiVersioningUrlPrefix.V1;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class AuthController {
 
-    private final UserInfoService userInfoService;
     private final RegistrationService registrationService;
     private final LoginService loginService;
 
     @PostMapping(path = "/register")
     public ResponseEntity signUp(@RequestBody @Valid final RegistrationDto registrationDto) {
 
-        User registeredUser = registrationService.registerUser(registrationDto);
+        UserDto registeredUser = registrationService.registerUser(registrationDto);
 
         if (registeredUser == null) {
             //TODO THROW EXCEPTION

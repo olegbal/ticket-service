@@ -1,5 +1,6 @@
 package com.github.olegbal.ticketservice.services.auth;
 
+import com.github.olegbal.ticketservice.data.auth.UserDto;
 import com.github.olegbal.ticketservice.factories.SerialNumberRolesFactory;
 import com.github.olegbal.ticketservice.data.auth.RegistrationDto;
 import com.github.olegbal.ticketservice.entities.User;
@@ -18,7 +19,7 @@ public class DefaultRegistrationService implements RegistrationService {
     private final SerialNumberRolesFactory rolesFactory;
 
     @Override
-    public User registerUser(RegistrationDto registrationDto) {
+    public UserDto registerUser(RegistrationDto registrationDto) {
 
         if (!isRegistrationPossible(registrationDto)) {
             return null;
@@ -28,7 +29,11 @@ public class DefaultRegistrationService implements RegistrationService {
 
         user.setRoles(rolesFactory.getRolesList(registrationDto.getSecretCode()));
 
-        return userInfoService.createUser(user);
+        if (userInfoService.createUser(user) == null) {
+            return null;
+        }
+
+        return conversionService.convert(user, UserDto.class);
 
     }
 
