@@ -12,4 +12,8 @@ public interface UserInfoService extends UserDetailsService {
 
     User loadUserByUsername(String login);
 
+    boolean isUserExists(String login);
+
+    boolean isUserExists(long id);
+
 }

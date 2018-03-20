@@ -1,5 +1,6 @@
 package com.github.olegbal.ticketservice.security;
 
+import com.github.olegbal.ticketservice.data.auth.LoginAndPasswordDto;
 import com.github.olegbal.ticketservice.entities.User;
 import com.github.olegbal.ticketservice.handlers.TokenHandler;
 import com.github.olegbal.ticketservice.helpers.cookie.AuthCookieHelper;
@@ -25,7 +26,7 @@ public class TokenAuthenticationService {
     private final AuthCookieHelper authCookieService;
     private final DefaultRequestResponseCookieService reqResCookieService;
 
-    public boolean checkLogin(HttpServletResponse response, User authCheckDto) {
+    public User loadLoginData(HttpServletResponse response, LoginAndPasswordDto authCheckDto) {
 
         User user = userService.loadUserByUsername(authCheckDto.getLogin());
         if (user != null) {
@@ -33,10 +34,10 @@ public class TokenAuthenticationService {
                 Cookie authCookie = authCookieService.createCookie(tokenHandler.createTokenForUser(user));
                 reqResCookieService.putCookieToResponse(authCookie, response);
 
-                return true;
+                return user;
             }
         }
-        return false;
+        return null;
     }
 
     public Authentication getAuthentication(HttpServletRequest request) {

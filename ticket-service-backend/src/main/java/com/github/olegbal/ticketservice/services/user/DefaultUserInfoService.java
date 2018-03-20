@@ -46,4 +46,20 @@ public class DefaultUserInfoService implements UserInfoService {
     public User loadUserByUsername(String login) throws UsernameNotFoundException {
         return getUserByLogin(login);
     }
+
+    @Override
+    public boolean isUserExists(String login) {
+
+        User user = getUserByLogin(login);
+
+        return user != null;
+    }
+
+    @Override
+    public boolean isUserExists(long id) {
+
+        User user = getUserById(id);
+
+        return user != null;
+    }
 }
