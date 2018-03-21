@@ -7,8 +7,11 @@ import org.junit.Test;
 import org.mockito.Mockito;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
-import static com.github.olegbal.ticketservice.controllers.testutils.UserCreator.createUserWithRoleOrganizer;
+import static com.github.olegbal.ticketservice.testutils.UserCreator.createUserWithRoleOrganizer;
+import static com.github.olegbal.ticketservice.testutils.UserCreator.createUserWithRoleUser;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.anyObject;
 import static org.mockito.Mockito.when;
 
 public class DefaultUserInfoServiceUnitTest {
@@ -23,10 +26,10 @@ public class DefaultUserInfoServiceUnitTest {
         userInfoService = new DefaultUserInfoService(userRepository, new BCryptPasswordEncoder());
 
         when(userRepository.findOne(1L)).thenReturn(createUserWithRoleOrganizer(1L, "login1"));
-        when(userRepository.findOne(2L)).thenReturn(createUserWithRoleOrganizer(2L, "login2"));
 
         when(userRepository.findByLogin("login1")).thenReturn(createUserWithRoleOrganizer(1L, "login1"));
-        when(userRepository.findByLogin("login2")).thenReturn(createUserWithRoleOrganizer(2L, "login2"));
+
+        when(userRepository.save((User) anyObject())).thenReturn(createUserWithRoleOrganizer(1L, "login1"));
     }
 
 
@@ -49,18 +52,31 @@ public class DefaultUserInfoServiceUnitTest {
 
     @Test
     public void createUser() {
-        
+        User user = createUserWithRoleUser(-1L, "login1");
+        user = userInfoService.createUser(user);
+
+        assertThat(user).isNotNull();
+        assertThat(user.getId()).isNotEqualTo(-1L);
     }
 
     @Test
-    public void loadUserByUsername() {
+    public void isUserExistsById() {
+        boolean result = userInfoService.isUserExists(1L);
+
+        assertThat(result).isTrue();
+
+        result = userInfoService.isUserExists(-1L);
+        assertThat(result).isFalse();
+
     }
 
     @Test
-    public void isUserExists() {
-    }
+    public void isUserExistsByLogin() {
+        boolean result = userInfoService.isUserExists("login1");
 
-    @Test
-    public void isUserExists1() {
+        assertThat(result).isTrue();
+
+        result = userInfoService.isUserExists("noSuchLogin");
+        assertThat(result).isFalse();
     }
 }
