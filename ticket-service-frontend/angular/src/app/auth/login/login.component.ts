@@ -11,6 +11,7 @@ import { User } from "../../data/User";
 export class LoginComponent implements OnInit {
 
   constructor(private loginService: LoginService) {
+    this.loginData = new LoginData("","");
   }
 
   loginData: LoginData;
@@ -20,7 +21,7 @@ export class LoginComponent implements OnInit {
 
   submitLogin() {
     this.loginService.signIn(this.loginData).subscribe((data: User) => {
-      alert(data);
+      alert("Name :"+ data.login + "LastName :"+ data.email);
     });
   }
 }
