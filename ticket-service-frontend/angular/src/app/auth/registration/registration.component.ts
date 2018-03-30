@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {RegistrationService} from "./registration.service";
+import {RegistrationData} from "../../data/RegistrationData";
 
 @Component({
   selector: 'app-registration',
@@ -7,10 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegistrationComponent implements OnInit {
 
-  constructor() {
+  constructor(private registrationService: RegistrationService) {
+    this.registrationData = new RegistrationData();
   }
 
+  registrationData:RegistrationData;
+
   ngOnInit() {
+  }
+
+  register(){
+
   }
 
 }
