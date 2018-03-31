@@ -1,34 +1,43 @@
 <form id="registration-form" (ngSubmit)="register()">
   <div>
-    <label>Login</label>
-    <input name="registration-login">
+    <label class="block-label" for="registration-login-input">Login</label>
+    <input type="text" name="registration-login" id="registration-login-input"
+           [(ngModel)]="registrationData.login" required>
   </div>
   <div>
-    <label>Email</label>
-    <input>
+    <label class="block-label" for="registration-email-input">Email</label>
+    <input type="text" name="registration-email" id="registration-email-input"
+           [(ngModel)]="registrationData.email" required>
   </div>
   <div>
-    <label>Password</label>
-    <input>
+    <label class="block-label" for="registration-password-input">Password</label>
+    <input type="password" name="registration-password" id="registration-password-input"
+           [(ngModel)]="registrationData.password" required>
   </div>
   <div>
-    <label>Firstname</label>
-    <input>
+    <label class="block-label" for="registration-firstname-input">Firstname</label>
+    <input type="text" name="registration-firstname" id="registration-firstname-input"
+           [(ngModel)]="registrationData.firstName">
   </div>
   <div>
-    <label>Last name</label>
-    <input>
+    <label class="block-label" for="registration-lastname-input">Last name</label>
+    <input type="text" name="registration-lastname" id="registration-lastname-input"
+           [(ngModel)]="registrationData.lastName">
   </div>
   <div>
-    <label>Organization</label>
-    <input>
+    <label class="block-label" for="registration-organization-input">Organization</label>
+    <input type="text" name="registration-organization" id="registration-organization-input"
+           [(ngModel)]="registrationData.organization">
   </div>
   <div>
-    <label>Phone number</label>
-    <input>
+    <label class="block-label" for="registration-phone-input">Phone number</label>
+    <input type="text" name="registration-phone-input" id="registration-phone-input"
+           [(ngModel)]="registrationData.phoneNumber">
   </div>
   <div>
-    <label>Secret code</label>
-    <input>
+    <label class="block-label" for="registration-code-input">Secret code</label>
+    <input type="text" name="registration-secret-code" id="registration-code-input"
+           [(ngModel)]="registrationData.secretCode">
   </div>
+  <button type="submit">Register</button>
 </form>

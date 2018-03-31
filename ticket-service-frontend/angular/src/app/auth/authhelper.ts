@@ -1,5 +1,7 @@
+import {ApiHelper} from "../apiHelper";
+
 export class AuthHelper {
-  static loginUrl = "/api/v1/login";
-  static registrationUrl = "register";
-  static authCookie = "auth";
+  static loginUrl = ApiHelper.v1 + "login";
+  static registrationUrl = ApiHelper.v1 + "register";
+  static authCookie = ApiHelper.v1 + "auth";
 }

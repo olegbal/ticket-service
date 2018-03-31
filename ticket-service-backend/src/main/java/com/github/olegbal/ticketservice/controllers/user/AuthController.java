@@ -37,7 +37,7 @@ public class AuthController {
             return new ResponseEntity(HttpStatus.NOT_ACCEPTABLE);
         }
 
-        return new ResponseEntity(HttpStatus.OK);
+        return new ResponseEntity<>(registeredUser, HttpStatus.OK);
     }
 
     @PostMapping(path = "/login")

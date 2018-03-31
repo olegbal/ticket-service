@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
 
   submitLogin() {
     this.loginService.signIn(this.loginData).subscribe((data: User) => {
-      alert("Name :"+ data.login + "LastName :"+ data.email);
+      alert("Name :"+ data.login + " LastName :"+ data.email);
     });
   }
 }

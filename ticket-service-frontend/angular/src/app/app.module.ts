@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
@@ -20,6 +20,7 @@ import { HttpClientModule } from "@angular/common/http";
     RegistrationComponent,
   ],
   imports: [
+    NgbModule.forRoot(),
     BrowserModule,
     FormsModule,
     AppRoutingModule,

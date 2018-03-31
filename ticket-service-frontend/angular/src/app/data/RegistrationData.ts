@@ -8,7 +8,4 @@ export class RegistrationData {
               public phoneNumber: string,
               public secretCode?: string) {
   }
-
-  constructor() {
-  }
 }
