@@ -1,0 +1,9 @@
+#login-form {
+  width: 50%;
+  margin: 0 auto;
+  background-color: tomato !important;
+}
+
+#login-form-title {
+  margin: 0 auto;
+}
