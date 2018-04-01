@@ -11,6 +11,9 @@ import { FormsModule } from "@angular/forms";
 import { LoginService } from "./auth/login/login.service";
 import { RegistrationService } from "./auth/registration/registration.service";
 import { HttpClientModule } from "@angular/common/http";
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 
 @NgModule({
@@ -18,6 +21,9 @@ import { HttpClientModule } from "@angular/common/http";
     AppComponent,
     LoginComponent,
     RegistrationComponent,
+    HeaderComponent,
+    FooterComponent,
+    NavbarComponent,
   ],
   imports: [
     NgbModule.forRoot(),
