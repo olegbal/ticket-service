@@ -12,11 +12,6 @@ div#header-logo-container {
   padding-top: 14px;
 }
 
-#header-cart-container a img {
-  width: 50px;
-  height: 50px;
-}
-
 .header-section-block {
   display: inline-block;
   vertical-align: bottom;

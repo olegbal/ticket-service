@@ -1,9 +1,17 @@
 <div *ngIf="!accountEntryService.isLoggedIn" id="login-and-registration-container">
-  <a routerLink="/login">Login</a>
-  <a routerLink="/register">Register</a>
+  <div class="text-center">
+    <a routerLink="/login">Login</a>
+    <a routerLink="/register">Register</a>
+  </div>
 </div>
 
-<div *ngIf="accountEntryService.isLoggedIn" id="account-entry-container">
-  <a routerLink="/" (click)="accountEntryService.setLogout()">Logout</a>
+<div *ngIf="accountEntryService.isLoggedIn" id="account-entry-container" class="dropdown">
+  <a class="btn btn-secondary dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown"
+     aria-haspopup="true" aria-expanded="false">
+    <img src="http://scma.com.ua/wp-content/uploads/2015/02/user.png" id="account-entry-image"> Username
+  </a>
+  <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+    <a class="dropdown-item" routerLink="/cabinet">Account</a>
+    <a class="dropdown-item" routerLink="/" (click)="accountEntryService.setLogout()">Logout</a>
+  </div>
 </div>
-

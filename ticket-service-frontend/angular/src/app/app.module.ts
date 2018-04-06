@@ -17,6 +17,7 @@ import { AccountEntryComponent } from './auth/account-entry/account-entry.compon
 import { AccountEntryService } from "./auth/account-entry/account-entry.service";
 import { CookieService } from "ngx-cookie-service";
 import { UserCabinetComponent } from './user-cabinet/user-cabinet.component';
+import { CartEntryComponent } from './cart-entry/cart-entry.component';
 
 
 @NgModule({
@@ -29,6 +30,7 @@ import { UserCabinetComponent } from './user-cabinet/user-cabinet.component';
     NavbarComponent,
     AccountEntryComponent,
     UserCabinetComponent,
+    CartEntryComponent,
   ],
   imports: [
     BrowserModule,
