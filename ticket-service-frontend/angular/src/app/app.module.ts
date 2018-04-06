@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
@@ -17,6 +16,7 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { AccountEntryComponent } from './auth/account-entry/account-entry.component';
 import { AccountEntryService } from "./auth/account-entry/account-entry.service";
 import { CookieService } from "ngx-cookie-service";
+import { UserCabinetComponent } from './user-cabinet/user-cabinet.component';
 
 
 @NgModule({
@@ -28,9 +28,9 @@ import { CookieService } from "ngx-cookie-service";
     FooterComponent,
     NavbarComponent,
     AccountEntryComponent,
+    UserCabinetComponent,
   ],
   imports: [
-    NgbModule.forRoot(),
     BrowserModule,
     FormsModule,
     AppRoutingModule,
