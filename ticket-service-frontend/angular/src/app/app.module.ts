@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppComponent } from './app.component';
 import { LoginComponent } from './auth/login/login.component';
@@ -14,6 +14,9 @@ import { HttpClientModule } from "@angular/common/http";
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { AccountEntryComponent } from './auth/account-entry/account-entry.component';
+import { AccountEntryService } from "./auth/account-entry/account-entry.service";
+import { CookieService } from "ngx-cookie-service";
 
 
 @NgModule({
@@ -24,6 +27,7 @@ import { NavbarComponent } from './navbar/navbar.component';
     HeaderComponent,
     FooterComponent,
     NavbarComponent,
+    AccountEntryComponent,
   ],
   imports: [
     NgbModule.forRoot(),
@@ -33,7 +37,12 @@ import { NavbarComponent } from './navbar/navbar.component';
     AuthRougingModule,
     HttpClientModule
   ],
-  providers: [LoginService, RegistrationService],
+  providers: [
+    LoginService,
+    RegistrationService,
+    AccountEntryService,
+    CookieService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

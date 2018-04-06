@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginData } from "../../data/LoginData";
 import { LoginService } from "./login.service";
 import { User } from "../../data/User";
+import { AccountEntryService } from "../account-entry/account-entry.service";
 
 @Component({
   selector: 'app-login',
@@ -10,8 +11,9 @@ import { User } from "../../data/User";
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private loginService: LoginService) {
-    this.loginData = new LoginData("","");
+  constructor(private loginService: LoginService,
+              private accountEntryService: AccountEntryService) {
+    this.loginData = new LoginData("", "");
   }
 
   loginData: LoginData;
@@ -21,7 +23,7 @@ export class LoginComponent implements OnInit {
 
   submitLogin() {
     this.loginService.signIn(this.loginData).subscribe((data: User) => {
-      alert("Name :"+ data.login + " LastName :"+ data.email);
+      this.accountEntryService.setLoggedIn(data);
     });
   }
 }

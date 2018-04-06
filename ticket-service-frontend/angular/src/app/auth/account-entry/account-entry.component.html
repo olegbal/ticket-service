@@ -1,0 +1,9 @@
+<div *ngIf="!accountEntryService.isLoggedIn" id="login-and-registration-container">
+  <a routerLink="/login">Login</a>
+  <a routerLink="/register">Register</a>
+</div>
+
+<div *ngIf="accountEntryService.isLoggedIn" id="account-entry-container">
+  <a routerLink="/" (click)="accountEntryService.setLogout()">Logout</a>
+</div>
+
