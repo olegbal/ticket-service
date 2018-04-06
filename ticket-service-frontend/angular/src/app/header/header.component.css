@@ -3,6 +3,10 @@
   max-height: 25px;
 }
 
+div#header-upper-content {
+  height: 100px;
+}
+
 input#search-events-input-field {
   width: 80%;
 }
@@ -16,7 +20,6 @@ div#header-logo-container {
   display: inline-block;
   vertical-align: bottom;
   outline: 1px solid green;
-  height: 100px;
 }
 
 #header-search-events-container {
@@ -33,6 +36,7 @@ div#header-logo-container {
   height: 150px;
   background-color: #c33123;
 }
+
 button#header-search-button {
   background-repeat: round;
   background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMyEVV2Q7aM1gBhMyPOOegFKMwMxaGaL5SGAhPVyFtOES7n64S");
