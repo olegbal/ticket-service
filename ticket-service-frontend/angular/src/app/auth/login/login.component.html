@@ -1,19 +1,60 @@
 <form id="login-form" (ngSubmit)="submitLogin()">
-  <h1 id="login-form-title">Log in please</h1>
-  <div class="login-form-div">
-    <label class="block-label" for="signin-login-input">Email or username</label>
-    <input type="text" name="login" id="signin-login-input" [(ngModel)]="loginData.login"
-           placeholder="Enter your Email or username" required>
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="text-center">
+          <h1 id="login-form-title">Log in please</h1>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="login-form-div col-sm-12">
+        <div class="text-center">
+          <label class="block-label" for="signin-login-input">Email or username</label>
+          <input type="text" name="login" id="signin-login-input"
+                 class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                 [(ngModel)]="loginData.login" placeholder="Enter your Email or username" required>
+        </div>
+      </div>
+      <div class="login-form-div col-sm-12">
+        <div class="text-center">
+          <label class="block-label" for="signin-pass-input">Password:</label>
+          <input type="password" name="password" id="signin-pass-input"
+                 class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                 [(ngModel)]="loginData.password" placeholder="Enter password" required>
+        </div>
+      </div>
+    </div>
+    <div class="login-form-div text-center">
+      <button type="submit" class="btn btn-success btn-lg">Log in</button>
+    </div>
   </div>
-  <div class="login-form-div">
-    <label class="block-label" for="signin-pass-input">Password:</label>
-    <input type="password" name="password" id="signin-pass-input" [(ngModel)]="loginData.password"
-           placeholder="Enter password" required>
+  <div class="row">
+    <div class="col-12">
+      <div class="login-form-div text-center">
+        <h4> If you have no account then <a routerLink="/register"> register</a></h4>
+      </div>
+    </div>
   </div>
-  <div class="login-form-div">
-    <button type="submit" class="btn btn-success">Log in</button>
-  </div>
-  <div class="login-form-div">
-    <h4> If you have no account then <a routerLink="/register"> register</a></h4>
+  <div class="social-login-container">
+    <div class="row">
+      <div class="col-12">
+        <div class="text-center">
+          <h4>Or log in via social networks</h4>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="social-login-images">
+        <div class="text-center">
+          <img class="social-login-image"
+               src="https://i.pinimg.com/736x/89/67/d9/8967d993037b3608240346b4e46b86f9--animation-gif.jpg">
+        </div>
+        <div class="text-center">
+          <img class="social-login-image"
+               src="https://cdn4.iconfinder.com/data/icons/new-google-logo-2015/400/new-google-favicon-512.png">
+        </div>
+      </div>
+    </div>
   </div>
 </form>

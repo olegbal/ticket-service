@@ -1,9 +1,32 @@
 #login-form {
   width: 50%;
   margin: 0 auto;
-  background-color: tomato !important;
+  background-color: #c33123 !important;
 }
 
 #login-form-title {
+  margin: 0 auto;
+}
+
+.login-form-div button {
+  margin-top: 10px;
+}
+
+.login-form-div .text-center {
+  margin: 0 10%;
+}
+
+.social-login-image {
+  width: 40px;
+  height: 40px;
+  margin: 0 20px;
+}
+
+.social-login-container {
+  /*margin: 0 auto;*/
+}
+
+.social-login-images {
+  display: flex;
   margin: 0 auto;
 }
