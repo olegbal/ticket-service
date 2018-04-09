@@ -2,42 +2,50 @@
   <div>
     <label class="block-label" for="registration-login-input">Login</label>
     <input type="text" name="registration-login" id="registration-login-input"
+           class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
            [(ngModel)]="registrationData.login" required>
   </div>
   <div>
     <label class="block-label" for="registration-email-input">Email</label>
     <input type="text" name="registration-email" id="registration-email-input"
+           class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
            [(ngModel)]="registrationData.email" required>
   </div>
   <div>
     <label class="block-label" for="registration-password-input">Password</label>
     <input type="password" name="registration-password" id="registration-password-input"
+           class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
            [(ngModel)]="registrationData.password" required>
   </div>
   <div>
     <label class="block-label" for="registration-firstname-input">Firstname</label>
     <input type="text" name="registration-firstname" id="registration-firstname-input"
+           class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
            [(ngModel)]="registrationData.firstName">
   </div>
   <div>
     <label class="block-label" for="registration-lastname-input">Last name</label>
     <input type="text" name="registration-lastname" id="registration-lastname-input"
+           class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
            [(ngModel)]="registrationData.lastName">
   </div>
   <div>
     <label class="block-label" for="registration-organization-input">Organization</label>
     <input type="text" name="registration-organization" id="registration-organization-input"
+           class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
            [(ngModel)]="registrationData.organization">
   </div>
   <div>
     <label class="block-label" for="registration-phone-input">Phone number</label>
     <input type="text" name="registration-phone-input" id="registration-phone-input"
+           class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
            [(ngModel)]="registrationData.phoneNumber">
   </div>
   <div>
     <label class="block-label" for="registration-code-input">Secret code</label>
     <input type="text" name="registration-secret-code" id="registration-code-input"
+           class="form-control" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
            [(ngModel)]="registrationData.secretCode">
   </div>
-  <button type="submit">Register</button>
+  <button type="submit" class="btn btn-success btn-lg">Register</button>
 </form>
