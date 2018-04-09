@@ -13,7 +13,7 @@ import static com.github.olegbal.ticketservice.enums.ApiVersioningUrlPrefix.V1;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class AuthCookieHelper implements CookieHelper {
 
-    private static final String AUTH_COOKIE_PATH = V1;
+    private static final String AUTH_COOKIE_PATH = "/";
 
     private final SecurityProperties securityProperties;
 
