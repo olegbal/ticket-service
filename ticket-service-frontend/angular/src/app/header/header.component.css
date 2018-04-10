@@ -34,7 +34,6 @@ div#header-logo-container {
 
 #header-main-container {
   height: 150px;
-  background-color: #c33123;
 }
 
 button#header-search-button {
@@ -51,4 +50,8 @@ div#header-cart-container {
 
 div#header-account-container {
   height: 50%;
+}
+
+div#header-navbar div.col-sm-12 {
+  padding: 0;
 }
