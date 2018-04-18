@@ -4,7 +4,7 @@
     <input type="text" name="registration-login" id="registration-login-input" placeholder="username"
            class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
            [(ngModel)]="registrationData.login" #login="ngModel" pattern="^[a-zA-Z0-9]{4,15}$" required>
-    <div [hidden]="login.valid || login.pristine"
+    <div *ngIf="login.touched && login.invalid"
          class="alert alert-danger">
       Message and styles must be here!
     </div>
@@ -14,7 +14,7 @@
     <input type="email" name="registration-email" id="registration-email-input" placeholder="email"
            class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
            [(ngModel)]="registrationData.email" #email="ngModel" email="true" required>
-    <div [hidden]="email.valid || email.pristine"
+    <div *ngIf="email.touched && email.invalid"
          class="alert alert-danger">
       Message and styles must be here!
     </div>
@@ -25,7 +25,7 @@
            class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
            [(ngModel)]="registrationData.password" #password="ngModel"
            pattern="^[a-zA-Z0-9]{6,15}$" required>
-    <div [hidden]="password.valid || password.pristine"
+    <div *ngIf="password.touched && password.invalid"
          class="alert alert-danger">
       Message and styles must be here!
     </div>
@@ -35,7 +35,7 @@
     <input type="text" name="registration-firstname" id="registration-firstname-input" placeholder="first name"
            class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
            [(ngModel)]="registrationData.firstName" #firstName="ngModel">
-    <div [hidden]="firstName.valid || firstName.pristine"
+    <div *ngIf="firstName.touched && firstName.invalid"
          class="alert alert-danger">
       Message and styles must be here!
     </div>
@@ -45,7 +45,7 @@
     <input type="text" name="registration-lastname" id="registration-lastname-input" placeholder="last name"
            class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
            [(ngModel)]="registrationData.lastName" #lastName="ngModel">
-    <div [hidden]="lastName.valid || lastName.pristine"
+    <div *ngIf="lastName.touched && lastName.invalid"
          class="alert alert-danger">
       Message and styles must be here!
     </div>
@@ -55,7 +55,7 @@
     <input type="text" name="registration-organization" id="registration-organization-input" placeholder="organization"
            class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
            [(ngModel)]="registrationData.organization" #organization="ngModel">
-    <div [hidden]="organization.valid || organization.pristine"
+    <div *ngIf="organization.touched && organization.invalid"
          class="alert alert-danger">
       Message and styles must be here!
     </div>
@@ -65,7 +65,7 @@
     <input type="text" name="registration-phone-input" id="registration-phone-input" placeholder="phone number"
            class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
            [(ngModel)]="registrationData.phoneNumber" #phone="ngModel">
-    <div [hidden]="phone.valid || phone.pristine"
+    <div *ngIf="phone.touched && phone.invalid"
          class="alert alert-danger">
       Message and styles must be here!
     </div>
@@ -75,7 +75,7 @@
     <input type="text" name="registration-secret-code" id="registration-code-input" placeholder="for special accounts"
            class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
            [(ngModel)]="registrationData.secretCode" #secretCode="ngModel">
-    <div [hidden]="secretCode.valid || secretCode.pristine"
+    <div *ngIf="secretCode.touched && secretCode.invalid"
          class="alert alert-danger">
       Message and styles must be here!
     </div>
