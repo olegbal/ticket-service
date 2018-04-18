@@ -1,5 +1,29 @@
 #registration-form {
+  padding-top: 15px;
   width: 50%;
   margin: 0 auto;
   background-color: #c33123 !important;
+}
+
+.registration-input-block {
+  margin: 0 15%;
+}
+
+#registration-submit-button {
+  padding: 10px 0;
+}
+
+.social-login-image {
+  width: 40px;
+  height: 40px;
+  margin: 0 20px;
+}
+
+.social-login-container {
+  /*margin: 0 auto;*/
+}
+
+.social-login-images {
+  display: flex;
+  margin: 0 auto;
 }

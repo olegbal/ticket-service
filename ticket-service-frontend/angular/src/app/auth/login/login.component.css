@@ -1,19 +1,16 @@
 #login-form {
   width: 50%;
+  padding-top: 15px;
   margin: 0 auto;
   background-color: #c33123 !important;
 }
 
-#login-form-title {
-  margin: 0 auto;
-}
-
-.login-form-div button {
+.login-form-div input {
   margin-top: 10px;
 }
 
 .login-form-div .text-center {
-  margin: 0 10%;
+  margin: 0 15%;
 }
 
 .social-login-image {
