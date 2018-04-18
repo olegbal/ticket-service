@@ -30,7 +30,7 @@ public class JWTTokenHandler implements TokenHandler {
                     .getBody()
                     .getSubject();
             return userInfoService.loadUserByUsername(username);
-        } catch (IllegalArgumentException ex) {
+        } catch (IllegalArgumentException | ExpiredJwtException ex) {
             return null;
         }
     }

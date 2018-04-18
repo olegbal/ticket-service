@@ -1,7 +1,6 @@
 package com.github.olegbal.ticketservice.filters;
 
 import com.github.olegbal.ticketservice.security.TokenAuthenticationService;
-import io.jsonwebtoken.ExpiredJwtException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
@@ -32,16 +31,8 @@ public class JWTAuthenticationFilter extends GenericFilterBean {
         HttpServletResponse httpResponse = (HttpServletResponse) response;
         boolean isLoginPage = httpRequest.getRequestURL().toString().contains(V1 + "/login");
         Authentication authentication = null;
-        try {
-            authentication = authenticationService.getAuthentication(httpRequest);
-            endFiltering(filterChain, authentication, request, response);
-        } catch (ExpiredJwtException ex) {
-            if (!isLoginPage) {
-                httpResponse.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Token expired, please log in again");
-            } else {
-                endFiltering(filterChain, authentication, request, response);
-            }
-        }
+        authentication = authenticationService.getAuthentication(httpRequest);
+        endFiltering(filterChain, authentication, request, response);
     }
 
     private void endFiltering(FilterChain filterChain, Authentication authentication, ServletRequest request,

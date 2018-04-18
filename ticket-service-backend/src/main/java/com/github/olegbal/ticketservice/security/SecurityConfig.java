@@ -33,7 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .headers().and()
                 .authorizeRequests()
                 //permitting access to all resources
-                .antMatchers("/", "/favicon.ico", "/**.html", "/**.css", "/**.js").permitAll()
+                .antMatchers("/favicon.ico", "/**.html", "/**.css", "/**.js").permitAll()
                 //Registration and authorization mapping mapping security
                 .antMatchers(V1 + "/register", V1 + "/login").permitAll()
                 .antMatchers(V1 + "/hello").hasRole("USER")
