@@ -19,7 +19,6 @@ div#header-logo-container {
 .header-section-block {
   display: inline-block;
   vertical-align: bottom;
-  outline: 1px solid green;
 }
 
 .header-search-events-container {
@@ -38,10 +37,11 @@ div#header-logo-container {
 
 button.header-search-button {
   background-repeat: round;
-  background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMyEVV2Q7aM1gBhMyPOOegFKMwMxaGaL5SGAhPVyFtOES7n64S");
+  background-image: url("assets/images/Search_Button.png");
   width: 30px;
   vertical-align: bottom;
   height: 30px;
+  border: 0px;
 }
 
 div#header-cart-container {

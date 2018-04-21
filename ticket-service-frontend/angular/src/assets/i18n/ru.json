@@ -3,6 +3,8 @@
 	"header.account-entry.login": "Войти",
 	"header.account-entry.logout": "Выйти",
 	"header.account-entry.register": "Регистрация",
+	"header.cart-entry.empty": "У вас нет билетов в корзине",
+	"header.cart-entry.items-description": "У вас {{number}} билетов в корзине",
 	"header.events.search.placeholder": "Поиск мероприятий",
 	"header.language.select": "Выбор языка",
 	"login.button": "Войти",

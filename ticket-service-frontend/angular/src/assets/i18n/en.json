@@ -3,6 +3,8 @@
 	"header.account-entry.login": "Login",
 	"header.account-entry.logout": "Logout",
 	"header.account-entry.register": "Register",
+	"header.cart-entry.empty": "You dont have any tickets ",
+	"header.cart-entry.items-description": "You have {{number}} items in your cart",
 	"header.events.search.placeholder": "Search for events",
 	"header.language.select": "Select language",
 	"login.button": "Login ",
