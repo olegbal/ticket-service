@@ -22,7 +22,7 @@ div#header-logo-container {
   outline: 1px solid green;
 }
 
-#header-search-events-container {
+.header-search-events-container {
   padding-top: 55px;
   margin-left: 10%;
 }
@@ -36,7 +36,7 @@ div#header-logo-container {
   height: 150px;
 }
 
-button#header-search-button {
+button.header-search-button {
   background-repeat: round;
   background-image: url("https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMyEVV2Q7aM1gBhMyPOOegFKMwMxaGaL5SGAhPVyFtOES7n64S");
   width: 30px;

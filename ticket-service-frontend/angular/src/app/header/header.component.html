@@ -9,20 +9,23 @@
       </div>
     </div>
     <div id="header-search-events-section-block" class="header-section-block col-sm-6">
-      <div id="header-search-events-container">
-        <input placeholder="Search for events" type="text" id="search-events-input-field">
-        <button id="header-search-button"></button>
+      <div class="input-group header-search-events-container">
+        <input type="text" id="search-events-input-field"
+               placeholder="{{ 'header.events.search.placeholder' | translate}}">
+        <span class="input-group-btn">
+        <button type="button" class="btn btn-secondary header-search-button"></button>
+        </span>
       </div>
     </div>
     <div id="header-languages-section-block" class="header-section-block col-sm-1">
       <div id="header-languages-container">
-        <p>Select language</p>
+        <p>{{"header.language.select" | translate}}</p>
         <div id="header-language-links-container">
-          <a class="header-language-item" href="#">
+          <a class="header-language-item" (click)="changeLanguage('ru')">
             <img class="img-fluid"
                  src="http://www.globalmoneyweek.org/resources/gmw2016/languageicons/Icon_Russian%20Language.png">
           </a>
-          <a class="header-language-item" href="#">
+          <a class="header-language-item" (click)="changeLanguage('en')">
             <img class="img-fluid"
                  src="https://www.thelanguagecenter.ch/wp-content/uploads/drapeaux/us.png">
           </a>

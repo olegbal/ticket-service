@@ -1,7 +1,7 @@
 <div *ngIf="!accountEntryService.isLoggedIn" id="login-and-registration-container">
   <div class="text-center">
-    <a routerLink="/login">Login</a>
-    <a routerLink="/register">Register</a>
+    <a routerLink="/login">{{ 'header.account-entry.login' | translate }}</a>
+    <a routerLink="/register">{{ 'header.account-entry.register' | translate }}</a>
   </div>
 </div>
 
@@ -11,7 +11,11 @@
     <img src="http://scma.com.ua/wp-content/uploads/2015/02/user.png" id="account-entry-image"> Username
   </a>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-    <a class="dropdown-item" routerLink="/cabinet">Account</a>
-    <a class="dropdown-item" routerLink="/" (click)="accountEntryService.setLogout()">Logout</a>
+    <a class="dropdown-item" routerLink="/cabinet">
+      {{'header.account-entry.account' | translate}}
+    </a>
+    <a class="dropdown-item" routerLink="/" (click)="accountEntryService.setLogout()">
+      {{'header.account-entry.logout' | translate}}
+    </a>
   </div>
 </div>

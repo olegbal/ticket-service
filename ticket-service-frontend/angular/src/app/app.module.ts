@@ -9,7 +9,7 @@ import { AuthRougingModule } from "./auth/auth-routing.module";
 import { FormsModule } from "@angular/forms";
 import { LoginService } from "./auth/login/login.service";
 import { RegistrationService } from "./auth/registration/registration.service";
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -18,7 +18,13 @@ import { AccountEntryService } from "./auth/account-entry/account-entry.service"
 import { CookieService } from "ngx-cookie-service";
 import { UserCabinetComponent } from './user-cabinet/user-cabinet.component';
 import { CartEntryComponent } from './cart-entry/cart-entry.component';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 
+// AoT requires an exported function for factories
+export function HttpLoaderFactory(httpClient: HttpClient) {
+  return new TranslateHttpLoader(httpClient);
+}
 
 @NgModule({
   declarations: [
@@ -37,7 +43,14 @@ import { CartEntryComponent } from './cart-entry/cart-entry.component';
     FormsModule,
     AppRoutingModule,
     AuthRougingModule,
-    HttpClientModule
+    HttpClientModule,
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient]
+      }
+    })
   ],
   providers: [
     LoginService,

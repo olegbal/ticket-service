@@ -1,7 +1,10 @@
 <form #registrationForm="ngForm" id="registration-form" (ngSubmit)="register()">
   <div class="registration-input-block">
-    <label class="block-label text-center" for="registration-login-input">Login</label>
-    <input type="text" name="registration-login" id="registration-login-input" placeholder="username"
+    <label class="block-label text-center" for="registration-login-input">
+      {{'registration.form.login.label' | translate}}
+    </label>
+    <input type="text" name="registration-login" id="registration-login-input"
+           placeholder="{{'registration.form.login.placeholder' | translate}}"
            class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
            [(ngModel)]="registrationData.login" #login="ngModel" pattern="^[a-zA-Z0-9]{4,15}$" required>
     <div *ngIf="login.touched && login.invalid"
@@ -10,8 +13,11 @@
     </div>
   </div>
   <div class="registration-input-block">
-    <label class="block-label text-center" for="registration-email-input">Email</label>
-    <input type="email" name="registration-email" id="registration-email-input" placeholder="email"
+    <label class="block-label text-center" for="registration-email-input">
+      {{'registration.form.email.label' | translate}}
+    </label>
+    <input type="email" name="registration-email" id="registration-email-input"
+           placeholder="{{'registration.form.email.placeholder' | translate}}"
            class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
            [(ngModel)]="registrationData.email" #email="ngModel" email="true" required>
     <div *ngIf="email.touched && email.invalid"
@@ -20,8 +26,11 @@
     </div>
   </div>
   <div class="registration-input-block">
-    <label class="block-label text-center" for="registration-password-input">Password</label>
-    <input type="password" name="registration-password" id="registration-password-input" placeholder="password"
+    <label class="block-label text-center" for="registration-password-input">
+      {{'registration.form.password.label' | translate}}
+    </label>
+    <input type="password" name="registration-password" id="registration-password-input"
+           placeholder="{{'registration.form.password.placeholder' | translate}}"
            class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
            [(ngModel)]="registrationData.password" #password="ngModel"
            pattern="^[a-zA-Z0-9]{6,15}$" required>
@@ -31,8 +40,11 @@
     </div>
   </div>
   <div class="registration-input-block">
-    <label class="block-label text-center" for="registration-firstname-input">Firstname</label>
-    <input type="text" name="registration-firstname" id="registration-firstname-input" placeholder="first name"
+    <label class="block-label text-center" for="registration-firstname-input">
+      {{'registration.form.firstname.label' | translate}}
+    </label>
+    <input type="text" name="registration-firstname" id="registration-firstname-input"
+           placeholder="{{'registration.form.firstname.placeholder' | translate}}"
            class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
            [(ngModel)]="registrationData.firstName" #firstName="ngModel">
     <div *ngIf="firstName.touched && firstName.invalid"
@@ -41,8 +53,11 @@
     </div>
   </div>
   <div class="registration-input-block">
-    <label class="block-label text-center" for="registration-lastname-input">Last name</label>
-    <input type="text" name="registration-lastname" id="registration-lastname-input" placeholder="last name"
+    <label class="block-label text-center" for="registration-lastname-input">
+      {{'registration.form.lastname.label' | translate}}
+    </label>
+    <input type="text" name="registration-lastname" id="registration-lastname-input"
+           placeholder="{{'registration.form.lastname.placeholder' | translate}}"
            class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
            [(ngModel)]="registrationData.lastName" #lastName="ngModel">
     <div *ngIf="lastName.touched && lastName.invalid"
@@ -51,8 +66,11 @@
     </div>
   </div>
   <div class="registration-input-block">
-    <label class="block-label text-center" for="registration-organization-input">Organization</label>
-    <input type="text" name="registration-organization" id="registration-organization-input" placeholder="organization"
+    <label class="block-label text-center" for="registration-organization-input">
+      {{'registration.form.organization.label' | translate}}
+    </label>
+    <input type="text" name="registration-organization" id="registration-organization-input"
+           placeholder="{{'registration.form.organization.placeholder' | translate}}"
            class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
            [(ngModel)]="registrationData.organization" #organization="ngModel">
     <div *ngIf="organization.touched && organization.invalid"
@@ -61,8 +79,11 @@
     </div>
   </div>
   <div class="registration-input-block">
-    <label class="block-label text-center" for="registration-phone-input">Phone number</label>
-    <input type="text" name="registration-phone-input" id="registration-phone-input" placeholder="phone number"
+    <label class="block-label text-center" for="registration-phone-input">
+      {{'registration.form.phonenumber.label' | translate}}
+    </label>
+    <input type="text" name="registration-phone-input" id="registration-phone-input"
+           placeholder="{{'registration.form.phonenumber.placeholder' | translate}}"
            class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
            [(ngModel)]="registrationData.phoneNumber" #phone="ngModel">
     <div *ngIf="phone.touched && phone.invalid"
@@ -71,8 +92,11 @@
     </div>
   </div>
   <div class="registration-input-block">
-    <label class="block-label text-center" for="registration-code-input">Secret code</label>
-    <input type="text" name="registration-secret-code" id="registration-code-input" placeholder="for special accounts"
+    <label class="block-label text-center" for="registration-code-input">
+      {{'registration.form.code.label' | translate}}
+    </label>
+    <input type="text" name="registration-secret-code" id="registration-code-input"
+           placeholder="{{'registration.form.code.placeholder' | translate}}"
            class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
            [(ngModel)]="registrationData.secretCode" #secretCode="ngModel">
     <div *ngIf="secretCode.touched && secretCode.invalid"
@@ -81,9 +105,15 @@
     </div>
   </div>
   <div id="registration-submit-button" class="submit-button text-center">
-    <input type="submit" class="btn btn-success" value="Register" [disabled]="!registrationForm.form.valid">
+    <input type="submit" class="btn btn-success" value="{{'registration.button' | translate}}"
+           [disabled]="!registrationForm.form.valid">
   </div>
   <div class="social-login-container">
+    <div class="text-center">
+      <p>
+        {{'registration.other.social-networks' | translate}}
+      </p>
+    </div>
     <div class="row">
       <div class="social-login-images">
         <div class="text-center">
