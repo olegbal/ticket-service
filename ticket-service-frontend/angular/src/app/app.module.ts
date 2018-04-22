@@ -20,6 +20,8 @@ import { UserCabinetComponent } from './user-cabinet/user-cabinet.component';
 import { CartEntryComponent } from './header/cart-entry/cart-entry.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { EventsListComponent } from './events-list/events-list.component';
+import { MainPageComponent } from './main-page/main-page.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -37,6 +39,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     AccountEntryComponent,
     UserCabinetComponent,
     CartEntryComponent,
+    EventsListComponent,
+    MainPageComponent,
   ],
   imports: [
     BrowserModule,
