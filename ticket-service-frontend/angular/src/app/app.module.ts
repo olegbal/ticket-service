@@ -12,12 +12,12 @@ import { RegistrationService } from "./auth/registration/registration.service";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { AccountEntryComponent } from './auth/account-entry/account-entry.component';
-import { AccountEntryService } from "./auth/account-entry/account-entry.service";
+import { NavbarComponent } from './header/navbar/navbar.component';
+import { AccountEntryComponent } from './header/account-entry/account-entry.component';
+import { AccountEntryService } from "./header/account-entry/account-entry.service";
 import { CookieService } from "ngx-cookie-service";
 import { UserCabinetComponent } from './user-cabinet/user-cabinet.component';
-import { CartEntryComponent } from './cart-entry/cart-entry.component';
+import { CartEntryComponent } from './header/cart-entry/cart-entry.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import {TranslateHttpLoader} from '@ngx-translate/http-loader';
 

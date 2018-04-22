@@ -2,7 +2,7 @@ import { Injectable, OnInit } from '@angular/core';
 import { Role } from "../../data/Role";
 import { User } from "../../data/User";
 import { CookieService } from "ngx-cookie-service";
-import { AuthHelper } from "../authhelper";
+import { AuthHelper } from "../../auth/authhelper";
 import { Router } from "@angular/router";
 
 @Injectable()

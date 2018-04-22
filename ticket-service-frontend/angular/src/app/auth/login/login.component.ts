@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { LoginData } from "../../data/LoginData";
 import { LoginService } from "./login.service";
 import { User } from "../../data/User";
-import { AccountEntryService } from "../account-entry/account-entry.service";
+import { AccountEntryService } from "../../header/account-entry/account-entry.service";
 
 @Component({
   selector: 'app-login',

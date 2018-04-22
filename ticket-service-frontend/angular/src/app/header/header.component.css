@@ -32,12 +32,14 @@ div#header-logo-container {
 }
 
 #header-main-container {
-  height: 150px;
+  height: 140px;
+  width: auto;
+  margin: 0;
 }
 
 button.header-search-button {
   background-repeat: round;
-  background-image: url("assets/images/Search_Button.png");
+  background-image: url('../../assets/images/buttons/search_Button.png');
   width: 30px;
   vertical-align: bottom;
   height: 30px;
