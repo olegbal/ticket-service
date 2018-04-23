@@ -6,16 +6,29 @@ div.footer-main-container .row {
   height: 100%;
 }
 
-div.footer-column-container {
-  border-left: 1px #6b7b7a solid;
-}
-
 .footer-links-container p {
   color: white;
+}
+
+.footer-links-container {
+  border-left: 1px #6b7b7a solid;
+  padding: 0 10px;
 }
 
 .footer-links-container a {
   color: #6b7b7a;
   display: block;
   font-size: 14px;
+}
+
+.footer-newsletter-component-block {
+  display: inline-block;
+}
+
+input#footer-newsletter-input {
+  width: 100%;
+}
+
+div.newsletter-input-container {
+  width: 70%;
 }
