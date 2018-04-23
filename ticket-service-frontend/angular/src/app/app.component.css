@@ -2,3 +2,7 @@ div.header-component-container {
   /*background-color: #c33123;*/
   background: linear-gradient(#d73729,#a1271b);
 }
+
+div.footer-component-container {
+  background: #1f1f1f;
+}
