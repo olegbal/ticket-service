@@ -11,7 +11,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 public class EventDto {
-    private String id;
+    private long id;
     private String title;
     private Date date;
     private BigDecimal minPrice;

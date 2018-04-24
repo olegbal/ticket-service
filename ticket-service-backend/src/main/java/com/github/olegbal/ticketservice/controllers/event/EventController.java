@@ -23,7 +23,7 @@ public class EventController {
     public ResponseEntity getEvents() {
         List<EventDto> eventDtoList = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
-            EventDto event = new EventDto("1", "Event title!", new Date(1995, 05, 25), new BigDecimal("100"),
+            EventDto event = new EventDto(1L, "Event title!", new Date(1995, 5, 25), new BigDecimal("100"),
                     new BigDecimal("100000"),
                     "https://www.kvitki.by/imageGenerator/355ce3ac3f02f72dac89b1aef3f11956/concertShort", "Soviet str 21");
             eventDtoList.add(event);
@@ -32,8 +32,8 @@ public class EventController {
     }
 
     @GetMapping(path = "/events/{id}")
-    public ResponseEntity getEvent(@PathVariable String id) {
-        EventDto event = new EventDto("1", "Event title!", new Date(1995, 05, 25), new BigDecimal("100"),
+    public ResponseEntity getEvent(@PathVariable long id) {
+        EventDto event = new EventDto(1L, "Event title!", new Date(1995, 5, 25), new BigDecimal("100"),
                 new BigDecimal("100000"),
                 "https://www.kvitki.by/imageGenerator/355ce3ac3f02f72dac89b1aef3f11956/concertShort", "Soviet str 21");
         return new ResponseEntity<>(event, HttpStatus.OK);

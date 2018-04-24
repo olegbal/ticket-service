@@ -19,9 +19,10 @@ import { CookieService } from "ngx-cookie-service";
 import { UserCabinetComponent } from './user-cabinet/user-cabinet.component';
 import { CartEntryComponent } from './header/cart-entry/cart-entry.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import {TranslateHttpLoader} from '@ngx-translate/http-loader';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { EventsListComponent } from './events-list/events-list.component';
 import { MainPageComponent } from './main-page/main-page.component';
+import { EventListService } from './events-list/event-list.service';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -60,7 +61,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     LoginService,
     RegistrationService,
     AccountEntryService,
-    CookieService
+    CookieService,
+    EventListService
   ],
   bootstrap: [AppComponent]
 })

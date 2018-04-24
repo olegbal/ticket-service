@@ -1,3 +1,21 @@
-<p>
-  events-list works!
-</p>
+<div class="event-list-main-container">
+  <div *ngFor="let item of rowCount;let i = index" class="event-list-row row">
+    <div *ngFor="let event of events.slice(i*5, i*5+5)" class="col-md-2 event-list-item">
+      <div class="event-item-image">
+        <img class="img-fluid" src="{{event.imgUrl}}">
+      </div>
+      <div class="event-item-title">
+          <span>{{event.title}}</span>
+      </div>
+      <div class="event-item-date">
+        <span>{{event.date}}</span>
+      </div>
+      <div class="event-item-address">
+        <span>{{event.address}}</span>
+      </div>
+      <div class="event-item-prices">
+        {{event.minPrice}} - {{event.maxPrice}}
+      </div>
+    </div>
+  </div>
+</div>
