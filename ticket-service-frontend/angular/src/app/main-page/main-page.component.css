@@ -1,9 +1,5 @@
-.main-page-content {
-  background-color: #dcdcdc
-}
-
 .event-list-component-container {
   max-width: 1152px;
   margin: 0 auto;
-  background-color: white;
+  background-color: inherit;
 }

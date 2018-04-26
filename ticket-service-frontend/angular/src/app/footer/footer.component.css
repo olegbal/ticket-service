@@ -32,3 +32,7 @@ input#footer-newsletter-input {
 div.newsletter-input-container {
   width: 70%;
 }
+
+div.footer-main-container .row {
+  margin: 0;
+}
