@@ -11,7 +11,7 @@ import javax.annotation.PostConstruct;
 
 @Component
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
-public class DefaultDataBaseInitializer implements DataBaseInitializer {
+public class RoleDataBaseInitializer implements DataBaseInitializer {
 
     private final RoleService roleService;
 

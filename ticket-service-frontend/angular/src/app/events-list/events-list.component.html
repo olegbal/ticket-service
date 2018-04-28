@@ -5,16 +5,16 @@
         <img class="img-fluid" src="{{event.imgUrl}}">
       </div>
       <div class="event-item-title">
-        <span>{{event.title}}</span>
+        <p class="text-uppercase">{{event.title}}</p>
       </div>
       <div class="event-item-date">
-        <span>{{event.date}}</span>
+        <span class="font-weight-bold">{{event.date}}</span>
       </div>
       <div class="event-item-address">
-        <span>{{event.address}}</span>
+        <p>{{event.address}}</p>
       </div>
       <div class="event-item-prices">
-        {{event.minPrice}} - {{event.maxPrice}}
+        $ <span>{{event.minPrice}} - {{event.maxPrice}}</span>
       </div>
     </div>
   </div>
