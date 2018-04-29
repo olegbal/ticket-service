@@ -34,6 +34,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //Registration and authorization mapping mapping security
                 .antMatchers(V1 + "/register", V1 + "/login").permitAll()
                 .antMatchers(V1 + "/events/{id}", V1 + "/events").permitAll()
+                .antMatchers(V1 + "/event-places").permitAll()
                 .antMatchers(V1 + "/hello").hasRole("USER")
                 .anyRequest().authenticated()
                 .and()
