@@ -5,6 +5,7 @@ import com.github.olegbal.ticketservice.services.user.UserInfoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -33,8 +34,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/favicon.ico", "/**.html", "/**.css", "/**.js").permitAll()
                 //Registration and authorization mapping mapping security
                 .antMatchers(V1 + "/register", V1 + "/login").permitAll()
-                .antMatchers(V1 + "/events/{id}", V1 + "/events").permitAll()
-                .antMatchers(V1 + "/event-places").permitAll()
+                //                EVENTS SECURITY
+                .antMatchers(HttpMethod.GET, V1 + "/events/{id}", V1 + "/events").permitAll()
+                .antMatchers(HttpMethod.DELETE, V1 + "/events/{id}").hasAnyRole("ADMIN", "ORGANIZER")
+                .antMatchers(HttpMethod.POST, V1 + "/events").hasAnyRole("ADMIN", "ORGANIZER")
+                .antMatchers(HttpMethod.PUT, V1 + "/events").hasAnyRole("ADMIN", "ORGANIZER")
+                //                END OF EVENTS SECURITY
+                //                EVENT PLACES
+                .antMatchers(HttpMethod.GET, V1 + "/event-places").permitAll()
+                .antMatchers(HttpMethod.POST, V1 + "/event-places").hasAnyRole("ADMIN", "ORGANIZER")
+                .antMatchers(HttpMethod.PUT, V1 + "/event-places").hasAnyRole("ADMIN", "ORGANIZER")
+                .antMatchers(HttpMethod.DELETE, V1 + "/event-places").hasAnyRole("ADMIN", "ORGANIZER")
+                //                END OF EVENT PLACES SECURITY
                 .antMatchers(V1 + "/hello").hasRole("USER")
                 .anyRequest().authenticated()
                 .and()

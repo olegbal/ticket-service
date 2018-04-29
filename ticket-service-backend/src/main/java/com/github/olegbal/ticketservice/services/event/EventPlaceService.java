@@ -13,4 +13,6 @@ public interface EventPlaceService {
     EventPlace updateEventPlace(EventPlace eventPlace);
 
     boolean deleteEventPlaceById(long id);
+
+    void removeAll();
 }

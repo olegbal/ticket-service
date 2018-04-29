@@ -4,8 +4,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.Date;
 
 @Data
 @Entity
@@ -14,4 +14,20 @@ import javax.persistence.Table;
 @Table(name = "events")
 public class Event {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "event_id")
+    private long id;
+
+    @Column(name = "event_title")
+    private String title;
+
+    @Column(name = "event_date")
+    private Date data;
+
+    @Column(name = "event_img_url")
+    private String imgUrl;
+
+    @ManyToOne
+    private EventPlace eventPlace;
 }

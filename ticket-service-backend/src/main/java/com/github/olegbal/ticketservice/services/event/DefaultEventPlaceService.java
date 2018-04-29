@@ -48,4 +48,9 @@ public class DefaultEventPlaceService implements EventPlaceService {
         return eventPlaceRepository.findOne(id) == null;
 
     }
+
+    @Override
+    public void removeAll() {
+        eventPlaceRepository.deleteAll();
+    }
 }
