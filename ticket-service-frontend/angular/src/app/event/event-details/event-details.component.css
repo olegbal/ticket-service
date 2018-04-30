@@ -1,0 +1,12 @@
+div {
+  outline: 1px red dotted;
+}
+
+img#event-info-main-image {
+  width: 300px;
+  height: 350px;
+}
+
+.event-place-map {
+  height: 300px;
+}
