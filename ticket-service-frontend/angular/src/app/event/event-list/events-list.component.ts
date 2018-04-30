@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Event } from "../data/Event";
-import { EventListService } from "./event-list.service";
+import { Event } from "../../data/Event";
+import { EventService } from "../event.service";
 
 @Component({
   selector: 'app-events-list',
@@ -10,7 +10,7 @@ import { EventListService } from "./event-list.service";
 
 export class EventsListComponent implements OnInit {
 
-  constructor(private eventListService: EventListService) {
+  constructor(private eventListService: EventService) {
   }
 
   rowCount: Array<number>;

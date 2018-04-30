@@ -20,9 +20,10 @@ import { UserCabinetComponent } from './user-cabinet/user-cabinet.component';
 import { CartEntryComponent } from './header/cart-entry/cart-entry.component';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { EventsListComponent } from './events-list/events-list.component';
+import { EventsListComponent } from './event/event-list/events-list.component';
 import { MainPageComponent } from './main-page/main-page.component';
-import { EventListService } from './events-list/event-list.service';
+import { EventService } from './event/event.service';
+import { EventDetailsComponent } from './event/event-details/event-details.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -42,6 +43,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     CartEntryComponent,
     EventsListComponent,
     MainPageComponent,
+    EventDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -62,7 +64,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     RegistrationService,
     AccountEntryService,
     CookieService,
-    EventListService
+    EventService
   ],
   bootstrap: [AppComponent]
 })
