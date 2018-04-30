@@ -14,7 +14,7 @@ export class LoginService {
   }
 
   signIn(login: LoginData) {
-    return this.http.post(AuthHelper.loginUrl, JSON.stringify(login), httpOptions)
+    return this.http.post(AuthHelper.apiLoginUrl, JSON.stringify(login), httpOptions)
   }
 
 }

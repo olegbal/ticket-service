@@ -1,7 +1,7 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {RegistrationData} from "../../data/RegistrationData";
-import {AuthHelper} from "../authhelper";
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { RegistrationData } from "../../data/RegistrationData";
+import { AuthHelper } from "../authhelper";
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -14,7 +14,7 @@ export class RegistrationService {
   }
 
   register(registrationData: RegistrationData) {
-    return this.http.post(AuthHelper.registrationUrl, JSON.stringify(registrationData), httpOptions)
+    return this.http.post(AuthHelper.apiRegistrationUrl, JSON.stringify(registrationData), httpOptions)
   }
 
 }

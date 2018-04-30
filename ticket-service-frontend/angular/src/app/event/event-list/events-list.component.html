@@ -1,6 +1,7 @@
 <div class="event-list-main-container">
   <div *ngFor="let item of rowCount;let i = index" class="event-list-row row">
-    <div *ngFor="let event of events.slice(i*5, i*5+5)" class="col-md-2 event-list-item">
+    <div *ngFor="let event of events.slice(i*5, i*5+5)" class="col-md-2 event-list-item"
+         (click)="redirectToDetailsPage(event.id)">
       <div class="event-item-image">
         <img class="img-fluid" src="{{event.imgUrl}}">
       </div>

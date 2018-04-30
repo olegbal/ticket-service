@@ -24,6 +24,7 @@ import { EventsListComponent } from './event/event-list/events-list.component';
 import { MainPageComponent } from './main-page/main-page.component';
 import { EventService } from './event/event.service';
 import { EventDetailsComponent } from './event/event-details/event-details.component';
+import { EventRougingModule } from "./event/event-routing.module";
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -50,6 +51,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     FormsModule,
     AppRoutingModule,
     AuthRougingModule,
+    EventRougingModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {

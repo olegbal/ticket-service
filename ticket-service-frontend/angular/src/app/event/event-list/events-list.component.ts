@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Event } from "../../data/Event";
 import { EventService } from "../event.service";
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-events-list',
@@ -10,7 +11,8 @@ import { EventService } from "../event.service";
 
 export class EventsListComponent implements OnInit {
 
-  constructor(private eventListService: EventService) {
+  constructor(private eventListService: EventService,
+              private router: Router) {
   }
 
   rowCount: Array<number>;
@@ -28,6 +30,9 @@ export class EventsListComponent implements OnInit {
     this.rowCount = Array(finalRowNumber).fill(0).map((x, i) => i);
   }
 
+  redirectToDetailsPage(id: number) {
+    this.router.navigate(["events", id])
+  }
 }
 
 const columnLimit = 5;

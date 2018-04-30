@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from "@angular/common/http";
-import { ApiHelper } from "../apiHelper";
+import { EventHelper } from "./eventhelper";
 
 @Injectable()
 export class EventService {
@@ -10,10 +10,10 @@ export class EventService {
   }
 
   getEvents() {
-    return this.http.get(ApiHelper.v1 + "events");
+    return this.http.get(EventHelper.apiEventUrl);
   }
 
   getEvent(id: number) {
-    return this.http.get(ApiHelper.v1 + "events/" + id);
+    return this.http.get(EventHelper.apiEventDetails + id);
   }
 }
