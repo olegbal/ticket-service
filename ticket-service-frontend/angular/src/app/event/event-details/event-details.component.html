@@ -12,17 +12,20 @@
           </div>
         </div>
         <div class="event-info-text-container col-md-7">
-          <p class="font-weight-bold text-center">Title</p>
+          <p class="font-weight-bold text-center">{{event.title}}</p>
           <div class="event-date-and-place-info-container text-center">
             <p>
-              <span class="event-date-info">ПН, 17, НОЯБРЬ 2014 20:00</span>
-              <span class="event-place-info">Дворец спорта, г.Минск</span>
+              <span class="event-date-info">{{event.date}}</span>
+              <span class="event-place-info">
+                {{event.eventPlace.placeAddress}}<br>
+                {{event.eventPlace.placeName}}
+              </span>
             </p>
             <button class="btn btn-success">Добавить в календарь</button>
           </div>
           <div class="price-info text-center">
             <p>
-              <span>Цена</span>
+              <span>Цена</span><br>
               <span>25000000.00 - 12000000000.00 РУБ</span>
             </p>
             <button class="btn btn-success">Купить</button>
