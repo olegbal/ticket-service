@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Data
 @Entity
@@ -30,4 +31,7 @@ public class Event {
 
     @ManyToOne
     private EventPlace eventPlace;
+
+    @OneToMany(mappedBy = "event")
+    private List<Ticket> tickets;
 }
