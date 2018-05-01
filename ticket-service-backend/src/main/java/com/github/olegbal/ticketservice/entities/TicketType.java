@@ -5,7 +5,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "ticket_types")
@@ -24,8 +23,5 @@ public class TicketType {
 
     @Column(name = "ticket_description")
     private String ticketDescription;
-
-    @OneToMany(mappedBy = "ticketType")
-    private List<Ticket> ticket;
 
 }

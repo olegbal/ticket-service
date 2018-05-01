@@ -1,5 +1,6 @@
 package com.github.olegbal.ticketservice.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,6 +26,7 @@ public class Ticket {
     @Column(name = "ticket_state")
     private int ticketState;
 
+    @JsonIgnore
     @ManyToOne
     private Event event;
 
