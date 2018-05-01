@@ -1,15 +1,24 @@
 package com.github.olegbal.ticketservice.services.initialization;
 
+import com.github.olegbal.ticketservice.data.TicketCreatorDto;
 import com.github.olegbal.ticketservice.entities.Event;
 import com.github.olegbal.ticketservice.entities.EventPlace;
+import com.github.olegbal.ticketservice.entities.Ticket;
+import com.github.olegbal.ticketservice.entities.TicketType;
+import com.github.olegbal.ticketservice.repositories.TicketTypeRepository;
 import com.github.olegbal.ticketservice.services.event.EventPlaceService;
 import com.github.olegbal.ticketservice.services.event.EventService;
+import com.github.olegbal.ticketservice.services.ticket.TicketOperatorService;
+import com.github.olegbal.ticketservice.services.ticket.TicketService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Component
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
@@ -17,23 +26,51 @@ public class EventDataBaseInitalizer implements DataBaseInitializer {
 
     private final EventService eventService;
     private final EventPlaceService eventPlaceService;
+    private final TicketOperatorService ticketOperatorService;
+    private final TicketService ticketService;
+    private final TicketTypeRepository ticketTypeRepository;
 
     @PostConstruct
     @Override
     public void initializeData() {
+        ticketService.removeAllTickets();
+        ticketTypeRepository.deleteAll();
         eventService.removeAll();
         eventPlaceService.removeAll();
 
-        int j = 1;
         for (int i = 1; i < 21; i += 2) {
-            EventPlace eventPlace = new EventPlace(i, "placeName" + i, "Soviet street " + i);
-            eventPlace = eventPlaceService.createEventPlace(eventPlace);
-            Event event1 = new Event(i, "Event" + i, new Date(2018, 5, 30),
-                    "https://www.kvitki.by/imageGenerator/355ce3ac3f02f72dac89b1aef3f11956/concertShort", eventPlace, null);
-            eventService.updateEvent(event1);
-            Event event2 = new Event(i + 1, "Event" + i + 1, new Date(2018, 5, 30),
-                    "https://www.kvitki.by/imageGenerator/355ce3ac3f02f72dac89b1aef3f11956/concertShort", eventPlace, null);
-            eventService.updateEvent(event2);
+            EventPlace eventPlace = createEventPlace(i);
+            Event event1 = createEvent(i, eventPlace);
+            createTickets(i, event1.getId());
+            Event event2 = createEvent(i, eventPlace);
+            createTickets(i, event2.getId());
         }
     }
+
+    private EventPlace createEventPlace(int i) {
+        EventPlace eventPlace = new EventPlace(i, "placeName" + i, "Soviet street " + i);
+        return eventPlaceService.createEventPlace(eventPlace);
+    }
+
+    private Event createEvent(int i, EventPlace eventPlace) {
+        Event event = new Event(i, "Event" + i, new Date(2018, 5, 30),
+                "https://www.kvitki.by/imageGenerator/355ce3ac3f02f72dac89b1aef3f11956/concertShort", eventPlace, null);
+        return eventService.createEvent(event);
+    }
+
+    private List<Ticket> createTickets(int i, long eventId) {
+        List<TicketCreatorDto> ticketCreatorDtos = new ArrayList<>();
+        TicketCreatorDto ticketCreatorDto1 = new TicketCreatorDto(new TicketType(-1,
+                "Ticket Type description" + i, "TicketDescription" + i, null), 20, BigDecimal.valueOf(1000));
+        ticketCreatorDtos.add(ticketCreatorDto1);
+        TicketCreatorDto ticketCreatorDto2 = new TicketCreatorDto(new TicketType(-1,
+                "Ticket Type description" + i, "TicketDescription" + i, null), 10, BigDecimal.valueOf(3000));
+        ticketCreatorDtos.add(ticketCreatorDto2);
+        TicketCreatorDto ticketCreatorDto3 = new TicketCreatorDto(new TicketType(-1,
+                "Ticket Type description" + i, "TicketDescription" + i, null), 40, BigDecimal.valueOf(10000));
+        ticketCreatorDtos.add(ticketCreatorDto3);
+
+        return ticketOperatorService.createTickets(ticketCreatorDtos, eventId);
+    }
+
 }

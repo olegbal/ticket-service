@@ -1,6 +1,8 @@
 package com.github.olegbal.ticketservice.entities;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
@@ -8,9 +10,12 @@ import java.util.List;
 @Entity
 @Table(name = "ticket_types")
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class TicketType {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ticket_type_id")
     private long id;
 
