@@ -61,13 +61,13 @@ public class EventDataBaseInitalizer implements DataBaseInitializer {
     private List<Ticket> createTickets(int i, long eventId) {
         List<TicketCreatorDto> ticketCreatorDtos = new ArrayList<>();
         TicketCreatorDto ticketCreatorDto1 = new TicketCreatorDto(new TicketType(-1,
-                "Ticket Type description" + i, "TicketDescription" + i, null), 20, BigDecimal.valueOf(1000));
+                "Ticket Type description" + i, "TicketDescription" + i), 20, BigDecimal.valueOf(1000));
         ticketCreatorDtos.add(ticketCreatorDto1);
         TicketCreatorDto ticketCreatorDto2 = new TicketCreatorDto(new TicketType(-1,
-                "Ticket Type description" + i, "TicketDescription" + i, null), 10, BigDecimal.valueOf(3000));
+                "Ticket Type description" + i, "TicketDescription" + i), 10, BigDecimal.valueOf(3000));
         ticketCreatorDtos.add(ticketCreatorDto2);
         TicketCreatorDto ticketCreatorDto3 = new TicketCreatorDto(new TicketType(-1,
-                "Ticket Type description" + i, "TicketDescription" + i, null), 40, BigDecimal.valueOf(10000));
+                "Ticket Type description" + i, "TicketDescription" + i), 40, BigDecimal.valueOf(10000));
         ticketCreatorDtos.add(ticketCreatorDto3);
 
         return ticketOperatorService.createTickets(ticketCreatorDtos, eventId);
