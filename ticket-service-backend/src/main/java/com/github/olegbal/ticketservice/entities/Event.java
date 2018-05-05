@@ -1,5 +1,6 @@
 package com.github.olegbal.ticketservice.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -32,6 +33,7 @@ public class Event {
     @ManyToOne
     private EventPlace eventPlace;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "event")
     private List<Ticket> tickets;
 }
