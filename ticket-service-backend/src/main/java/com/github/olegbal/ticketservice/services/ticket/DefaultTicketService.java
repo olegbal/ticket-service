@@ -36,6 +36,17 @@ public class DefaultTicketService implements TicketService {
     }
 
     @Override
+    public List<Ticket> updateTickets(List<Ticket> tickets) {
+        return (List<Ticket>) ticketRepository.save(tickets);
+    }
+
+    @Override
+    public List<Ticket> getTicketsByIds(List<Long> ids) {
+
+        return (List<Ticket>) ticketRepository.findAll(ids);
+    }
+
+    @Override
     public void removeAllTickets() {
         ticketRepository.deleteAll();
     }

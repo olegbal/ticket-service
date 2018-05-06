@@ -13,4 +13,6 @@ public interface OrderService {
     Order updateOrder(Order order);
 
     boolean deleteOrder(long id);
+
+    void removeAllOrders();
 }

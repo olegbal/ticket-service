@@ -10,5 +10,9 @@ public interface TicketService {
 
     List<Ticket> updateTickets(Ticket ticket);
 
+    Iterable<Ticket> updateTickets(List<Ticket> tickets);
+
+    List<Ticket> getTicketsByIds(List<Long> ids);
+
     void removeAllTickets();
 }

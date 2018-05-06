@@ -38,4 +38,9 @@ public class DefaultOrderService implements OrderService {
         orderRepository.delete(id);
         return orderRepository.findOne(id) == null;
     }
+
+    @Override
+    public void removeAllOrders() {
+        orderRepository.deleteAll();
+    }
 }

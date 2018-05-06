@@ -35,11 +35,4 @@ public class Ticket {
     @JsonIgnore
     @ManyToOne
     private Order order;
-
-    public Ticket(BigDecimal ticketPrice, int ticketState, Event event, TicketType ticketType) {
-        this.ticketPrice = ticketPrice;
-        this.ticketState = ticketState;
-        this.event = event;
-        this.ticketType = ticketType;
-    }
 }

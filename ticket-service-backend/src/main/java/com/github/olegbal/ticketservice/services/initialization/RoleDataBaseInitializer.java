@@ -10,7 +10,7 @@ import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 
-@Order(1)
+@Order(2)
 @Component
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class RoleDataBaseInitializer implements DataBaseInitializer {

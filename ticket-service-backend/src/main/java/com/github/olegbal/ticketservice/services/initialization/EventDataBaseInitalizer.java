@@ -19,7 +19,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Order(2)
+@Order(3)
 @Component
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class EventDataBaseInitalizer implements DataBaseInitializer {
@@ -31,10 +31,6 @@ public class EventDataBaseInitalizer implements DataBaseInitializer {
     @PostConstruct
     @Override
     public void initializeData() {
-        eventService.removeAll();
-        eventPlaceService.removeAll();
-        ticketOperatorService.removeAllTicketsAndTypes();
-
         for (int i = 1; i < InitializationHelper.EVENTS_AMOUNT + 2; i += 2) {
             EventPlace eventPlace = createEventPlace(i);
             Event event1 = createEvent(i, eventPlace);
@@ -45,7 +41,7 @@ public class EventDataBaseInitalizer implements DataBaseInitializer {
     }
 
     private EventPlace createEventPlace(int i) {
-        EventPlace eventPlace = new EventPlace(i, "placeName" + i, "Soviet street " + i);
+        EventPlace eventPlace = new EventPlace(i, "placeName" + i, "address " + i);
         return eventPlaceService.createEventPlace(eventPlace);
     }
 
