@@ -27,9 +27,9 @@ public class DataBaseCleaner implements DataBaseInitializer {
     @PostConstruct
     @Override
     public void initializeData() {
+        ticketOperatorService.removeAllTicketsAndTypes();
         orderOperator.removeAllOrders();
         userInfoService.removeAllUsers();
-        ticketOperatorService.removeAllTicketsAndTypes();
         eventService.removeAll();
         eventPlaceService.removeAll();
     }
