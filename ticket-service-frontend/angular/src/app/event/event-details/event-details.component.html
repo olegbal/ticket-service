@@ -1,86 +1,19 @@
 <div class="event-details-main-container">
   <div class="row">
     <div class="event-info-container col-md-8">
-      <div class="row">
-        <div class="event-info-images-container col-md-5">
-          <div class="event-info-main-image-container">
-            <img id="event-info-main-image"
-                 src="https://www.kvitki.by/imageGenerator/1e9d5809be5d51c3c6b5b908606527c8/galleryFullImage">
-          </div>
-          <div class="event-info-other-images">
-            Other event pictures
-          </div>
-        </div>
-        <div class="event-info-text-container col-md-7">
-          <p class="font-weight-bold text-center">{{event.title}}</p>
-          <div class="event-date-and-place-info-container text-center">
-            <p>
-              <span class="event-date-info">{{event.date}}</span>
-              <span class="event-place-info">
-                {{event.eventPlace.placeAddress}}<br>
-                {{event.eventPlace.placeName}}
-              </span>
-            </p>
-            <button class="btn btn-success">Добавить в календарь</button>
-          </div>
-          <div class="price-info text-center">
-            <p>
-              <span>Цена</span><br>
-              <span>{{event.minPrice}} - {{event.maxPrice}}</span>
-            </p>
-            <button class="btn btn-success">Купить</button>
-          </div>
-        </div>
-      </div>
-      <div class="event-info-full-description-container">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit. In elementum fermentum tortor, id rutrum nisl pharetra
-        ac. Phasellus sagittis sit amet leo a sollicitudin. Pellentesque quis vehicula nunc. Nullam pharetra nibh diam,
-        ac tempor elit dapibus eget. Mauris at ultricies quam. Donec ultrices faucibus mauris, non interdum mauris
-        vehicula in. Mauris auctor laoreet nisl, vitae gravida risus. Suspendisse iaculis, diam id accumsan maximus,
-        risus mi elementum arcu, ut imperdiet quam dolor vitae urna.
-
-        Suspendisse eget urna dolor. Donec lorem ante, iaculis vitae aliquam nec, fringilla eget ipsum. Aliquam congue
-        fermentum mauris sit amet volutpat. Morbi molestie erat id leo sollicitudin pellentesque. Ut consequat iaculis
-        eleifend. Aliquam erat volutpat. Fusce a ultricies elit. Cras consequat, tortor vitae tincidunt scelerisque,
-        risus massa auctor erat, et tempus velit turpis sit amet ligula. Mauris hendrerit turpis ut enim lacinia
-        commodo. Integer vehicula et enim id tempus. Sed blandit mi id metus lobortis iaculis.
-
-        Sed non dapibus arcu. Cras sit amet enim tincidunt, egestas dolor vel, varius arcu. Donec ac sapien lacus.
-        Aenean varius nisi id eros accumsan, non viverra diam malesuada. Duis rhoncus tincidunt odio, vel semper ipsum
-        viverra nec. Cras quam risus, pulvinar a volutpat sed, dictum eu nisi. Vestibulum accumsan vitae libero id
-        condimentum.
-
-        Sed ut elit semper eros tristique facilisis. Vivamus laoreet orci metus, a vestibulum mi posuere nec. Nunc quis
-        venenatis justo, ut lacinia erat. Sed vel vestibulum sapien, sed elementum urna. In lacus tortor, rutrum eu
-        pharetra at, efficitur id turpis. Curabitur maximus id tellus in volutpat. Nam convallis sem ac ante
-        ullamcorper, id vulputate ante venenatis. Pellentesque pretium bibendum eros a laoreet.
-
-        Nulla aliquet est nec leo scelerisque, in vulputate sapien lobortis. Curabitur fringilla dui non felis tempus,
-        vestibulum feugiat lorem vulputate. Proin consequat sagittis magna, ut imperdiet mauris semper et. Donec at
-        convallis nisl. Morbi at massa at arcu porttitor pretium nec eu nisl. Etiam consectetur malesuada aliquet.
-        Vivamus viverra, felis sed consequat cursus, est tortor consectetur velit, auctor vehicula ipsum arcu vestibulum
-        magna. In hac habitasse platea dictumst. Cras placerat lorem quam, nec tristique neque vulputate in. Quisque
-        eros odio, consectetur eget lacus nec, ultrices auctor arcu. Morbi neque dolor, eleifend faucibus ligula id,
-        vestibulum ullamcorper erat. Maecenas tellus arcu, pretium ac rhoncus quis, vulputate molestie felis. Phasellus
-        in risus non turpis placerat eleifend.
-
-      </div>
+      <app-event-base-info [selectedEvent]="event"></app-event-base-info>
     </div>
-    <div class="event-exta-info col-md-4">
-      <div class="event-place-info-container">
-        <div class="event-place-description">
-          <b>ДВОРЕЦ СПОРТА,Г.МИНСК</b><br>
-          <span>г. Минск, пр. Победителей, 4</span><br>
-          <span>Беларусь</span>
-        </div>
-        <div class="event-place-map">
-          Google map
-        </div>
-      </div>
+    <div class="event-right-side-content col-md-4">
+      <app-event-place-map [selectedEvent]="event"></app-event-place-map>
       <div class="event-organizer-info">
         Organizer info
       </div>
     </div>
   </div>
-
+  <div class="row">
+    <div class="event-full-description-container col-md-12">
+      <app-event-full-description></app-event-full-description>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
 </div>

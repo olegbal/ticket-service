@@ -25,6 +25,10 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { EventService } from './event/event.service';
 import { EventDetailsComponent } from './event/event-details/event-details.component';
 import { EventRougingModule } from "./event/event-routing.module";
+import { EventTicketsOverviewComponent } from './event/event-tickets-overview/event-tickets-overview.component';
+import { EventBaseInfoComponent } from './event/event-base-info/event-base-info.component';
+import { EventPlaceMapComponent } from './event/event-place-map/event-place-map.component';
+import { EventFullDescriptionComponent } from './event/event-full-description/event-full-description.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -45,6 +49,10 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     EventsListComponent,
     MainPageComponent,
     EventDetailsComponent,
+    EventTicketsOverviewComponent,
+    EventBaseInfoComponent,
+    EventPlaceMapComponent,
+    EventFullDescriptionComponent,
   ],
   imports: [
     BrowserModule,

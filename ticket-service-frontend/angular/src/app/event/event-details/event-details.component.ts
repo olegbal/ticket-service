@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { EventService } from "../event.service";
 import { ActivatedRoute } from "@angular/router";
 import { Event } from "../../data/Event";
+import { EventPlace } from "../../data/EventPlace";
 
 @Component({
   selector: 'app-event-details',
@@ -14,7 +15,7 @@ export class EventDetailsComponent implements OnInit {
               private activatedRoute: ActivatedRoute) {
   }
 
-  event: Event;
+  event: Event = new Event(0, "", null, "", new EventPlace(0, "", ""), 0, 0);
 
   ngOnInit() {
     this.activatedRoute.params.subscribe((receivedParams) => {

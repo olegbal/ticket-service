@@ -1,0 +1,8 @@
+div {
+  outline: 1px red dotted;
+}
+
+img#event-info-main-image {
+  width: 300px;
+  height: 350px;
+}

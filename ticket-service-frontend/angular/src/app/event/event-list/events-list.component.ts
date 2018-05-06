@@ -26,7 +26,7 @@ export class EventsListComponent implements OnInit {
   }
 
   calculateRowsCount(itemsCount: number) {
-    let finalRowNumber = itemsCount % columnLimit == 0 ? itemsCount / columnLimit : itemsCount / columnLimit + 1;
+    let finalRowNumber = itemsCount % columnLimit == 0 ? Math.round(itemsCount / columnLimit) : Math.round(itemsCount / columnLimit) + 1;
     this.rowCount = Array(finalRowNumber).fill(0).map((x, i) => i);
   }
 
