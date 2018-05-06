@@ -26,7 +26,6 @@ public class Ticket {
     @Column(name = "ticket_state")
     private int ticketState;
 
-    @JsonIgnore
     @ManyToOne
     private Event event;
 

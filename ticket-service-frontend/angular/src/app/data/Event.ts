@@ -5,7 +5,9 @@ export class Event {
                      public title: string,
                      public date: Date,
                      public imgUrl: string,
-                     public eventPlace: EventPlace) {
+                     public eventPlace: EventPlace,
+                     public minPrice: number,
+                     public maxPrice: number) {
 
   }
 

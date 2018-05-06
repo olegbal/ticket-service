@@ -1,5 +1,6 @@
 package com.github.olegbal.ticketservice.data;
 
+import com.github.olegbal.ticketservice.entities.EventPlace;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -17,5 +18,5 @@ public class EventDto {
     private BigDecimal minPrice;
     private BigDecimal maxPrice;
     private String imgUrl;
-    private String address;
+    private EventPlace eventPlace;
 }
