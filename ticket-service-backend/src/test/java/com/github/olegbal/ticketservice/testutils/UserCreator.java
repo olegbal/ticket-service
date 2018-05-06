@@ -38,7 +38,7 @@ public class UserCreator {
 
     private static User createUser(long id, String login) {
         return new User(id, login, "testPass", "testName", "testLastName",
-                "testOrg", "testNumber", "testMail", null);
+                "testOrg", "testNumber", "testMail", null, null);
     }
 
     public static UserDto convertToUserDto(User user) {

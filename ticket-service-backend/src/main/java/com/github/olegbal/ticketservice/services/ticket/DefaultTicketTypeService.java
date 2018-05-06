@@ -47,4 +47,9 @@ public class DefaultTicketTypeService implements TicketTypeService {
 
         return ticketTypeRepository.findOne(id) == null;
     }
+
+    @Override
+    public void removeAllTypes() {
+        ticketTypeRepository.deleteAll();
+    }
 }

@@ -33,12 +33,18 @@ public class DefaultTicketOperatorService implements TicketOperatorService {
 
             List<Ticket> creatingTickets = new ArrayList<>();
             for (int i = 0; i < dto.getAmountOfTickets(); i++) {
-                creatingTickets.add(new Ticket(-1, dto.getPrice(), 0, event, ticketType));
+                creatingTickets.add(new Ticket(dto.getPrice(), 0, event, ticketType));
             }
 
             ticketService.createTickets(creatingTickets);
         }
 
         return eventService.getEventById(eventId).getTickets();
+    }
+
+    @Override
+    public void removeAllTicketsAndTypes() {
+        ticketService.removeAllTickets();
+        ticketTypeService.removeAllTypes();
     }
 }

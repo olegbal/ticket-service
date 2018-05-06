@@ -8,4 +8,6 @@ import java.util.List;
 public interface TicketOperatorService {
 
     List<Ticket> createTickets(List<TicketCreatorDto> dtos, long eventId);
+
+    void removeAllTicketsAndTypes();
 }

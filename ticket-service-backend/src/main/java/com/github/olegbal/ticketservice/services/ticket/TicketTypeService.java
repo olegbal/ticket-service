@@ -18,4 +18,6 @@ public interface TicketTypeService {
 
     boolean removeTicketType(long id);
 
+    void removeAllTypes();
+
 }

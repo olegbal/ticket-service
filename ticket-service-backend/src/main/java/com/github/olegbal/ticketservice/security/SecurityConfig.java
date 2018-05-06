@@ -36,17 +36,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(V1 + "/register", V1 + "/login").permitAll()
                 //                EVENTS SECURITY
                 .antMatchers(HttpMethod.GET, V1 + "/events/{id}", V1 + "/events").permitAll()
-                .antMatchers(HttpMethod.DELETE, V1 + "/events/{id}").hasAnyRole("ADMIN", "ORGANIZER")
-                .antMatchers(HttpMethod.POST, V1 + "/events").hasAnyRole("ADMIN", "ORGANIZER")
-                .antMatchers(HttpMethod.PUT, V1 + "/events").hasAnyRole("ADMIN", "ORGANIZER")
+                .antMatchers(HttpMethod.DELETE, V1 + "/events/{id}").permitAll() //.hasAnyRole("ADMIN", "ORGANIZER")
+                .antMatchers(HttpMethod.POST, V1 + "/events").permitAll()//.hasAnyRole("ADMIN", "ORGANIZER")
+                .antMatchers(HttpMethod.PUT, V1 + "/events").permitAll()//.hasAnyRole("ADMIN", "ORGANIZER")
                 //                END OF EVENTS SECURITY
                 //                EVENT PLACES
                 .antMatchers(HttpMethod.GET, V1 + "/event-places").permitAll()
-                .antMatchers(HttpMethod.POST, V1 + "/event-places").hasAnyRole("ADMIN", "ORGANIZER")
-                .antMatchers(HttpMethod.PUT, V1 + "/event-places").hasAnyRole("ADMIN", "ORGANIZER")
-                .antMatchers(HttpMethod.DELETE, V1 + "/event-places").hasAnyRole("ADMIN", "ORGANIZER")
+                .antMatchers(HttpMethod.POST, V1 + "/event-places").permitAll()      //.hasAnyRole("ADMIN", "ORGANIZER")
+                .antMatchers(HttpMethod.PUT, V1 + "/event-places").permitAll()      //.hasAnyRole("ADMIN", "ORGANIZER")
+                .antMatchers(HttpMethod.DELETE, V1 + "/event-places").permitAll()  //.hasAnyRole("ADMIN", "ORGANIZER")
                 //                END OF EVENT PLACES SECURITY
-                .antMatchers(V1 + "/hello").hasRole("USER")
+                //                ORDERS
+                .antMatchers(V1 + "/orders**").permitAll()
+                //                END OF ORDERS
+                .antMatchers(V1 + "/hello").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)

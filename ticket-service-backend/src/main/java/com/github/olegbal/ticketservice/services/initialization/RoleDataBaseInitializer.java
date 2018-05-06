@@ -5,10 +5,12 @@ import com.github.olegbal.ticketservice.enums.Roles;
 import com.github.olegbal.ticketservice.services.role.RoleService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 
+@Order(1)
 @Component
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class RoleDataBaseInitializer implements DataBaseInitializer {
