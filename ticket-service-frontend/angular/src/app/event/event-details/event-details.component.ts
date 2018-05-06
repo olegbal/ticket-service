@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from "../event.service";
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute, Router } from "@angular/router";
 import { Event } from "../../data/Event";
 import { EventPlace } from "../../data/EventPlace";
 
@@ -12,7 +12,8 @@ import { EventPlace } from "../../data/EventPlace";
 export class EventDetailsComponent implements OnInit {
 
   constructor(private eventService: EventService,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private router: Router) {
   }
 
   event: Event = new Event(0, "", null, "", new EventPlace(0, "", ""), 0, 0);
@@ -24,6 +25,8 @@ export class EventDetailsComponent implements OnInit {
         this.event = event;
       });
     });
+
+    this.router.navigate(['overview'], {relativeTo: this.activatedRoute})
   }
 
 }

@@ -19,6 +19,6 @@ export class EventBaseInfoComponent implements OnInit {
   }
 
   buyTickets() {
-    this.router.navigate(['tickets-overview'], {relativeTo: this.activeRoute});
+    this.router.navigate(['tickets'], {relativeTo: this.activeRoute});
   }
 }

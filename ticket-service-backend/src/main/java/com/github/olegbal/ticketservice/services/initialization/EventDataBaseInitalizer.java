@@ -35,8 +35,8 @@ public class EventDataBaseInitalizer implements DataBaseInitializer {
             EventPlace eventPlace = createEventPlace(i);
             Event event1 = createEvent(i, eventPlace);
             createTickets(i, event1.getId());
-            Event event2 = createEvent(i, eventPlace);
-            createTickets(i, event2.getId());
+            Event event2 = createEvent(i + 1, eventPlace);
+            createTickets(i + 1, event2.getId());
         }
     }
 
