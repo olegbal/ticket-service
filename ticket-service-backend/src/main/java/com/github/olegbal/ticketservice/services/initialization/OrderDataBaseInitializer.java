@@ -20,7 +20,6 @@ import java.util.Collections;
 import java.util.List;
 
 @Order(5)
-@DependsOn(value = "userDataBaseInitializer")
 @Component
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class OrderDataBaseInitializer implements DataBaseInitializer {
