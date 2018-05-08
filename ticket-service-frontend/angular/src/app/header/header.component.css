@@ -35,6 +35,7 @@ div#header-logo-container {
   height: 140px;
   width: auto;
   margin: 0;
+  padding: 0;
 }
 
 button.header-search-button {

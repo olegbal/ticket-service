@@ -28,7 +28,7 @@ public class UserDataBaseInitializer implements DataBaseInitializer {
         for (int i = 0; i < InitializationHelper.USERS_WITH_ROLE_ADMIN + 1; i++) {
             Set<Role> roleSet = new HashSet<>();
             roleSet.add(new Role(Roles.ADMIN.roleId(), Roles.ADMIN.roleName()));
-            User user = new User(-1L, "admin" + i, "admin" + i, "adminName" + i, "adminLastName" + i, "adminOrg" + i,
+            User user = new User(-1L, "adminadmin" + i, "adminadmin" + i, "adminName" + i, "adminLastName" + i, "adminOrg" + i,
                     "adminNumber" + i, "admin" + i + "@gmail.com", null, roleSet);
             user.setRoles(roleSet);
             userInfoService.createUser(user);
@@ -46,7 +46,7 @@ public class UserDataBaseInitializer implements DataBaseInitializer {
         for (int i = 0; i < InitializationHelper.USERS_WITH_ROLE_USER + 1; i++) {
             Set<Role> roleSet = new HashSet<>();
             roleSet.add(new Role(Roles.USER.roleId(), Roles.USER.roleName()));
-            User user = new User(-1L, "user" + i, "user" + i, "userName" + i, "userLastName" + i,
+            User user = new User(-1L, "useruser" + i, "useruser" + i, "userName" + i, "userLastName" + i,
                     "userOrg" + i, "userNumber" + i, "user" + i + "@gmail.com", null, roleSet);
             user.setRoles(roleSet);
             userInfoService.createUser(user);

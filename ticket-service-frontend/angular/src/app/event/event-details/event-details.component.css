@@ -1,3 +1,7 @@
 div {
   outline: 1px red dotted;
 }
+
+div.event-right-side-content, div.event-info-container {
+  background-color: white;
+}

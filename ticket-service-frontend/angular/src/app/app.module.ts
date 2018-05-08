@@ -29,6 +29,7 @@ import { EventTicketsOverviewComponent } from './event/event-tickets-overview/ev
 import { EventBaseInfoComponent } from './event/event-base-info/event-base-info.component';
 import { EventPlaceMapComponent } from './event/event-place-map/event-place-map.component';
 import { EventFullDescriptionComponent } from './event/event-full-description/event-full-description.component';
+import { TicketService } from './ticket/ticket.service';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -74,7 +75,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     RegistrationService,
     AccountEntryService,
     CookieService,
-    EventService
+    EventService,
+    TicketService,
   ],
   bootstrap: [AppComponent]
 })
