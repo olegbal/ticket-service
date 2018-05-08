@@ -10,20 +10,10 @@
       </tr>
       </thead>
       <tbody>
-      <tr>
-        <td>Vip-zone-a</td>
-        <td>10000</td>
-        <td>20</td>
-      </tr>
-      <tr>
-        <td>Dance floor</td>
-        <td>4000</td>
-        <td>30</td>
-      </tr>
-      <tr>
-        <td>Vip-zone-b</td>
-        <td>300</td>
-        <td>10</td>
+      <tr *ngFor="let ticket of ticketsInfo">
+        <td>{{ticket.ticketType.typeDescription}}</td>
+        <td>{{ticket.ticketPrice}}</td>
+        <td>{{ticket.amount}}</td>
       </tr>
       </tbody>
     </table>

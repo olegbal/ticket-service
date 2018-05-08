@@ -8,4 +8,6 @@ import java.util.List;
 public interface TicketRepository extends PagingAndSortingRepository<Ticket, Long> {
 
     List<Ticket> getByTicketTypeId(long id);
+
+    List<Ticket> getTicketsByEventId(long id);
 }

@@ -14,5 +14,7 @@ public interface TicketService {
 
     List<Ticket> getTicketsByIds(List<Long> ids);
 
+    List<Ticket> getTicketsByEventId(long id);
+
     void removeAllTickets();
 }

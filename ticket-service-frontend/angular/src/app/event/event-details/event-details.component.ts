@@ -26,7 +26,7 @@ export class EventDetailsComponent implements OnInit {
       });
     });
 
-    this.router.navigate(['overview'], {relativeTo: this.activatedRoute})
+    // this.router.navigate(['overview'], {relativeTo: this.activatedRoute})
   }
 
 }

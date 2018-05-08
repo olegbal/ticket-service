@@ -47,6 +47,11 @@ public class DefaultTicketService implements TicketService {
     }
 
     @Override
+    public List<Ticket> getTicketsByEventId(long id) {
+        return ticketRepository.getTicketsByEventId(id);
+    }
+
+    @Override
     public void removeAllTickets() {
         ticketRepository.deleteAll();
     }
