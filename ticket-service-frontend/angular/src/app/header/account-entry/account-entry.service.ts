@@ -19,6 +19,7 @@ export class AccountEntryService implements OnInit {
 
   isLoggedIn = false;
   loggedRolesList: Role[] = null;
+  loggedUser: User = null;
 
   addRoles(roles: Role[]) {
     this.loggedRolesList = roles;
@@ -27,11 +28,13 @@ export class AccountEntryService implements OnInit {
   setLoggedIn(user: User) {
     this.isLoggedIn = true;
     this.addRoles(user.roles);
+    this.loggedUser = user;
     this.router.navigate(['/']);
   }
 
   setLogout() {
     this.isLoggedIn = false;
+    this.loggedUser = null;
     this.cookieService.delete(AuthHelper.authCookie);
   }
 }

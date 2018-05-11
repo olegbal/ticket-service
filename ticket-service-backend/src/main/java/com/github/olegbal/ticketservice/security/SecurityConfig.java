@@ -47,7 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.DELETE, V1 + "/event-places").permitAll()  //.hasAnyRole("ADMIN", "ORGANIZER")
                 //                END OF EVENT PLACES SECURITY
                 //                ORDERS
-
+                .antMatchers(V1 + "/orders").permitAll()
                 //                END OF ORDERS
 
                 //                TICKETS

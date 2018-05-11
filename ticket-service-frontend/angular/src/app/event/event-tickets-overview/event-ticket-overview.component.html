@@ -7,18 +7,44 @@
         <th scope="col">Ticket Type</th>
         <th scope="col">Price</th>
         <th scope="col">Available</th>
+        <th scope="col">Select</th>
       </tr>
       </thead>
       <tbody>
       <tr *ngFor="let ticket of ticketsInfo">
-        <td>{{ticket.ticketType.typeDescription}}</td>
-        <td>{{ticket.ticketPrice}}</td>
+        <td>{{ticket.ticket.ticketType.typeDescription}}</td>
+        <td>{{ticket.ticket.ticketPrice}}</td>
         <td>{{ticket.amount}}</td>
+        <td>
+          <button (click)="incrementAmount(ticket);">plus</button>
+          {{ticket.selectedAmount}}
+          <button (click)="decrementAmount(ticket);">minus</button>
+        </td>
       </tr>
       </tbody>
     </table>
+    <button (click)="addToSelected()">Add tickets</button>
   </div>
   <div class="event-place-scheme col-md-6">
     <img style="display:block;margin: 10px auto;" src="assets/images/ticket_plan.jpg">
+  </div>
+  <div *ngIf="hasSelectedTickets()" class="event-selected-tickets row">
+    <table class="table table-hover event-selected-tickets-table">
+      <thead>
+      <tr>
+        <th scope="col">Ticket Type</th>
+        <th scope="col">Price</th>
+        <th scope="col">Selected</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let ticket of selectedTickets">
+        <td>{{ticket.ticket.ticketType.typeDescription}}</td>
+        <td>{{ticket.ticket.ticketPrice}}</td>
+        <td>{{ticket.selectedAmount}}</td>
+      </tr>
+      </tbody>
+    </table>
+    <button (click)="prepareOrder(selectedTickets)">Add to cart</button>
   </div>
 </div>

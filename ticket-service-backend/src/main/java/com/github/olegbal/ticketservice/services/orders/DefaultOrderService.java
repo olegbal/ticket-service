@@ -25,6 +25,8 @@ public class DefaultOrderService implements OrderService {
     @Override
     public Order createOrder(Order order) {
         order.setId(-1);
+        order.getTicketList().forEach(ticket -> {
+        });
         return orderRepository.save(order);
     }
 

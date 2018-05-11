@@ -1,9 +1,8 @@
-import { TicketType } from "./TicketType";
+import { Ticket } from "./Ticket";
 
 export class DisplayingTicketInfo {
   constructor(public amount: number,
-              public ticketPrice: number,
-              public ticketType: TicketType) {
+              public selectedAmount: number,
+              public ticket: Ticket) {
   }
-
 }

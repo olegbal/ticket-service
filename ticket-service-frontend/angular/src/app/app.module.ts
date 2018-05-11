@@ -30,6 +30,9 @@ import { EventBaseInfoComponent } from './event/event-base-info/event-base-info.
 import { EventPlaceMapComponent } from './event/event-place-map/event-place-map.component';
 import { EventFullDescriptionComponent } from './event/event-full-description/event-full-description.component';
 import { TicketService } from './ticket/ticket.service';
+import { OrderSuccessComponentComponent } from './static-pages/order-success-component/order-success-component.component';
+import { StaticPagesRoutingModule } from "./static-pages/static-pages-routing.module";
+import { OrderService } from './order.service';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -54,6 +57,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     EventBaseInfoComponent,
     EventPlaceMapComponent,
     EventFullDescriptionComponent,
+    OrderSuccessComponentComponent,
   ],
   imports: [
     BrowserModule,
@@ -61,6 +65,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     AppRoutingModule,
     AuthRougingModule,
     EventRougingModule,
+    StaticPagesRoutingModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {
@@ -77,6 +82,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     CookieService,
     EventService,
     TicketService,
+    OrderService,
   ],
   bootstrap: [AppComponent]
 })

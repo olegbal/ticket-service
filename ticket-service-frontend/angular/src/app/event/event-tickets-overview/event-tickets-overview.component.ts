@@ -3,6 +3,8 @@ import { TicketService } from "../../ticket/ticket.service";
 import { Ticket } from "../../data/Ticket";
 import { ActivatedRoute } from "@angular/router";
 import { DisplayingTicketInfo } from "../../data/DisplayingTicketInfo";
+import { OrderService } from "../../order.service";
+import { AccountEntryService } from "../../header/account-entry/account-entry.service";
 
 @Component({
   selector: 'app-event-buying-menu',
@@ -12,11 +14,14 @@ import { DisplayingTicketInfo } from "../../data/DisplayingTicketInfo";
 export class EventTicketsOverviewComponent implements OnInit {
 
   constructor(private ticketService: TicketService,
-              private activatedRoute: ActivatedRoute) {
+              private activatedRoute: ActivatedRoute,
+              private orderService: OrderService,
+              private accountEntryService: AccountEntryService) {
   }
 
   tickets: Ticket[];
   ticketsInfo = [];
+  selectedTickets = [];
 
 
   ngOnInit() {
@@ -44,8 +49,50 @@ export class EventTicketsOverviewComponent implements OnInit {
     for (let i = 0; i < uniqTickets.length; i++) {
       let ticket = uniqTickets[i];
       let amountOfTickets = availableTickets.filter(x => x.ticketType.id == ticket.ticketType.id).length;
-      this.ticketsInfo.push(new DisplayingTicketInfo(amountOfTickets, ticket.ticketPrice, ticket.ticketType));
+      this.ticketsInfo.push(new DisplayingTicketInfo(amountOfTickets, 0, ticket));
     }
+    this.selectedTickets = JSON.parse(JSON.stringify(this.ticketsInfo));
   }
 
+  incrementAmount(ticketDisplayInfo: DisplayingTicketInfo) {
+    ticketDisplayInfo.selectedAmount++;
+  }
+
+  decrementAmount(ticketDisplayInfo: DisplayingTicketInfo) {
+    if (ticketDisplayInfo.selectedAmount != 0) ticketDisplayInfo.selectedAmount--;
+  }
+
+  addToSelected() {
+    let freeTicketList = this.tickets.filter(x => x.ticketState == 0);
+    let ticketInfoList = this.ticketsInfo.filter(x => x.selectedAmount > 0);
+
+    for (let i = 0; i < ticketInfoList.length; i++) {
+      let ticketInfo = this.selectedTickets.find(x => x.ticket.id == ticketInfoList[i].ticket.id);
+
+      if (ticketInfo) {
+        ticketInfo.selectedAmount += ticketInfoList[i].selectedAmount;
+        ticketInfoList[i].amount -= ticketInfoList[i].selectedAmount;
+      }
+
+    }
+    this.hasSelectedTickets();
+  }
+
+  hasSelectedTickets(): boolean {
+    return this.selectedTickets.filter(x => x.selectedAmount > 0).length > 0;
+  }
+
+  prepareOrder(orderingTickets: DisplayingTicketInfo[]) {
+    //FIXME select EXACT  tickets. System selects tickets randomly for now.
+    let orderingTicketList = [];
+    for (let oneTicketInfo of orderingTickets) {
+      let freeTicketsOfType = this.tickets.filter(x => x.ticketState == 0 && x.ticketType.id === oneTicketInfo.ticket.ticketType.id);
+      for (let i = 0; i < oneTicketInfo.selectedAmount; i++) {
+        orderingTicketList.push(freeTicketsOfType.pop());
+      }
+    }
+    this.orderService.createOrder(orderingTicketList, this.accountEntryService.loggedUser.id).subscribe(() => {
+      console.log("success");
+    });
+  }
 }
