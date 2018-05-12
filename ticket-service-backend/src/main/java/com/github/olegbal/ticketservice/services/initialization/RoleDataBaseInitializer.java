@@ -8,16 +8,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
-
-@Order(2)
+@Order(1)
 @Component
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class RoleDataBaseInitializer implements DataBaseInitializer {
 
     private final RoleService roleService;
 
-    @PostConstruct
     @Override
     public void initializeData() {
         Role user = new Role(Roles.USER.roleId(), Roles.USER.roleName());

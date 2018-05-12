@@ -36,4 +36,7 @@ public class Event {
     @JsonIgnore
     @OneToMany(mappedBy = "event", fetch = FetchType.EAGER)
     private List<Ticket> tickets;
+
+    @ManyToOne
+    private User user;
 }

@@ -12,12 +12,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-@Order(5)
+@Order(6)
 @Component
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class OrderDataBaseInitializer implements DataBaseInitializer {
@@ -26,7 +25,6 @@ public class OrderDataBaseInitializer implements DataBaseInitializer {
     private final EventService eventService;
     private final UserInfoService userInfoService;
 
-    @PostConstruct
     @Override
     public void initializeData() {
 
@@ -34,16 +32,13 @@ public class OrderDataBaseInitializer implements DataBaseInitializer {
                 Collections.singleton(new Role(Roles.USER.roleId(), Roles.USER.roleName())));
         List<Event> events = eventService.getAllEvents();
 
-        for (Event event : events) {
-            int i = 0;
-            for (User user : users) {
-                com.github.olegbal.ticketservice.entities.Order order = new com.github.olegbal.ticketservice.entities.Order();
-                List<Long> ticketIds = new ArrayList<>();
-                ticketIds.add(event.getTickets().get(i).getId());
-                ticketIds.add(event.getTickets().get(i + 1).getId());
-                orderService.createOrderOfTickets(ticketIds, user.getId());
-                i += 2;
-            }
+        int i = 0;
+        for (User user : users) {
+            List<Long> ticketIds = new ArrayList<>();
+            ticketIds.add(events.get(i).getTickets().get(0).getId());
+            ticketIds.add(events.get(i + 1).getTickets().get(1).getId());
+            orderService.createOrderOfTickets(ticketIds, user.getId());
+            i += 2;
         }
     }
 }

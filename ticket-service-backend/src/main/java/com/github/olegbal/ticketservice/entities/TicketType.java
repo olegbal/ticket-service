@@ -1,10 +1,12 @@
 package com.github.olegbal.ticketservice.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "ticket_types")
@@ -23,5 +25,9 @@ public class TicketType {
 
     @Column(name = "ticket_description")
     private String ticketDescription;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "ticketType", orphanRemoval = true)
+    private List<Ticket> ticketList;
 
 }
