@@ -2,6 +2,8 @@ package com.github.olegbal.ticketservice.services.orders;
 
 import com.github.olegbal.ticketservice.entities.Order;
 
+import java.util.List;
+
 public interface OrderService {
 
     Order getOrderById(long id);
@@ -13,6 +15,8 @@ public interface OrderService {
     Order updateOrder(Order order);
 
     boolean deleteOrder(long id);
+
+    Order createOrderOfTickets(List<Long> ticketIds, Long userId);
 
     void removeAllOrders();
 }

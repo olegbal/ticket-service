@@ -2,7 +2,6 @@ package com.github.olegbal.ticketservice.controllers.order;
 
 import com.github.olegbal.ticketservice.data.OrderDto;
 import com.github.olegbal.ticketservice.entities.Order;
-import com.github.olegbal.ticketservice.services.orders.OrderOperator;
 import com.github.olegbal.ticketservice.services.orders.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,7 +17,6 @@ import static com.github.olegbal.ticketservice.enums.ApiVersioningUrlPrefix.V1;
 public class OrderController {
 
     private final OrderService orderService;
-    private final OrderOperator orderOperator;
 
     @GetMapping(path = "/orders", params = {"userId"})
     public ResponseEntity getUsersOrders(@RequestParam long userId) {
@@ -27,7 +25,7 @@ public class OrderController {
 
     @PostMapping(path = "/orders")
     public ResponseEntity createOrder(@RequestBody OrderDto orderDto) {
-        Order order = orderOperator.createOrder(orderDto.getOrderedTicketsIds(), orderDto.getUserId());
+        Order order = orderService.createOrderOfTickets(orderDto.getOrderedTicketsIds(), orderDto.getUserId());
         return new ResponseEntity<>(order, HttpStatus.OK);
     }
 }

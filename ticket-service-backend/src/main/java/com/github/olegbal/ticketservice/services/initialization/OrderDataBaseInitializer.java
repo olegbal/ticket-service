@@ -2,15 +2,13 @@ package com.github.olegbal.ticketservice.services.initialization;
 
 import com.github.olegbal.ticketservice.entities.Event;
 import com.github.olegbal.ticketservice.entities.Role;
-import com.github.olegbal.ticketservice.entities.Ticket;
 import com.github.olegbal.ticketservice.entities.User;
 import com.github.olegbal.ticketservice.enums.Roles;
 import com.github.olegbal.ticketservice.services.event.EventService;
-import com.github.olegbal.ticketservice.services.orders.OrderOperator;
+import com.github.olegbal.ticketservice.services.orders.OrderService;
 import com.github.olegbal.ticketservice.services.user.UserInfoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.DependsOn;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
@@ -24,7 +22,7 @@ import java.util.List;
 @RequiredArgsConstructor(onConstructor = @__(@Autowired))
 public class OrderDataBaseInitializer implements DataBaseInitializer {
 
-    private final OrderOperator orderOperator;
+    private final OrderService orderService;
     private final EventService eventService;
     private final UserInfoService userInfoService;
 
@@ -43,7 +41,7 @@ public class OrderDataBaseInitializer implements DataBaseInitializer {
                 List<Long> ticketIds = new ArrayList<>();
                 ticketIds.add(event.getTickets().get(i).getId());
                 ticketIds.add(event.getTickets().get(i + 1).getId());
-                orderOperator.createOrder(ticketIds, user.getId());
+                orderService.createOrderOfTickets(ticketIds, user.getId());
                 i += 2;
             }
         }

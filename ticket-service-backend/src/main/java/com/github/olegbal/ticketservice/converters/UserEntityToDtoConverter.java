@@ -11,6 +11,7 @@ public class UserEntityToDtoConverter implements Converter<User, UserDto> {
     public UserDto convert(User source) {
 
         UserDto userDto = new UserDto();
+        userDto.setId(source.getId());
         userDto.setEmail(source.getEmail());
         userDto.setFirstName(source.getFirstName());
         userDto.setLastName(source.getLastName());
