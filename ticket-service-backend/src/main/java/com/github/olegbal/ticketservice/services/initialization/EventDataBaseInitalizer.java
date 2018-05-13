@@ -35,7 +35,7 @@ public class EventDataBaseInitalizer implements DataBaseInitializer {
                 Collections.singleton(new Role(Roles.ORGANIZER.roleId(), Roles.ORGANIZER.roleName())));
         int eventPlaceCounter = 0;
         int organizersCounter = 0;
-        for (int i = 0; i < InitializationHelper.EVENTS_AMOUNT + 1; i += 2) {
+        for (int i = 0; i < InitializationHelper.EVENTS_AMOUNT; i += 2) {
             EventPlace eventPlace = eventPlaceList.get(eventPlaceCounter);
             User user = users.get(organizersCounter);
             createEvent(i, eventPlace, user);
