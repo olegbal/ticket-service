@@ -27,7 +27,7 @@ public class TicketType {
     private String ticketDescription;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "ticketType", orphanRemoval = true)
+    @OneToMany(mappedBy = "ticketType", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Ticket> ticketList;
 
 }

@@ -10,6 +10,7 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 public class OrderDto {
+    private long id;
     private List<Long> orderedTicketsIds;
     private long userId;
 }

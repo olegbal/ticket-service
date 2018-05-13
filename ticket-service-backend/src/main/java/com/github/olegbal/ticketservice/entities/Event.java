@@ -34,7 +34,7 @@ public class Event {
     private EventPlace eventPlace;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "event", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "event", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Ticket> tickets;
 
     @ManyToOne

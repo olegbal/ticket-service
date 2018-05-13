@@ -23,6 +23,11 @@ public class DefaultOrderService implements OrderService {
     private final UserInfoService userInfoService;
 
     @Override
+    public List<Order> getAllOrders() {
+        return (List<Order>) orderRepository.findAll();
+    }
+
+    @Override
     public Order getOrderById(long id) {
         return orderRepository.findOne(id);
     }
@@ -35,8 +40,6 @@ public class DefaultOrderService implements OrderService {
     @Override
     public Order createOrder(Order order) {
         order.setId(-1);
-        order.getTicketList().forEach(ticket -> {
-        });
         return orderRepository.save(order);
     }
 
@@ -65,12 +68,6 @@ public class DefaultOrderService implements OrderService {
         order.setTicketList(orderingTickets);
         order.setUser(user);
 
-        Order newOrder = createOrder(order);
-        for (Ticket ticket : newOrder.getTicketList()) {
-            ticket.setOrder(newOrder);
-        }
-        ticketService.updateTickets(newOrder.getTicketList());
-
-        return newOrder;
+        return createOrder(order);
     }
 }

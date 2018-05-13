@@ -1,10 +1,13 @@
 package com.github.olegbal.ticketservice.services.orders;
 
+import com.github.olegbal.ticketservice.data.OrderDto;
 import com.github.olegbal.ticketservice.entities.Order;
 
 import java.util.List;
 
 public interface OrderService {
+
+    List<Order> getAllOrders();
 
     Order getOrderById(long id);
 

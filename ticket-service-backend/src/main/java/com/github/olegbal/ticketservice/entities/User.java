@@ -46,11 +46,11 @@ public class User implements UserDetails {
     private String email;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Order> orderList;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Event> eventList;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH})

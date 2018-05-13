@@ -27,6 +27,6 @@ public class EventPlace {
     private String placeAddress;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "eventPlace")
+    @OneToMany(mappedBy = "eventPlace", cascade = CascadeType.ALL)
     private List<Event> eventList;
 }
