@@ -6,15 +6,17 @@ import java.util.List;
 
 public interface TicketService {
 
+    List<Ticket> getTicketsByIds(List<Long> ids);
+
+    List<Ticket> getTicketsByEventId(long id);
+
     List<Ticket> createTickets(List<Ticket> creatorDto);
 
     List<Ticket> updateTickets(Ticket ticket);
 
-    Iterable<Ticket> updateTickets(List<Ticket> tickets);
+    List<Ticket> updateTickets(List<Ticket> tickets);
 
-    List<Ticket> getTicketsByIds(List<Long> ids);
-
-    List<Ticket> getTicketsByEventId(long id);
+    boolean removeTicket(long id);
 
     void removeAllTickets();
 }

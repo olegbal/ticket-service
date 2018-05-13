@@ -23,9 +23,24 @@ public class OrderController {
         return new ResponseEntity<>(orderService.getOrderById(userId), HttpStatus.OK);
     }
 
+    @GetMapping(path = "/orders/{orderId}")
+    public ResponseEntity getOrderById(@PathVariable long orderId) {
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+    }
+
     @PostMapping(path = "/orders")
     public ResponseEntity createOrder(@RequestBody OrderDto orderDto) {
         Order order = orderService.createOrderOfTickets(orderDto.getOrderedTicketsIds(), orderDto.getUserId());
         return new ResponseEntity<>(order, HttpStatus.OK);
+    }
+
+    @PutMapping(path = "/orders")
+    public ResponseEntity updateOrder() {
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+    }
+
+    @DeleteMapping(path = "/orders/{id}")
+    public ResponseEntity deleteOrderById(@PathVariable long id) {
+        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
 }

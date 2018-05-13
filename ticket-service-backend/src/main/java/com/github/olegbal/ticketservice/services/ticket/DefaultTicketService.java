@@ -41,6 +41,12 @@ public class DefaultTicketService implements TicketService {
     }
 
     @Override
+    public boolean removeTicket(long id) {
+        ticketRepository.delete(id);
+        return ticketRepository.findOne(id) == null;
+    }
+
+    @Override
     public List<Ticket> getTicketsByIds(List<Long> ids) {
 
         return (List<Ticket>) ticketRepository.findAll(ids);

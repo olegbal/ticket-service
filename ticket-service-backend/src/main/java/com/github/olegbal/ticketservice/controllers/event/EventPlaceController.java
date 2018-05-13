@@ -17,6 +17,11 @@ public class EventPlaceController {
 
     private final EventPlaceService eventPlaceService;
 
+    @GetMapping(path = "/event-places")
+    public ResponseEntity getAllEventPlaces() {
+        return new ResponseEntity<>(eventPlaceService.getAllEventPlaces(), HttpStatus.OK);
+    }
+
     @GetMapping(path = "/event-places", params = "placeId")
     public ResponseEntity getEventPlaceById(@RequestParam long placeId) {
         EventPlace eventPlace = eventPlaceService.getPlaceById(placeId);
