@@ -1,12 +1,10 @@
 package com.github.olegbal.ticketservice.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.List;
 
 @Data
 @Entity
@@ -25,8 +23,4 @@ public class EventPlace {
 
     @Column(name = "event_place_address")
     private String placeAddress;
-
-    @JsonIgnore
-    @OneToMany(mappedBy = "eventPlace",fetch = FetchType.EAGER)
-    private List<Event> eventList;
 }

@@ -1,17 +1,13 @@
 package com.github.olegbal.ticketservice.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
-import java.util.List;
 import java.util.Set;
 
 @Data
@@ -46,16 +42,6 @@ public class User implements UserDetails {
 
     @Column(name = "user_email")
     private String email;
-
-    @JsonIgnore
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(mappedBy = "user")
-    private List<Order> orderList;
-
-    @JsonIgnore
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(mappedBy = "user")
-    private List<Event> eventList;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = {CascadeType.DETACH})
     @JoinTable(name = "user_roles", joinColumns = {@JoinColumn(name = "user_id")}, inverseJoinColumns = {@JoinColumn(name = "role_id")})

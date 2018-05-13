@@ -1,11 +1,8 @@
 package com.github.olegbal.ticketservice.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.LazyCollection;
-import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -33,13 +30,13 @@ public class Event {
     private String imgUrl;
 
     @ManyToOne
+    @JoinColumn(name = "event_place_id")
     private EventPlace eventPlace;
 
-    @JsonIgnore
-    @LazyCollection(LazyCollectionOption.FALSE)
-    @OneToMany(mappedBy = "event")
+    @OneToMany(mappedBy = "event", fetch = FetchType.EAGER)
     private List<Ticket> tickets;
 
     @ManyToOne
+    @JoinColumn(name = "user_id")
     private User user;
 }

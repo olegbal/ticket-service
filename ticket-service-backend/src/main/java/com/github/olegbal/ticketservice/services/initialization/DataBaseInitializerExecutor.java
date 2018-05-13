@@ -25,8 +25,8 @@ public class DataBaseInitializerExecutor {
 
     @PostConstruct
     public void initializeData() {
-        ticketOperatorService.removeAllTicketsAndTypes();
         orderService.removeAllOrders();
+        ticketOperatorService.removeAllTicketsAndTypes();
         eventService.removeAll();
         userInfoService.removeAllUsers();
         eventPlaceService.removeAll();

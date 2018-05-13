@@ -29,5 +29,4 @@ public class TicketType {
     @JsonIgnore
     @OneToMany(mappedBy = "ticketType", fetch = FetchType.EAGER)
     private List<Ticket> ticketList;
-
 }
