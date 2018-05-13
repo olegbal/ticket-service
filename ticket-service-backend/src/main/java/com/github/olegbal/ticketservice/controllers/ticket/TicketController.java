@@ -48,12 +48,6 @@ public class TicketController {
         return new ResponseEntity<>(updatedTickets, HttpStatus.OK);
     }
 
-    @PutMapping(path = "/tickets")
-    public ResponseEntity updateTickets(@RequestBody List<Ticket> tickets) {
-        List<Ticket> ticketList = ticketService.updateTickets(tickets);
-        return new ResponseEntity<>(ticketList, HttpStatus.OK);
-    }
-
     @DeleteMapping(path = "/tickets/{id}")
     public ResponseEntity deleteTicket(@PathVariable long id) {
         if (ticketService.removeTicket(id)) {
