@@ -3,17 +3,18 @@ package com.github.olegbal.ticketservice.controllers.user;
 import com.github.olegbal.ticketservice.data.auth.LoginAndPasswordDto;
 import com.github.olegbal.ticketservice.data.auth.RegistrationDto;
 import com.github.olegbal.ticketservice.data.auth.UserDto;
+import com.github.olegbal.ticketservice.entities.User;
+import com.github.olegbal.ticketservice.security.TokenAuthenticationService;
+import com.github.olegbal.ticketservice.security.UserAuthentication;
 import com.github.olegbal.ticketservice.services.auth.LoginService;
 import com.github.olegbal.ticketservice.services.auth.RegistrationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
 
@@ -25,7 +26,15 @@ import static com.github.olegbal.ticketservice.enums.ApiVersioningUrlPrefix.V1;
 public class AuthController {
 
     private final RegistrationService registrationService;
+    private final TokenAuthenticationService authenticationService;
     private final LoginService loginService;
+
+    @GetMapping(path = "/check-auth")
+    public ResponseEntity checkToken(HttpServletRequest request) {
+        UserAuthentication user = (UserAuthentication) authenticationService.getAuthentication(request);
+
+        return new ResponseEntity<>(user.getDetails(), HttpStatus.OK);
+    }
 
     @PostMapping(path = "/register")
     public ResponseEntity signUp(@RequestBody @Valid final RegistrationDto registrationDto) {

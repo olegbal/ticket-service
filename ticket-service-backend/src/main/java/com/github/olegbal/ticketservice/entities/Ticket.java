@@ -33,6 +33,7 @@ public class Ticket {
     @ManyToOne
     private TicketType ticketType;
 
+    @JsonIgnore
     @ManyToOne
     private Order order;
 }
