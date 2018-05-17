@@ -16,6 +16,8 @@ public interface UserInfoService extends UserDetailsService {
 
     User createUser(User user);
 
+    User updateUser(User user);
+
     User loadUserByUsername(String login);
 
     boolean isUserExists(String login);

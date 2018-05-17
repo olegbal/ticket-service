@@ -53,6 +53,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //                TICKETS
                 .antMatchers(V1 + "/tickets**").permitAll()
                 //                END OF TICKETS
+                //                USERS
+                .antMatchers(V1 + "/users**").permitAll()
+                .antMatchers(V1 + "/users/**").permitAll()
+                //                END OF TICKETS
                 .anyRequest().authenticated()
                 .and()
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)

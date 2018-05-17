@@ -12,7 +12,7 @@ public class UserDto {
     private String firstName;
     private String lastName;
     private String phoneNumber;
-    private String orgnaization;
+    private String organization;
     private String email;
     private Set<Role> roles;
 }

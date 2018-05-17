@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {AccountEntryService} from "../header/account-entry/account-entry.service";
 import {User} from "../data/User";
+import {UserService} from "./user.service";
 
 @Component({
   selector: 'app-user-cabinet',
@@ -9,16 +10,19 @@ import {User} from "../data/User";
 })
 export class UserCabinetComponent implements OnInit {
 
-  constructor(private accountEntryService: AccountEntryService) {
+  constructor(private accountEntryService: AccountEntryService,
+              private userService: UserService) {
   }
 
   user: User = new User(0, "", "", "", "", "", "", "", null);
-  accountDetailsSelected: boolean = false;
+  accountDetailsSelected: boolean = true;
   ordersDetailsSelected: boolean = false;
   eventsDetailsSelected: boolean = false;
   isAdmin: boolean = false;
   isUser: boolean = false;
   isOrganizer: boolean = false;
+  acountInfoEditing: boolean = false;
+  newPasswordEnabled: boolean = false;
 
   ngOnInit() {
     this.accountEntryService.checkUserToken().subscribe((receivedUser: User) => {
@@ -45,5 +49,12 @@ export class UserCabinetComponent implements OnInit {
     this.accountDetailsSelected = false;
     this.ordersDetailsSelected = false;
     this.eventsDetailsSelected = true;
+  }
+
+  submitUpdate() {
+    console.log(this.user);
+    this.userService.updateUser(this.user).subscribe((updatedUser: User) => {
+      this.user = updatedUser;
+    });
   }
 }

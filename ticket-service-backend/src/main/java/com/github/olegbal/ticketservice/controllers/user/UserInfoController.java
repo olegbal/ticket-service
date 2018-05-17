@@ -10,7 +10,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import javax.websocket.server.PathParam;
 
 import static com.github.olegbal.ticketservice.enums.ApiVersioningUrlPrefix.V1;
 
@@ -29,15 +29,15 @@ public class UserInfoController {
         return new ResponseEntity<>(userDto, HttpStatus.OK);
     }
 
-    @GetMapping(path = "/users/{login}")
-    public ResponseEntity getUserByLogin(@PathVariable String login) {
+    @GetMapping(path = "/users", params = "login")
+    public ResponseEntity getUserByLogin(@PathParam(value = "login") String login) {
         User user = userInfoService.getUserByLogin(login);
         UserDto userDto = conversionService.convert(user, UserDto.class);
         return new ResponseEntity<>(userDto, HttpStatus.OK);
     }
 
     @GetMapping(path = "/users", params = "roleId")
-    public ResponseEntity getUsersByRolesList(@RequestParam(value = "roleId") List<Long> rolesIds) {
+    public ResponseEntity getUsersByRolesList(@RequestParam(value = "roleId") long[] rolesIds) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
 
@@ -47,8 +47,20 @@ public class UserInfoController {
     }
 
     @PutMapping(path = "/users")
-    public ResponseEntity updateUser(@RequestBody UserDto user) {
-        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+    public ResponseEntity updateUser(@RequestBody UserDto userDto) {
+        User user = userInfoService.getUserById(userDto.getId());
+        user.setLogin(userDto.getLogin());
+        user.setEmail(userDto.getEmail());
+        user.setFirstName(userDto.getFirstName());
+        user.setLastName(userDto.getLastName());
+        user.setPhoneNumber(userDto.getPhoneNumber());
+        user.setOrganization(userDto.getOrganization());
+
+        user = userInfoService.updateUser(user);
+
+        UserDto updatedDto = conversionService.convert(user, UserDto.class);
+
+        return new ResponseEntity<>(updatedDto, HttpStatus.OK);
     }
 
     @DeleteMapping(path = "/users/{id}")

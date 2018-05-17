@@ -43,6 +43,11 @@ public class DefaultUserInfoService implements UserInfoService {
     }
 
     @Override
+    public User updateUser(User user) {
+        return userRepository.save(user);
+    }
+
+    @Override
     public User loadUserByUsername(String login) throws UsernameNotFoundException {
         return getUserByLogin(login);
     }
