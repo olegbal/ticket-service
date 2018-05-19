@@ -1,5 +1,10 @@
+import {User} from "./User";
+import {Ticket} from "./Ticket";
+
 export class Order {
-  constructor(public ticketIds: Array<number>,
-              public userId: number) {
+  constructor(public id: number,
+              public orderDate: Date,
+              public user: User,
+              public ticketList: Ticket[]) {
   }
 }

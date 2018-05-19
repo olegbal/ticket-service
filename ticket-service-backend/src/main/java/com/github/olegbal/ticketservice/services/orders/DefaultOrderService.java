@@ -33,7 +33,7 @@ public class DefaultOrderService implements OrderService {
     }
 
     @Override
-    public Order getOrderByUserId(long userId) {
+    public List<Order> getOrderByUserId(long userId) {
         return orderRepository.getOrderByUserId(userId);
     }
 
@@ -71,6 +71,7 @@ public class DefaultOrderService implements OrderService {
         order.setOrderDate(Date.valueOf(LocalDate.now()));
         order.setTicketList(orderingTickets);
         order.setUser(user);
+
 
         return createOrder(order);
     }

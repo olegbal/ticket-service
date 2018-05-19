@@ -1,7 +1,7 @@
-import { Injectable } from '@angular/core';
-import { Ticket } from "./data/Ticket";
-import { HttpClient, HttpHeaders } from "@angular/common/http";
-import { Order } from "./data/Order";
+import {Injectable} from '@angular/core';
+import {Ticket} from "./data/Ticket";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
+import {OrderCreatorDto} from "./data/OrderCreatorDto";
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -15,7 +15,7 @@ export class OrderService {
 
   createOrder(tickets: Array<Ticket>, userId: number) {
     let ticketIds = this.createTicketIdList(tickets);
-    let order = new Order(ticketIds, userId);
+    let order = new OrderCreatorDto(ticketIds, userId);
     return this.http.post("/api/v1/orders", JSON.stringify(order), httpOptions)
   }
 
@@ -29,5 +29,10 @@ export class OrderService {
 
     return ticketIds;
   }
+
+  getUsersOrders(userId) {
+    return this.http.get("/api/v1/orders?userId=" + userId);
+  }
+
 
 }

@@ -15,15 +15,10 @@
     <div class="account-info-details-form-container">
       <form #editAcountInfoForm="ngForm" id="account-info-editor-form">
         <div class="account-info-input-block">
-          <!--public login: string,-->
           <label>
             Your login:
           </label>
-          <span *ngIf="!accountInfoEditing"> {{user.login}} </span>
-          <input *ngIf="accountInfoEditing" type="text" name="account-info-login-input" id="account-info-login-input"
-                 placeholder="login"
-                 class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
-                 [(ngModel)]="user.login" #login="ngModel" pattern="" required>
+          <span> {{user.login}} </span>
         </div>
         <div class="account-info-input-block">
           <label>
@@ -108,7 +103,19 @@
     </div>
   </div>
   <div *ngIf="ordersDetailsSelected" class="col-md-8 orders-details">
-    Here will be Orders
+    <div class="orders-short-description-list">
+      <div *ngFor="let order of orders" class="order-item">
+        <div class="">
+          <div>Order number:{{order.id}}</div>
+          <div>Ordered: {{order.orderDate}}</div>
+          <div>tickets in order : {{order.ticketList.length}}</div>
+          <!--TODO ADD EVENT -->
+          <div>Will be event link</div>
+          <div>Total price : 100$</div>
+          <br>
+        </div>
+      </div>
+    </div>
   </div>
   <div *ngIf="eventsDetailsSelected" class="col-md-8 events-details">
     Here will be events

@@ -20,7 +20,7 @@ public class OrderController {
 
     @GetMapping(path = "/orders", params = {"userId"})
     public ResponseEntity getUsersOrders(@RequestParam long userId) {
-        return new ResponseEntity<>(orderService.getOrderById(userId), HttpStatus.OK);
+        return new ResponseEntity<>(orderService.getOrderByUserId(userId), HttpStatus.OK);
     }
 
     @GetMapping(path = "/orders/{orderId}")

@@ -11,7 +11,7 @@ public interface OrderService {
 
     Order getOrderById(long id);
 
-    Order getOrderByUserId(long id);
+    List<Order> getOrderByUserId(long id);
 
     Order createOrder(Order order);
 

@@ -47,7 +47,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.DELETE, V1 + "/event-places").permitAll()  //.hasAnyRole("ADMIN", "ORGANIZER")
                 //                END OF EVENT PLACES SECURITY
                 //                ORDERS
-                .antMatchers(V1 + "/orders").permitAll()
+                .antMatchers(V1 + "/orders**").permitAll()
                 //                END OF ORDERS
 
                 //                TICKETS
@@ -56,7 +56,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //                USERS
                 .antMatchers(V1 + "/users**").permitAll()
                 .antMatchers(V1 + "/users/**").permitAll()
-                //                END OF TICKETS
+                //                END OF USERS
                 .anyRequest().authenticated()
                 .and()
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
