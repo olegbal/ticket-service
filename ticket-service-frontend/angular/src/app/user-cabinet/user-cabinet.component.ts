@@ -2,8 +2,9 @@ import {Component, OnInit} from '@angular/core';
 import {AccountEntryService} from "../header/account-entry/account-entry.service";
 import {User} from "../data/User";
 import {UserService} from "./user.service";
-import {OrderService} from "../order.service";
+import {OrderService} from "../order/order.service";
 import {Order} from "../data/Order";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-user-cabinet',
@@ -14,7 +15,8 @@ export class UserCabinetComponent implements OnInit {
 
   constructor(private accountEntryService: AccountEntryService,
               private userService: UserService,
-              private orderService: OrderService) {
+              private orderService: OrderService,
+              private router: Router) {
   }
 
   user: User = new User(0, "", "", "", "", "", "", "", null);
@@ -76,5 +78,9 @@ export class UserCabinetComponent implements OnInit {
       this.user = updatedUser;
       this.accountInfoEditing = false;
     });
+  }
+
+  enableOrderDetails(orderId: number) {
+    this.router.navigate(["/cabinet/orders", orderId]);
   }
 }

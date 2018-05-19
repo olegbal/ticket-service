@@ -32,8 +32,10 @@ import {EventFullDescriptionComponent} from './event/event-full-description/even
 import {TicketService} from './ticket/ticket.service';
 import {OrderSuccessComponentComponent} from './static-pages/order-success-component/order-success-component.component';
 import {StaticPagesRoutingModule} from "./static-pages/static-pages-routing.module";
-import {OrderService} from './order.service';
+import {OrderService} from './order/order.service';
 import {UserService} from "./user-cabinet/user.service";
+import {UserOrderDetailsComponent} from './user-cabinet/user-order-details/user-order-details.component';
+import {UserCabinetRoutingModule} from "./user-cabinet/user-cabinet-routing.module";
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -59,6 +61,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     EventPlaceMapComponent,
     EventFullDescriptionComponent,
     OrderSuccessComponentComponent,
+    UserOrderDetailsComponent,
   ],
   imports: [
     BrowserModule,
@@ -67,6 +70,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     AuthRougingModule,
     EventRougingModule,
     StaticPagesRoutingModule,
+    UserCabinetRoutingModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {

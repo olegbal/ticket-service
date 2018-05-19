@@ -48,6 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //                END OF EVENT PLACES SECURITY
                 //                ORDERS
                 .antMatchers(V1 + "/orders**").permitAll()
+                .antMatchers(V1 + "/orders/**").permitAll()
                 //                END OF ORDERS
 
                 //                TICKETS

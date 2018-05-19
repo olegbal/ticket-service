@@ -105,7 +105,7 @@
   <div *ngIf="ordersDetailsSelected" class="col-md-8 orders-details">
     <div class="orders-short-description-list">
       <div *ngFor="let order of orders" class="order-item">
-        <div class="">
+        <div (click)="enableOrderDetails(order.id)" class="">
           <div>Order number:{{order.id}}</div>
           <div>Ordered: {{order.orderDate}}</div>
           <div>tickets in order : {{order.ticketList.length}}</div>

@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
-import {Ticket} from "./data/Ticket";
+import {Ticket} from "../data/Ticket";
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {OrderCreatorDto} from "./data/OrderCreatorDto";
+import {OrderCreatorDto} from "../data/OrderCreatorDto";
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -30,9 +30,12 @@ export class OrderService {
     return ticketIds;
   }
 
-  getUsersOrders(userId) {
+  getUsersOrders(userId: number) {
     return this.http.get("/api/v1/orders?userId=" + userId);
   }
 
+  getOrderById(orderId: number) {
+    return this.http.get("/api/v1/orders/" + orderId);
+  }
 
 }

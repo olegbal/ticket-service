@@ -25,7 +25,8 @@ public class OrderController {
 
     @GetMapping(path = "/orders/{orderId}")
     public ResponseEntity getOrderById(@PathVariable long orderId) {
-        return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+        Order order = orderService.getOrderById(orderId);
+        return new ResponseEntity<>(order, HttpStatus.OK);
     }
 
     @PostMapping(path = "/orders")

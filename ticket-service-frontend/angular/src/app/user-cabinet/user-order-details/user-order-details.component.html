@@ -1,0 +1,14 @@
+<div>
+  <div>{{order.id}}</div>
+  <div>{{order.orderDate}}</div>
+  <!--TODO EVENT-->
+  <div style="background-color:red">will be event somewhere</div>
+  <div *ngFor="let ticket of order.ticketList">
+    <div>Ticket description:{{ticket.ticketType.ticketDescription}}</div>
+    <div>Type: {{ticket.ticketType.typeDescription}}</div>
+    <div>Price: {{ticket.ticketPrice}}</div>
+    <div>{{ticket.ticketState>1? "Reserved": "Ordered"}}</div>
+    <br>
+  </div>
+  <div>TotalPrice: {{totalPrice}}$;</div>
+</div>

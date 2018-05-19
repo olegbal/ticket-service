@@ -3,7 +3,7 @@ import { TicketService } from "../../ticket/ticket.service";
 import { Ticket } from "../../data/Ticket";
 import { ActivatedRoute } from "@angular/router";
 import { DisplayingTicketInfo } from "../../data/DisplayingTicketInfo";
-import { OrderService } from "../../order.service";
+import { OrderService } from "../../order/order.service";
 import { AccountEntryService } from "../../header/account-entry/account-entry.service";
 
 @Component({
