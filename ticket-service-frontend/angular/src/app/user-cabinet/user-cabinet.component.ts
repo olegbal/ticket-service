@@ -15,13 +15,14 @@ export class UserCabinetComponent implements OnInit {
   }
 
   user: User = new User(0, "", "", "", "", "", "", "", null);
+  editingUser: User;
   accountDetailsSelected: boolean = true;
   ordersDetailsSelected: boolean = false;
   eventsDetailsSelected: boolean = false;
   isAdmin: boolean = false;
   isUser: boolean = false;
   isOrganizer: boolean = false;
-  acountInfoEditing: boolean = false;
+  accountInfoEditing: boolean = false;
   newPasswordEnabled: boolean = false;
 
   ngOnInit() {
@@ -51,10 +52,21 @@ export class UserCabinetComponent implements OnInit {
     this.eventsDetailsSelected = true;
   }
 
+  enableAccountInfoEditing() {
+    this.accountInfoEditing = true;
+    this.editingUser = JSON.parse(JSON.stringify(this.user));
+  }
+
+  cancelAccountInfoEditing() {
+    this.accountInfoEditing = false;
+    this.user = this.editingUser;
+  }
+
   submitUpdate() {
     console.log(this.user);
     this.userService.updateUser(this.user).subscribe((updatedUser: User) => {
       this.user = updatedUser;
+      this.accountInfoEditing = false;
     });
   }
 }

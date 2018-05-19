@@ -19,8 +19,8 @@
           <label>
             Your login:
           </label>
-          <span *ngIf="!acountInfoEditing"> {{user.login}} </span>
-          <input *ngIf="acountInfoEditing" type="text" name="account-info-login-input" id="account-info-login-input"
+          <span *ngIf="!accountInfoEditing"> {{user.login}} </span>
+          <input *ngIf="accountInfoEditing" type="text" name="account-info-login-input" id="account-info-login-input"
                  placeholder="login"
                  class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
                  [(ngModel)]="user.login" #login="ngModel" pattern="" required>
@@ -29,8 +29,8 @@
           <label>
             Your email:
           </label>
-          <span *ngIf="!acountInfoEditing"> {{user.email}} </span>
-          <input *ngIf="acountInfoEditing" type="text" name="account-info-email-input" id="account-info-email-input"
+          <span *ngIf="!accountInfoEditing"> {{user.email}} </span>
+          <input *ngIf="accountInfoEditing" type="text" name="account-info-email-input" id="account-info-email-input"
                  placeholder="login"
                  class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
                  [(ngModel)]="user.email" #email="ngModel" pattern="" required>
@@ -39,8 +39,8 @@
           <label>
             Your firstname:
           </label>
-          <span *ngIf="!acountInfoEditing"> {{user.firstName}} </span>
-          <input *ngIf="acountInfoEditing" type="text" name="account-info-firstname-input"
+          <span *ngIf="!accountInfoEditing"> {{user.firstName}} </span>
+          <input *ngIf="accountInfoEditing" type="text" name="account-info-firstname-input"
                  id="account-info-firstname-input"
                  placeholder=""
                  class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
@@ -50,8 +50,8 @@
           <label>
             Your lastname:
           </label>
-          <span *ngIf="!acountInfoEditing"> {{user.lastName}} </span>
-          <input *ngIf="acountInfoEditing" type="text" name="account-info-lastname-input"
+          <span *ngIf="!accountInfoEditing"> {{user.lastName}} </span>
+          <input *ngIf="accountInfoEditing" type="text" name="account-info-lastname-input"
                  id="account-info-lastname-input"
                  placeholder=""
                  class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
@@ -61,8 +61,8 @@
           <label>
             Organization:
           </label>
-          <span *ngIf="!acountInfoEditing"> {{user.organization}} </span>
-          <input *ngIf="acountInfoEditing" type="text" name="account-info-organization-input"
+          <span *ngIf="!accountInfoEditing"> {{user.organization}} </span>
+          <input *ngIf="accountInfoEditing" type="text" name="account-info-organization-input"
                  id="account-info-organization-input"
                  placeholder="login"
                  class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
@@ -72,8 +72,8 @@
           <label>
             Your number:
           </label>
-          <span *ngIf="!acountInfoEditing"> {{user.phoneNumber}} </span>
-          <input *ngIf="acountInfoEditing" type="text" name="account-info-phone-input" id="account-info-phone-input"
+          <span *ngIf="!accountInfoEditing"> {{user.phoneNumber}} </span>
+          <input *ngIf="accountInfoEditing" type="text" name="account-info-phone-input" id="account-info-phone-input"
                  placeholder="login"
                  class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
                  [(ngModel)]="user.phoneNumber" #phone="ngModel" pattern="" required>
@@ -86,12 +86,12 @@
           <span *ngIf="isOrganizer">Organizer <br></span>
           <span *ngIf="isAdmin">Administrator<br> </span>
         </div>
-        <div *ngIf="!acountInfoEditing">
-          <button (click)="acountInfoEditing = true;">Edit</button>
+        <div *ngIf="!accountInfoEditing">
+          <button (click)="enableAccountInfoEditing()">Edit</button>
         </div>
-        <div *ngIf="acountInfoEditing">
+        <div *ngIf="accountInfoEditing">
           <button (click)="submitUpdate()">Save</button>
-          <button (click)="acountInfoEditing = false;">Cancel</button>
+          <button (click)="cancelAccountInfoEditing();">Cancel</button>
         </div>
         <div class="change-password-block">
           <button (click)="newPasswordEnabled= true">Change password</button>
