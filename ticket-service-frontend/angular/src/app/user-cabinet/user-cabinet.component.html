@@ -1,6 +1,6 @@
 <div class="row switcher-buttons">
   <div class="col-md-3 account-into-button-container">
-    <button (click)="enableAcountInfo()">Account Info</button>
+    <button (click)="enableAccountInfo()">Account Info</button>
   </div>
   <div *ngIf="isUser" class="col-md-3 orders-button-container">
     <button (click)="enableOrders()">Orders</button>
@@ -118,6 +118,18 @@
     </div>
   </div>
   <div *ngIf="eventsDetailsSelected" class="col-md-8 events-details">
-    Here will be events
+    <div class="events-short-description-list">
+      <div *ngFor="let event of events" class="event-item">
+        <div (click)="enableEventDetails(event.id)" class="">
+          <div>{{event.title}}</div>
+          <div>Date of event: {{event.date}}</div>
+          <div><img src="{{event.imgUrl}}"></div>
+          <div>Tickets price diapason: {{event.minPrice}} - {{event.maxPrice}}</div>
+          <div>{{event.eventPlace.placeAddress}}</div>
+          <div>{{event.eventPlace.placeName}}</div>
+          <br>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

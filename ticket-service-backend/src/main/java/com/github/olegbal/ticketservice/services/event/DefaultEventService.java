@@ -21,6 +21,11 @@ public class DefaultEventService implements EventService {
     }
 
     @Override
+    public List<Event> getEventsByUserId(long userId) {
+        return eventRepository.getEventsByUserId(userId);
+    }
+
+    @Override
     public Event getEventById(long id) {
         return eventRepository.findOne(id);
     }

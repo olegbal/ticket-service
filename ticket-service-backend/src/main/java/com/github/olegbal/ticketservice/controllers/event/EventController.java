@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
 import java.util.List;
 
 import static com.github.olegbal.ticketservice.enums.ApiVersioningUrlPrefix.V1;
@@ -31,6 +32,15 @@ public class EventController {
                 TypeDescriptor.collection(List.class, TypeDescriptor.valueOf(Event.class)),
                 TypeDescriptor.collection(List.class, TypeDescriptor.valueOf(EventDto.class)));
         return new ResponseEntity<>(convertedEvents, HttpStatus.OK);
+    }
+
+    @GetMapping(path = "/events", params = "userId")
+    public ResponseEntity getEventsById(@PathParam(value = "userId") long userId) {
+        List<Event> userEvents = eventService.getEventsByUserId(userId);
+        List<EventDto> convertedEvents = (List<EventDto>) converter.convert(userEvents,
+                TypeDescriptor.collection(List.class, TypeDescriptor.valueOf(Event.class)),
+                TypeDescriptor.collection(List.class, TypeDescriptor.valueOf(EventDto.class)));
+        return new ResponseEntity(convertedEvents, HttpStatus.OK);
     }
 
     @GetMapping(path = "/events/{id}")

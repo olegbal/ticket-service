@@ -16,4 +16,8 @@ export class EventService {
   getEvent(id: number) {
     return this.http.get(EventHelper.apiEventDetails + id);
   }
+
+  getEventsByUserId(userId:number){
+    return this.http.get(EventHelper.apiEventsByUserId + userId);
+  }
 }
