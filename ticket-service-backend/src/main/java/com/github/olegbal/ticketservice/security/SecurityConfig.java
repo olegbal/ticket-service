@@ -33,7 +33,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 //permitting access to all resources
                 .antMatchers("/favicon.ico", "/**.html", "/**.css", "/**.js").permitAll()
                 //Registration and authorization mapping mapping security
-                .antMatchers(V1 + "/register", V1 + "/login", V1 + "check-auth").permitAll()
+                .antMatchers(V1 + "/register", V1 + "/login", V1 + "/check-auth").permitAll()
                 //                EVENTS SECURITY
                 .antMatchers(HttpMethod.GET, V1 + "/events/{id}", V1 + "/events").permitAll()
                 .antMatchers(HttpMethod.DELETE, V1 + "/events/{id}").permitAll() //.hasAnyRole("ADMIN", "ORGANIZER")
