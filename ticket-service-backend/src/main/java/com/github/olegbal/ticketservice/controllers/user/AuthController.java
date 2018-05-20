@@ -10,6 +10,7 @@ import com.github.olegbal.ticketservice.services.auth.LoginService;
 import com.github.olegbal.ticketservice.services.auth.RegistrationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.convert.ConversionService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,12 +29,19 @@ public class AuthController {
     private final RegistrationService registrationService;
     private final TokenAuthenticationService authenticationService;
     private final LoginService loginService;
+    private final ConversionService conversionService;
 
     @GetMapping(path = "/check-auth")
     public ResponseEntity checkToken(HttpServletRequest request) {
         UserAuthentication user = (UserAuthentication) authenticationService.getAuthentication(request);
 
-        return new ResponseEntity<>(user.getDetails(), HttpStatus.OK);
+        UserDto userDto = null;
+
+        if (user.getDetails() != null) {
+            userDto = conversionService.convert(user.getDetails(), UserDto.class);
+        }
+
+        return new ResponseEntity<>(userDto, HttpStatus.OK);
     }
 
     @PostMapping(path = "/register")
