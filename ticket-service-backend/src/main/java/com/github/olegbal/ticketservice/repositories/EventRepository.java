@@ -8,4 +8,8 @@ import java.util.List;
 public interface EventRepository extends PagingAndSortingRepository<Event, Long> {
 
     List<Event> getEventsByUserId(long id);
+
+    List<Event> getEventsByApprovedIsTrue();
+
+    List<Event> getEventsByApprovedIsFalse();
 }

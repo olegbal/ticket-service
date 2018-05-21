@@ -34,6 +34,27 @@ public class EventController {
         return new ResponseEntity<>(convertedEvents, HttpStatus.OK);
     }
 
+    @GetMapping(path = "/events", params = "approved")
+    public ResponseEntity getApprovedEvents(@PathParam(value = "approved") boolean approved) {
+
+        List<EventDto> convertedEvents;
+
+        if (approved) {
+
+            List<Event> approvedEvents = eventService.getApprovedEvents();
+            convertedEvents = (List<EventDto>) converter.convert(approvedEvents,
+                    TypeDescriptor.collection(List.class, TypeDescriptor.valueOf(Event.class)),
+                    TypeDescriptor.collection(List.class, TypeDescriptor.valueOf(EventDto.class)));
+            return new ResponseEntity(convertedEvents, HttpStatus.OK);
+        } else {
+            List<Event> unapprovedEvents = eventService.getUnapprovedEvents();
+            convertedEvents = (List<EventDto>) converter.convert(unapprovedEvents,
+                    TypeDescriptor.collection(List.class, TypeDescriptor.valueOf(Event.class)),
+                    TypeDescriptor.collection(List.class, TypeDescriptor.valueOf(EventDto.class)));
+            return new ResponseEntity(convertedEvents, HttpStatus.OK);
+        }
+    }
+
     @GetMapping(path = "/events", params = "userId")
     public ResponseEntity getEventsById(@PathParam(value = "userId") long userId) {
         List<Event> userEvents = eventService.getEventsByUserId(userId);

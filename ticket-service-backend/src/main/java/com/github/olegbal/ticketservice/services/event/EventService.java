@@ -8,6 +8,10 @@ public interface EventService {
 
     List<Event> getAllEvents();
 
+    List<Event> getApprovedEvents();
+
+    List<Event> getUnapprovedEvents();
+
     List<Event> getEventsByUserId(long userId);
 
     Event getEventById(long id);

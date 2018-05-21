@@ -21,6 +21,16 @@ public class DefaultEventService implements EventService {
     }
 
     @Override
+    public List<Event> getApprovedEvents() {
+        return eventRepository.getEventsByApprovedIsTrue();
+    }
+
+    @Override
+    public List<Event> getUnapprovedEvents() {
+        return eventRepository.getEventsByApprovedIsFalse();
+    }
+
+    @Override
     public List<Event> getEventsByUserId(long userId) {
         return eventRepository.getEventsByUserId(userId);
     }
