@@ -29,6 +29,9 @@ public class Event {
     @Column(name = "event_img_url")
     private String imgUrl;
 
+    @Column(name = "event_approved")
+    private boolean approved;
+
     @ManyToOne
     @JoinColumn(name = "event_place_id")
     private EventPlace eventPlace;

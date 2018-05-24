@@ -4,7 +4,9 @@ import {User} from "../data/User";
 import {UserService} from "./user.service";
 import {OrderService} from "../order/order.service";
 import {Order} from "../data/Order";
+import {Event} from "../data/Event";
 import {Router} from "@angular/router";
+import {EventService} from "../event/event.service";
 
 @Component({
   selector: 'app-user-cabinet',
@@ -16,11 +18,13 @@ export class UserCabinetComponent implements OnInit {
   constructor(private accountEntryService: AccountEntryService,
               private userService: UserService,
               private orderService: OrderService,
+              private eventService: EventService,
               private router: Router) {
   }
 
   user: User = new User(0, "", "", "", "", "", "", "", null);
   orders: Order[] = [];
+  events: Event[] = [];
   editingUser: User;
   accountDetailsSelected: boolean = false;
   ordersDetailsSelected: boolean = false;
@@ -37,11 +41,11 @@ export class UserCabinetComponent implements OnInit {
       this.isAdmin = this.accountEntryService.hasAdminRole;
       this.isOrganizer = this.accountEntryService.hasOrganizerRole;
       this.isUser = this.accountEntryService.hasUserRole;
-      this.enableOrders();
+      this.enableAccountInfo();
     });
   }
 
-  enableAcountInfo() {
+  enableAccountInfo() {
     this.ordersDetailsSelected = false;
     this.eventsDetailsSelected = false;
     this.accountDetailsSelected = true;
@@ -60,6 +64,9 @@ export class UserCabinetComponent implements OnInit {
     this.accountDetailsSelected = false;
     this.ordersDetailsSelected = false;
     this.eventsDetailsSelected = true;
+    this.eventService.getEventsByUserId(this.user.id).subscribe((receivedEvents: Event[]) => {
+      this.events = receivedEvents;
+    });
   }
 
   enableAccountInfoEditing() {
@@ -82,5 +89,9 @@ export class UserCabinetComponent implements OnInit {
 
   enableOrderDetails(orderId: number) {
     this.router.navigate(["/cabinet/orders", orderId]);
+  }
+
+  enableEventDetails(id: number) {
+    this.router.navigate(["/events/", id])
   }
 }
