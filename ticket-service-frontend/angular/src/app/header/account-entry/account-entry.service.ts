@@ -44,7 +44,8 @@ export class AccountEntryService implements OnInit {
   setLogout() {
     this.isLoggedIn = false;
     this.loggedUser = null;
-    this.cookieService.delete(AuthHelper.authCookie);
+    this.cookieService.delete(AuthHelper.authCookie,"/");
+    this.cookieService.delete(AuthHelper.authCookie,"/api/v1/");
   }
 
   checkUserToken() {
