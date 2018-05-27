@@ -18,5 +18,6 @@ public class EventDto {
     private BigDecimal minPrice;
     private BigDecimal maxPrice;
     private String imgUrl;
+    private boolean approved;
     private EventPlace eventPlace;
 }

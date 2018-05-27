@@ -8,6 +8,9 @@
   <div *ngIf="isOrganizer" class="col-md-3 events-button-container">
     <button (click)="enableEvents()">Events</button>
   </div>
+    <div *ngIf="isAdmin" class="col-md-3 requests-button-container">
+    <button (click)="enableRequests()">Requests</button>
+  </div>
 </div>
 <div class="row selected-switcher-info-container">
   <div *ngIf="accountDetailsSelected" class="col-md-8 account-info-details">
@@ -120,6 +123,21 @@
   <div *ngIf="eventsDetailsSelected" class="col-md-8 events-details">
     <div class="events-short-description-list">
       <div *ngFor="let event of events" class="event-item">
+        <div (click)="enableEventDetails(event.id)" class="">
+          <div>{{event.title}}</div>
+          <div>Date of event: {{event.date}}</div>
+          <div><img src="{{event.imgUrl}}"></div>
+          <div>Tickets price diapason: {{event.minPrice}} - {{event.maxPrice}}</div>
+          <div>{{event.eventPlace.placeAddress}}</div>
+          <div>{{event.eventPlace.placeName}}</div>
+          <br>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="requestsDetailsSelected" class="col-md-8 requests-details">
+    <div class="events-short-description-list">
+      <div *ngFor="let event of unapprovedEvents" class="request-item">
         <div (click)="enableEventDetails(event.id)" class="">
           <div>{{event.title}}</div>
           <div>Date of event: {{event.date}}</div>

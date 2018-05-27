@@ -21,6 +21,7 @@ public class EventToEventDtoConverter implements Converter<Event, EventDto> {
         eventDto.setId(source.getId());
         eventDto.setImgUrl(source.getImgUrl());
         eventDto.setTitle(source.getTitle());
+        eventDto.setApproved(source.isApproved());
         eventDto.setEventPlace(source.getEventPlace());
 
 //        Ticket minPriceTicket = source.getTickets().stream().min(Comparator.comparing(Ticket::getTicketPrice))

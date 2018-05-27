@@ -24,11 +24,13 @@ export class UserCabinetComponent implements OnInit {
 
   user: User = new User(0, "", "", "", "", "", "", "", null);
   orders: Order[] = [];
-  events: Event[] = [];
+  organizedEvents: Event[] = [];
+  unapprovedEvents: Event[] = [];
   editingUser: User;
   accountDetailsSelected: boolean = false;
   ordersDetailsSelected: boolean = false;
   eventsDetailsSelected: boolean = false;
+  requestsDetailsSelected: boolean = false;
   isAdmin: boolean = false;
   isUser: boolean = false;
   isOrganizer: boolean = false;
@@ -46,26 +48,39 @@ export class UserCabinetComponent implements OnInit {
   }
 
   enableAccountInfo() {
+    this.accountDetailsSelected = true;
     this.ordersDetailsSelected = false;
     this.eventsDetailsSelected = false;
-    this.accountDetailsSelected = true;
+    this.requestsDetailsSelected = false;
   }
 
   enableOrders() {
-    this.accountDetailsSelected = false;
     this.ordersDetailsSelected = true;
+    this.accountDetailsSelected = false;
     this.eventsDetailsSelected = false;
+    this.requestsDetailsSelected = false;
     this.orderService.getUsersOrders(this.user.id).subscribe((receivedOrders: Order[]) => {
       this.orders = receivedOrders;
     });
   }
 
   enableEvents() {
+    this.eventsDetailsSelected = true;
     this.accountDetailsSelected = false;
     this.ordersDetailsSelected = false;
-    this.eventsDetailsSelected = true;
+    this.requestsDetailsSelected = false;
     this.eventService.getEventsByUserId(this.user.id).subscribe((receivedEvents: Event[]) => {
-      this.events = receivedEvents;
+      this.organizedEvents = receivedEvents;
+    });
+  }
+
+  enableRequests() {
+    this.requestsDetailsSelected = true;
+    this.accountDetailsSelected = false;
+    this.ordersDetailsSelected = false;
+    this.eventsDetailsSelected = false;
+    this.eventService.getEvents(false).subscribe((receivedEvents: Event[]) => {
+      this.unapprovedEvents = receivedEvents;
     });
   }
 

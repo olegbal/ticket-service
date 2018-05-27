@@ -7,7 +7,8 @@ export class Event {
                      public imgUrl: string,
                      public eventPlace: EventPlace,
                      public minPrice: number,
-                     public maxPrice: number) {
+                     public maxPrice: number,
+                     public approved: boolean) {
 
   }
 

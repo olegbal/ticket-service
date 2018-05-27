@@ -28,4 +28,5 @@
       <button class="btn btn-success" (click)="buyTickets()">Купить</button>
     </div>
   </div>
+  <button *ngIf="!selectedEvent.approved" (click)="approveEvent()">Approve</button>
 </div>

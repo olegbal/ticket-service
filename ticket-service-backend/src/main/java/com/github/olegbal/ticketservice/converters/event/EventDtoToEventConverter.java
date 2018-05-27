@@ -22,6 +22,7 @@ public class EventDtoToEventConverter implements Converter<EventDto, Event> {
         event.setEventPlace(source.getEventPlace());
         event.setImgUrl(source.getImgUrl());
         event.setTitle(source.getTitle());
+        event.setApproved(source.isApproved());
         return event;
     }
 }

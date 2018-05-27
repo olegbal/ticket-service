@@ -84,7 +84,7 @@ public class EventController {
     @PutMapping(path = "/events")
     public ResponseEntity updateEvent(@RequestBody EventDto eventDto) {
         Event event = converter.convert(eventDto, Event.class);
-        event = eventService.createEvent(event);
+        event = eventService.updateEvent(event);
         EventDto eventDto1 = converter.convert(event, EventDto.class);
         return new ResponseEntity<>(eventDto1, HttpStatus.OK);
     }
