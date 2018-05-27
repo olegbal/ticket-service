@@ -47,7 +47,8 @@ export class AccountEntryService implements OnInit {
     this.hasAdminRole = false;
     this.hasUserRole = false;
     this.hasOrganizerRole = false;
-    this.cookieService.delete(AuthHelper.authCookie);
+    this.cookieService.delete(AuthHelper.authCookie,"/");
+    this.cookieService.delete(AuthHelper.authCookie,"/api/v1/");
   }
 
   checkUserToken() {
