@@ -29,7 +29,7 @@ export class EventBaseInfoComponent implements OnInit {
     let event = JSON.parse(JSON.stringify(this.selectedEvent));
     event.approved = true;
 
-    this.eventService.updateEvent(event).subscribe((updatedEvent) => {
+    this.eventService.updateEvent(event).subscribe((updatedEvent: Event) => {
       this.selectedEvent = updatedEvent;
     });
   }

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.github.olegbal.ticketservice.enums.ApiVersioningUrlPrefix.V1;
 
@@ -55,9 +56,17 @@ public class EventController {
         }
     }
 
-    @GetMapping(path = "/events", params = "userId")
-    public ResponseEntity getEventsById(@PathParam(value = "userId") long userId) {
+    @GetMapping(path = "/events", params = {"approved", "userId"})
+    public ResponseEntity getEventsById(@PathParam(value = "userId") long userId,
+                                        @PathParam(value = "approved") boolean approved) {
+
         List<Event> userEvents = eventService.getEventsByUserId(userId);
+        if (approved) {
+            userEvents = userEvents.stream().filter(x -> x.isApproved()).collect(Collectors.toList());
+        } else {
+            userEvents = userEvents.stream().filter(x -> !x.isApproved()).collect(Collectors.toList());
+        }
+
         List<EventDto> convertedEvents = (List<EventDto>) converter.convert(userEvents,
                 TypeDescriptor.collection(List.class, TypeDescriptor.valueOf(Event.class)),
                 TypeDescriptor.collection(List.class, TypeDescriptor.valueOf(EventDto.class)));

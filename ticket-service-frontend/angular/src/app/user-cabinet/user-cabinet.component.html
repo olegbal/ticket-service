@@ -6,9 +6,10 @@
     <button (click)="enableOrders()">Orders</button>
   </div>
   <div *ngIf="isOrganizer" class="col-md-3 events-button-container">
-    <button (click)="enableEvents()">Events</button>
+    <button (click)="enableApprovedEvents()">Events</button>
+    <button (click)="enableUnapprovedEvents()">Created</button>
   </div>
-    <div *ngIf="isAdmin" class="col-md-3 requests-button-container">
+  <div *ngIf="isAdmin" class="col-md-3 requests-button-container">
     <button (click)="enableRequests()">Requests</button>
   </div>
 </div>
@@ -120,9 +121,24 @@
       </div>
     </div>
   </div>
-  <div *ngIf="eventsDetailsSelected" class="col-md-8 events-details">
+  <div *ngIf="organizedEventsSelected" class="col-md-8 events-details">
     <div class="events-short-description-list">
-      <div *ngFor="let event of events" class="event-item">
+      <div *ngFor="let event of organizedEvents" class="event-item">
+        <div (click)="enableEventDetails(event.id)" class="">
+          <div>{{event.title}}</div>
+          <div>Date of event: {{event.date}}</div>
+          <div><img src="{{event.imgUrl}}"></div>
+          <div>Tickets price diapason: {{event.minPrice}} - {{event.maxPrice}}</div>
+          <div>{{event.eventPlace.placeAddress}}</div>
+          <div>{{event.eventPlace.placeName}}</div>
+          <br>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div *ngIf="unorganizedEventsSelected" class="col-md-8 events-details">
+    <div class="events-short-description-list">
+      <div *ngFor="let event of organizedEvents" class="event-item">
         <div (click)="enableEventDetails(event.id)" class="">
           <div>{{event.title}}</div>
           <div>Date of event: {{event.date}}</div>

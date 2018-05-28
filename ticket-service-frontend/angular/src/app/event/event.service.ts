@@ -1,6 +1,6 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient, HttpHeaders} from "@angular/common/http";
-import { EventHelper } from "./eventhelper";
+import {EventHelper} from "./eventhelper";
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -17,16 +17,16 @@ export class EventService {
     return this.http.get(EventHelper.apiEventUrl);
   }
 
-  getEvents(approved: boolean){
-    return this.http.get(EventHelper.apiEventUrl + "?approved="+ approved);
+  getEventsByApproved(approved: boolean) {
+    return this.http.get(EventHelper.apiEventUrl + "?approved=" + approved);
   }
 
   getEvent(id: number) {
     return this.http.get(EventHelper.apiEventDetails + id);
   }
 
-  getEventsByUserId(userId:number){
-    return this.http.get(EventHelper.apiEventsByUserId + userId);
+  getEventsByUserId(userId: number, approved: boolean) {
+    return this.http.get(EventHelper.apiEventsByUserId + userId + "&approved=" + approved);
   }
 
   updateEvent(event: Event) {

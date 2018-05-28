@@ -19,7 +19,7 @@ export class EventsListComponent implements OnInit {
   events: Event[];
 
   ngOnInit() {
-    this.eventListService.getEvents(true).subscribe((result: Event[]) => {
+    this.eventListService.getEventsByApproved(true).subscribe((result: Event[]) => {
       this.events = result;
       this.calculateRowsCount(result.length);
     });

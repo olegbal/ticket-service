@@ -29,13 +29,14 @@ export class UserCabinetComponent implements OnInit {
   editingUser: User;
   accountDetailsSelected: boolean = false;
   ordersDetailsSelected: boolean = false;
-  eventsDetailsSelected: boolean = false;
+  organizedEventsSelected: boolean = false;
   requestsDetailsSelected: boolean = false;
   isAdmin: boolean = false;
   isUser: boolean = false;
   isOrganizer: boolean = false;
   accountInfoEditing: boolean = false;
   newPasswordEnabled: boolean = false;
+  unorganizedEventsSelected: boolean = false;
 
   ngOnInit() {
     this.accountEntryService.checkUserToken().subscribe((receivedUser: User) => {
@@ -50,26 +51,40 @@ export class UserCabinetComponent implements OnInit {
   enableAccountInfo() {
     this.accountDetailsSelected = true;
     this.ordersDetailsSelected = false;
-    this.eventsDetailsSelected = false;
+    this.organizedEventsSelected = false;
     this.requestsDetailsSelected = false;
+    this.unorganizedEventsSelected = false;
   }
 
   enableOrders() {
     this.ordersDetailsSelected = true;
     this.accountDetailsSelected = false;
-    this.eventsDetailsSelected = false;
+    this.organizedEventsSelected = false;
     this.requestsDetailsSelected = false;
+    this.unorganizedEventsSelected = false;
     this.orderService.getUsersOrders(this.user.id).subscribe((receivedOrders: Order[]) => {
       this.orders = receivedOrders;
     });
   }
 
-  enableEvents() {
-    this.eventsDetailsSelected = true;
+  enableApprovedEvents() {
+    this.organizedEventsSelected = true;
     this.accountDetailsSelected = false;
     this.ordersDetailsSelected = false;
     this.requestsDetailsSelected = false;
-    this.eventService.getEventsByUserId(this.user.id).subscribe((receivedEvents: Event[]) => {
+    this.unorganizedEventsSelected = false;
+    this.eventService.getEventsByUserId(this.user.id, true).subscribe((receivedEvents: Event[]) => {
+      this.organizedEvents = receivedEvents;
+    });
+  }
+
+  enableUnapprovedEvents(){
+    this.unorganizedEventsSelected = true;
+    this.organizedEventsSelected = false;
+    this.accountDetailsSelected = false;
+    this.ordersDetailsSelected = false;
+    this.requestsDetailsSelected = false;
+    this.eventService.getEventsByUserId(this.user.id, false).subscribe((receivedEvents: Event[]) => {
       this.organizedEvents = receivedEvents;
     });
   }
@@ -78,8 +93,9 @@ export class UserCabinetComponent implements OnInit {
     this.requestsDetailsSelected = true;
     this.accountDetailsSelected = false;
     this.ordersDetailsSelected = false;
-    this.eventsDetailsSelected = false;
-    this.eventService.getEvents(false).subscribe((receivedEvents: Event[]) => {
+    this.organizedEventsSelected = false;
+    this.unorganizedEventsSelected = false;
+    this.eventService.getEventsByApproved(false).subscribe((receivedEvents: Event[]) => {
       this.unapprovedEvents = receivedEvents;
     });
   }
