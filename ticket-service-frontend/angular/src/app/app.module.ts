@@ -41,6 +41,7 @@ import { OrganizerEventsComponent } from './user-cabinet/organizer-events/organi
 import { AdminRequestsComponent } from './user-cabinet/admin-requests/admin-requests.component';
 import { UserOrdersComponent } from './user-cabinet/user-orders/user-orders.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { EventEditorComponent } from './user-cabinet/event-editor/event-editor.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -71,6 +72,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     OrganizerEventsComponent,
     AdminRequestsComponent,
     UserOrdersComponent,
+    EventEditorComponent,
   ],
   imports: [
     BrowserModule,
