@@ -40,6 +40,7 @@ import { AccountInfoComponent } from './user-cabinet/account-info/account-info.c
 import { OrganizerEventsComponent } from './user-cabinet/organizer-events/organizer-events.component';
 import { AdminRequestsComponent } from './user-cabinet/admin-requests/admin-requests.component';
 import { UserOrdersComponent } from './user-cabinet/user-orders/user-orders.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -86,7 +87,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    NgbModule.forRoot()
   ],
   providers: [
     LoginService,
