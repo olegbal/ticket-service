@@ -1,0 +1,13 @@
+<div class="events-short-description-list">
+  <div *ngFor="let event of events" class="event-item">
+    <div (click)="enableEventDetails(event.id)" class="">
+      <div>{{event.title}}</div>
+      <div>Date of event: {{event.date}}</div>
+      <div><img src="{{event.imgUrl}}"></div>
+      <div>Tickets price diapason: {{event.minPrice}} - {{event.maxPrice}}</div>
+      <div>{{event.eventPlace.placeAddress}}</div>
+      <div>{{event.eventPlace.placeName}}</div>
+      <br>
+    </div>
+  </div>
+</div>

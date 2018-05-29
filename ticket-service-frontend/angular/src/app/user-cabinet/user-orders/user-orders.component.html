@@ -1,0 +1,13 @@
+<div class="orders-short-description-list">
+  <div *ngFor="let order of orders" class="order-item">
+    <div (click)="enableOrderDetails(order.id)" class="">
+      <div>Order number:{{order.id}}</div>
+      <div>Ordered: {{order.orderDate}}</div>
+      <div>tickets in order : {{order.ticketList.length}}</div>
+      <!--TODO ADD EVENT -->
+      <div>Will be event link</div>
+      <div>Total price : 100$</div>
+      <br>
+    </div>
+  </div>
+</div>

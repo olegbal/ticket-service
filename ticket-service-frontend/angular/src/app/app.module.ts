@@ -36,6 +36,10 @@ import {OrderService} from './order/order.service';
 import {UserService} from "./user-cabinet/user.service";
 import {UserOrderDetailsComponent} from './user-cabinet/user-order-details/user-order-details.component';
 import {UserCabinetRoutingModule} from "./user-cabinet/user-cabinet-routing.module";
+import { AccountInfoComponent } from './user-cabinet/account-info/account-info.component';
+import { OrganizerEventsComponent } from './user-cabinet/organizer-events/organizer-events.component';
+import { AdminRequestsComponent } from './user-cabinet/admin-requests/admin-requests.component';
+import { UserOrdersComponent } from './user-cabinet/user-orders/user-orders.component';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -62,6 +66,10 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     EventFullDescriptionComponent,
     OrderSuccessComponentComponent,
     UserOrderDetailsComponent,
+    AccountInfoComponent,
+    OrganizerEventsComponent,
+    AdminRequestsComponent,
+    UserOrdersComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,92 @@
+<div class="account-info-details-inner-container">
+  Account info details
+  <div class="account-info-details-form-container">
+    <form #editAcountInfoForm="ngForm" id="account-info-editor-form">
+      <div class="account-info-input-block">
+        <label>
+          Your login:
+        </label>
+        <span> {{user.login}} </span>
+      </div>
+      <div class="account-info-input-block">
+        <label>
+          Your email:
+        </label>
+        <span *ngIf="!accountInfoEditing"> {{user.email}} </span>
+        <input *ngIf="accountInfoEditing" type="text" name="account-info-email-input" id="account-info-email-input"
+               placeholder="login"
+               class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+               [(ngModel)]="user.email" #email="ngModel" pattern="" required>
+      </div>
+      <div class="account-info-input-block">
+        <label>
+          Your firstname:
+        </label>
+        <span *ngIf="!accountInfoEditing"> {{user.firstName}} </span>
+        <input *ngIf="accountInfoEditing" type="text" name="account-info-firstname-input"
+               id="account-info-firstname-input"
+               placeholder=""
+               class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+               [(ngModel)]="user.firstName" #firstname="ngModel" pattern="" required>
+      </div>
+      <div class="account-info-input-block">
+        <label>
+          Your lastname:
+        </label>
+        <span *ngIf="!accountInfoEditing"> {{user.lastName}} </span>
+        <input *ngIf="accountInfoEditing" type="text" name="account-info-lastname-input"
+               id="account-info-lastname-input"
+               placeholder=""
+               class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+               [(ngModel)]="user.lastName" #lastname="ngModel" pattern="" required>
+      </div>
+      <div class="account-info-input-block">
+        <label>
+          Organization:
+        </label>
+        <span *ngIf="!accountInfoEditing"> {{user.organization}} </span>
+        <input *ngIf="accountInfoEditing" type="text" name="account-info-organization-input"
+               id="account-info-organization-input"
+               placeholder="login"
+               class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+               [(ngModel)]="user.organization" #organization="ngModel" pattern="" required>
+      </div>
+      <div class="account-info-input-block">
+        <label>
+          Your number:
+        </label>
+        <span *ngIf="!accountInfoEditing"> {{user.phoneNumber}} </span>
+        <input *ngIf="accountInfoEditing" type="text" name="account-info-phone-input" id="account-info-phone-input"
+               placeholder="login"
+               class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+               [(ngModel)]="user.phoneNumber" #phone="ngModel" pattern="" required>
+      </div>
+      <div class="account-info-input-block">
+          <span>
+            You have permissions of:
+          </span>
+        <span *ngIf="isUser">User<br> </span>
+        <span *ngIf="isOrganizer">Organizer <br></span>
+        <span *ngIf="isAdmin">Administrator<br> </span>
+      </div>
+      <div *ngIf="!accountInfoEditing">
+        <button (click)="enableAccountInfoEditing()">Edit</button>
+      </div>
+      <div *ngIf="accountInfoEditing">
+        <button (click)="submitUpdate()">Save</button>
+        <button (click)="cancelAccountInfoEditing();">Cancel</button>
+      </div>
+      <div class="change-password-block">
+        <button (click)="newPasswordEnabled= true">Change password</button>
+        <form *ngIf="newPasswordEnabled" #changePasswrodForm="ngForm">
+          <label>new password</label>
+          <input type="text" name="change-password-input" id="change-password-input"
+                 class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                 [(ngModel)]="user.password" #password="ngModel" pattern="" required>
+          <button>Change</button>
+          <button (click)="newPasswordEnabled= false;">Cancel</button>
+        </form>
+      </div>
+    </form>
+  </div>
+</div>

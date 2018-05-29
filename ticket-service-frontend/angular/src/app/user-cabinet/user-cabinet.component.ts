@@ -5,7 +5,6 @@ import {UserService} from "./user.service";
 import {OrderService} from "../order/order.service";
 import {Order} from "../data/Order";
 import {Event} from "../data/Event";
-import {Router} from "@angular/router";
 import {EventService} from "../event/event.service";
 
 @Component({
@@ -18,25 +17,21 @@ export class UserCabinetComponent implements OnInit {
   constructor(private accountEntryService: AccountEntryService,
               private userService: UserService,
               private orderService: OrderService,
-              private eventService: EventService,
-              private router: Router) {
+              private eventService: EventService) {
   }
 
   user: User = new User(0, "", "", "", "", "", "", "", null);
   orders: Order[] = [];
   organizedEvents: Event[] = [];
   unapprovedEvents: Event[] = [];
-  editingUser: User;
   accountDetailsSelected: boolean = false;
   ordersDetailsSelected: boolean = false;
   organizedEventsSelected: boolean = false;
   requestsDetailsSelected: boolean = false;
+  unorganizedEventsSelected: boolean = false;
   isAdmin: boolean = false;
   isUser: boolean = false;
   isOrganizer: boolean = false;
-  accountInfoEditing: boolean = false;
-  newPasswordEnabled: boolean = false;
-  unorganizedEventsSelected: boolean = false;
 
   ngOnInit() {
     this.accountEntryService.checkUserToken().subscribe((receivedUser: User) => {
@@ -78,14 +73,14 @@ export class UserCabinetComponent implements OnInit {
     });
   }
 
-  enableUnapprovedEvents(){
+  enableUnapprovedEvents() {
     this.unorganizedEventsSelected = true;
     this.organizedEventsSelected = false;
     this.accountDetailsSelected = false;
     this.ordersDetailsSelected = false;
     this.requestsDetailsSelected = false;
     this.eventService.getEventsByUserId(this.user.id, false).subscribe((receivedEvents: Event[]) => {
-      this.organizedEvents = receivedEvents;
+      this.unapprovedEvents = receivedEvents;
     });
   }
 
@@ -98,31 +93,5 @@ export class UserCabinetComponent implements OnInit {
     this.eventService.getEventsByApproved(false).subscribe((receivedEvents: Event[]) => {
       this.unapprovedEvents = receivedEvents;
     });
-  }
-
-  enableAccountInfoEditing() {
-    this.accountInfoEditing = true;
-    this.editingUser = JSON.parse(JSON.stringify(this.user));
-  }
-
-  cancelAccountInfoEditing() {
-    this.accountInfoEditing = false;
-    this.user = this.editingUser;
-  }
-
-  submitUpdate() {
-    console.log(this.user);
-    this.userService.updateUser(this.user).subscribe((updatedUser: User) => {
-      this.user = updatedUser;
-      this.accountInfoEditing = false;
-    });
-  }
-
-  enableOrderDetails(orderId: number) {
-    this.router.navigate(["/cabinet/orders", orderId]);
-  }
-
-  enableEventDetails(id: number) {
-    this.router.navigate(["/events/", id])
   }
 }
