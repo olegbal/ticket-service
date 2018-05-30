@@ -14,7 +14,6 @@ export class OrganizerEventsComponent implements OnInit {
   @Input() events: Event[];
 
   ngOnInit() {
-    console.log(this.events);
   }
 
   enableEventDetails(id: number) {
