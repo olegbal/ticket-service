@@ -17,6 +17,7 @@ export class EventsListComponent implements OnInit {
 
   rowCount: Array<number>;
   events: Event[];
+  page = 1;
 
   ngOnInit() {
     this.eventListService.getEventsByApproved(true).subscribe((result: Event[]) => {
@@ -26,7 +27,8 @@ export class EventsListComponent implements OnInit {
   }
 
   calculateRowsCount(itemsCount: number) {
-    let finalRowNumber = itemsCount % columnLimit == 0 ? Math.round(itemsCount / columnLimit) : Math.round(itemsCount / columnLimit) + 1;
+    // let finalRowNumber = itemsCount % columnLimit == 0 ? Math.round(itemsCount / columnLimit) : Math.round(itemsCount / columnLimit) + 1;
+    let finalRowNumber = 2;
     this.rowCount = Array(finalRowNumber).fill(0).map((x, i) => i);
   }
 

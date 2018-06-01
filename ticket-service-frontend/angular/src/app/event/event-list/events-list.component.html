@@ -1,6 +1,6 @@
 <div class="event-list-main-container">
   <div *ngFor="let item of rowCount;let i = index" class="event-list-row row">
-    <div *ngFor="let event of events.slice(i*5, i*5+5)" class="col-md-2 event-list-item"
+    <div *ngFor="let event of events.slice(page*5, page*5+5)" class="col-md-2 event-list-item"
          (click)="redirectToDetailsPage(event.id)">
       <div class="event-item-image">
         <img class="img-fluid" src="{{event.imgUrl}}">
@@ -20,4 +20,6 @@
       </div>
     </div>
   </div>
+  <ngb-pagination class="d-flex justify-content-center" [collectionSize]="events.length" [(page)]="page"
+                  [maxSize]="5" [rotate]="true" [ellipses]="false" [boundaryLinks]="true"></ngb-pagination>
 </div>
