@@ -3,7 +3,6 @@ package com.github.olegbal.ticketservice.controllers.user;
 import com.github.olegbal.ticketservice.data.auth.LoginAndPasswordDto;
 import com.github.olegbal.ticketservice.data.auth.RegistrationDto;
 import com.github.olegbal.ticketservice.data.auth.UserDto;
-import com.github.olegbal.ticketservice.entities.User;
 import com.github.olegbal.ticketservice.security.TokenAuthenticationService;
 import com.github.olegbal.ticketservice.security.UserAuthentication;
 import com.github.olegbal.ticketservice.services.auth.LoginService;
@@ -37,7 +36,7 @@ public class AuthController {
 
         UserDto userDto = null;
 
-        if (user.getDetails() != null) {
+        if (user != null && user.getDetails() != null) {
             userDto = conversionService.convert(user.getDetails(), UserDto.class);
         }
 
@@ -45,9 +44,10 @@ public class AuthController {
     }
 
     @PostMapping(path = "/register")
-    public ResponseEntity signUp(@RequestBody @Valid final RegistrationDto registrationDto) {
+    public ResponseEntity signUp(HttpServletResponse response,
+                                 @RequestBody @Valid final RegistrationDto registrationDto) {
 
-        UserDto registeredUser = registrationService.registerUser(registrationDto);
+        UserDto registeredUser = registrationService.registerUser(registrationDto, response);
 
         if (registeredUser == null) {
             //TODO THROW EXCEPTION

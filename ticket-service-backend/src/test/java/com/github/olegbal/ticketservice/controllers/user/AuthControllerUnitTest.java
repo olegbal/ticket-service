@@ -8,7 +8,6 @@ import com.github.olegbal.ticketservice.matchers.LoginDtoMatcher;
 import com.github.olegbal.ticketservice.matchers.RegistrationDtoLoginMatcher;
 import com.github.olegbal.ticketservice.security.SecurityConfig;
 import com.github.olegbal.ticketservice.security.TokenAuthenticationService;
-import com.github.olegbal.ticketservice.services.auth.DefaultRegistrationService;
 import com.github.olegbal.ticketservice.services.auth.LoginService;
 import com.github.olegbal.ticketservice.services.auth.RegistrationService;
 import com.github.olegbal.ticketservice.services.user.UserInfoService;
@@ -16,26 +15,18 @@ import com.github.olegbal.ticketservice.testutils.RegistrationDtoCreator;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Import;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
 import static com.github.olegbal.ticketservice.enums.ApiVersioningUrlPrefix.V1;
-import static org.junit.Assert.*;
-import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyObject;
 import static org.mockito.Matchers.argThat;
-import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -63,8 +54,8 @@ public class AuthControllerUnitTest {
 
     @Before
     public void setUp() {
-        when(registrationService.registerUser(anyObject())).thenReturn(new UserDto());
-        when(registrationService.registerUser(argThat(new RegistrationDtoLoginMatcher("failedUser")))).thenReturn(null);
+        when(registrationService.registerUser(anyObject(), anyObject())).thenReturn(new UserDto());
+        when(registrationService.registerUser(argThat(new RegistrationDtoLoginMatcher("failedUser")), anyObject())).thenReturn(null);
 
         when(loginService.logIn(anyObject(), anyObject())).thenReturn(new UserDto());
         when(loginService.logIn(argThat(new LoginDtoMatcher("failedUser")), anyObject())).thenReturn(null);

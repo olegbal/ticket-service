@@ -91,7 +91,11 @@
       Message and styles must be here!
     </div>
   </div>
-  <div class="registration-input-block">
+  <div class="register-special-account-checkbox text-center">
+    <label>Register special account</label>
+    <input type="checkbox" (change)="registerSpecialAccount = !registerSpecialAccount">
+  </div>
+  <div *ngIf="registerSpecialAccount" class="registration-input-block">
     <label class="block-label text-center" for="registration-code-input">
       {{'registration.form.code.label' | translate}}
     </label>
@@ -107,24 +111,5 @@
   <div id="registration-submit-button" class="submit-button text-center">
     <input type="submit" class="btn btn-success" value="{{'registration.button' | translate}}"
            [disabled]="!registrationForm.form.valid">
-  </div>
-  <div class="social-login-container">
-    <div class="text-center">
-      <p>
-        {{'registration.other.social-networks' | translate}}
-      </p>
-    </div>
-    <div class="row">
-      <div class="social-login-images">
-        <div class="text-center">
-          <img class="social-login-image"
-               src="https://i.pinimg.com/736x/89/67/d9/8967d993037b3608240346b4e46b86f9--animation-gif.jpg">
-        </div>
-        <div class="text-center">
-          <img class="social-login-image"
-               src="https://cdn4.iconfinder.com/data/icons/new-google-logo-2015/400/new-google-favicon-512.png">
-        </div>
-      </div>
-    </div>
   </div>
 </form>

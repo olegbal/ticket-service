@@ -14,7 +14,7 @@ export class RegistrationService {
   }
 
   register(registrationData: RegistrationData) {
-    return this.http.post(AuthHelper.apiRegistrationUrl, JSON.stringify(registrationData), httpOptions)
+    return this.http.post(AuthHelper.apiRegistrationUrl, JSON.stringify(registrationData), httpOptions);
   }
 
 }

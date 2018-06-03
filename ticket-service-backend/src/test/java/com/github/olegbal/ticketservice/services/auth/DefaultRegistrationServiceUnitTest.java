@@ -8,6 +8,9 @@ import com.github.olegbal.ticketservice.entities.Role;
 import com.github.olegbal.ticketservice.entities.User;
 import com.github.olegbal.ticketservice.enums.Roles;
 import com.github.olegbal.ticketservice.factories.SerialNumberRolesFactory;
+import com.github.olegbal.ticketservice.handlers.TokenHandler;
+import com.github.olegbal.ticketservice.helpers.cookie.AuthCookieHelper;
+import com.github.olegbal.ticketservice.services.cookie.DefaultRequestResponseCookieService;
 import com.github.olegbal.ticketservice.services.user.UserInfoService;
 import com.github.olegbal.ticketservice.testutils.RegistrationDtoCreator;
 import org.junit.Before;
@@ -27,6 +30,9 @@ public class DefaultRegistrationServiceUnitTest {
     private ConversionService conversionService;
     private UserInfoService userInfoService;
     private SerialNumberRolesFactory rolesFactory;
+    private TokenHandler tokenHandler;
+    private DefaultRequestResponseCookieService reqResCookieService;
+    private AuthCookieHelper authCookieService;
     private RegistrationService registrationService;
 
     @Before
@@ -36,7 +42,11 @@ public class DefaultRegistrationServiceUnitTest {
         setupConverters();
 
         rolesFactory = Mockito.mock(SerialNumberRolesFactory.class);
-        registrationService = new DefaultRegistrationService(userInfoService, conversionService, rolesFactory);
+        tokenHandler = Mockito.mock(TokenHandler.class);
+        reqResCookieService = Mockito.mock(DefaultRequestResponseCookieService.class);
+        authCookieService = Mockito.mock(AuthCookieHelper.class);
+        registrationService = new DefaultRegistrationService(userInfoService, conversionService, rolesFactory,
+                tokenHandler, authCookieService, reqResCookieService);
 
 //        TODO REWRITE ACCORDING TO THE NEW SERVICE LOGIC
 //        when(userInfoService.isUserExists("user1")).thenReturn(false);
@@ -68,9 +78,9 @@ public class DefaultRegistrationServiceUnitTest {
         RegistrationDto orgRegData = RegistrationDtoCreator.createOrganizerData("organizer1", "organizer1@gmail.com", "323345");
         RegistrationDto emptyData = RegistrationDtoCreator.createUserData("noSuchUser", "noMail@gmail.com", "000000");
 
-        UserDto notFoundUser = registrationService.registerUser(emptyData);
-        UserDto registeredUser = registrationService.registerUser(userRegData);
-        UserDto registeredOrganizer = registrationService.registerUser(orgRegData);
+        UserDto notFoundUser = registrationService.registerUser(emptyData, anyObject());
+        UserDto registeredUser = registrationService.registerUser(userRegData, anyObject());
+        UserDto registeredOrganizer = registrationService.registerUser(orgRegData, anyObject());
 
         assertThat(notFoundUser).isNull();
 
