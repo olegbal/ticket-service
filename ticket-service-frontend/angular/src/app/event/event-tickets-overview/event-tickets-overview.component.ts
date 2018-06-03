@@ -20,8 +20,8 @@ export class EventTicketsOverviewComponent implements OnInit {
   }
 
   tickets: Ticket[];
-  ticketsInfo = [];
-  selectedTickets = [];
+  ticketsInfo: DisplayingTicketInfo[] = [];
+  selectedTickets: DisplayingTicketInfo[] = [];
 
 
   ngOnInit() {
@@ -63,7 +63,6 @@ export class EventTicketsOverviewComponent implements OnInit {
   }
 
   addToSelected() {
-    let freeTicketList = this.tickets.filter(x => x.ticketState == 0);
     let ticketInfoList = this.ticketsInfo.filter(x => x.selectedAmount > 0);
 
     for (let i = 0; i < ticketInfoList.length; i++) {
@@ -75,7 +74,7 @@ export class EventTicketsOverviewComponent implements OnInit {
       }
 
     }
-    this.hasSelectedTickets();
+    ticketInfoList.forEach(item => item.selectedAmount = 0);
   }
 
   hasSelectedTickets(): boolean {
@@ -92,7 +91,26 @@ export class EventTicketsOverviewComponent implements OnInit {
       }
     }
     this.orderService.createOrder(orderingTicketList, this.accountEntryService.loggedUser.id).subscribe(() => {
-      console.log("success");
+      this.updateDataAfterOrder();
     });
+  }
+
+  updateDataAfterOrder() {
+    this.ticketsInfo = [];
+    this.selectedTickets = [];
+    this.activatedRoute.parent.params.subscribe((receivedParams) => {
+      let params = receivedParams;
+      this.ticketService.getEventTickets(params.id).subscribe((tickets: Ticket[]) => {
+        this.tickets = tickets;
+        this.prepareForDisplaying();
+      });
+    });
+  }
+
+  removeSelection(displayingTicketInfo: DisplayingTicketInfo) {
+    let returningAmountTicket = this.ticketsInfo.find(x => x.ticket.id == displayingTicketInfo.ticket.id);
+    returningAmountTicket.amount += displayingTicketInfo.selectedAmount;
+    returningAmountTicket.selectedAmount = 0;
+    displayingTicketInfo.selectedAmount = 0;
   }
 }

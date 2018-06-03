@@ -25,10 +25,7 @@
     </table>
     <button (click)="addToSelected()">Add tickets</button>
   </div>
-  <div class="event-place-scheme col-md-6">
-    <img style="display:block;margin: 10px auto;" src="assets/images/ticket_plan.jpg">
-  </div>
-  <div *ngIf="hasSelectedTickets()" class="event-selected-tickets row">
+  <div *ngIf="hasSelectedTickets()" class="event-selected-tickets row col-md-6">
     <table class="table table-hover event-selected-tickets-table">
       <thead>
       <tr>
@@ -42,6 +39,7 @@
         <td>{{ticket.ticket.ticketType.typeDescription}}</td>
         <td>{{ticket.ticket.ticketPrice}}</td>
         <td>{{ticket.selectedAmount}}</td>
+        <td><button (click)="removeSelection(ticket)">X</button></td>
       </tr>
       </tbody>
     </table>
