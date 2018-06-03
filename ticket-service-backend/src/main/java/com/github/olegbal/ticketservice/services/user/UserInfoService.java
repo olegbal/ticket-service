@@ -12,6 +12,8 @@ public interface UserInfoService extends UserDetailsService {
 
     User getUserByLogin(String login);
 
+    User getUserByEmail(String email);
+
     List<User> getUsersByRoles(Set<Role> rolesSet);
 
     User createUser(User user);
@@ -20,7 +22,7 @@ public interface UserInfoService extends UserDetailsService {
 
     User loadUserByUsername(String login);
 
-    boolean isUserExists(String login);
+    boolean isUserExists(String login, String email);
 
     boolean isUserExists(long id);
 

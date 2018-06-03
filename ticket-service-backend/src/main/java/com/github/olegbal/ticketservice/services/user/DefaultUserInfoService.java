@@ -30,6 +30,11 @@ public class DefaultUserInfoService implements UserInfoService {
     }
 
     @Override
+    public User getUserByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
+
+    @Override
     public List<User> getUsersByRoles(Set<Role> rolesSet) {
         return userRepository.findAllByRoles(rolesSet);
     }
@@ -53,11 +58,22 @@ public class DefaultUserInfoService implements UserInfoService {
     }
 
     @Override
-    public boolean isUserExists(String login) {
+    public boolean isUserExists(String login, String email) {
 
-        User user = getUserByLogin(login);
+        boolean possible = true;
 
-        return user != null;
+        User checkLogin = getUserByLogin(login);
+
+        if (checkLogin != null) {
+            return true;
+        }
+
+        User checkEmail = getUserByEmail(email);
+
+        if (checkEmail != null) {
+            return true;
+        }
+        return false;
     }
 
     @Override

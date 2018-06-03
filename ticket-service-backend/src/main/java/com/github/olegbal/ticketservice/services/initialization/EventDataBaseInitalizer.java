@@ -53,5 +53,7 @@ public class EventDataBaseInitalizer implements DataBaseInitializer {
         Event event = new Event(i, "Event" + i, new Date(2018, 5, 30),
                 "https://www.kvitki.by/imageGenerator/355ce3ac3f02f72dac89b1aef3f11956/concertShort", true, eventPlace, null, user);
         eventService.createEvent(event);
+        event.setApproved(false);
+        eventService.createEvent(event);
     }
 }

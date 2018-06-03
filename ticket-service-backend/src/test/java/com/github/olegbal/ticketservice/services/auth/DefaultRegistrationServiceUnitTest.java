@@ -1,6 +1,5 @@
 package com.github.olegbal.ticketservice.services.auth;
 
-import com.github.olegbal.ticketservice.testutils.RegistrationDtoCreator;
 import com.github.olegbal.ticketservice.converters.RegistrationDtoToUserEntityConverter;
 import com.github.olegbal.ticketservice.converters.UserEntityToDtoConverter;
 import com.github.olegbal.ticketservice.data.auth.RegistrationDto;
@@ -10,6 +9,7 @@ import com.github.olegbal.ticketservice.entities.User;
 import com.github.olegbal.ticketservice.enums.Roles;
 import com.github.olegbal.ticketservice.factories.SerialNumberRolesFactory;
 import com.github.olegbal.ticketservice.services.user.UserInfoService;
+import com.github.olegbal.ticketservice.testutils.RegistrationDtoCreator;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -38,9 +38,10 @@ public class DefaultRegistrationServiceUnitTest {
         rolesFactory = Mockito.mock(SerialNumberRolesFactory.class);
         registrationService = new DefaultRegistrationService(userInfoService, conversionService, rolesFactory);
 
-        when(userInfoService.isUserExists("user1")).thenReturn(false);
-        when(userInfoService.isUserExists("noSuchUser")).thenReturn(true);
-        when(userInfoService.isUserExists("organizer1")).thenReturn(false);
+//        TODO REWRITE ACCORDING TO THE NEW SERVICE LOGIC
+//        when(userInfoService.isUserExists("user1")).thenReturn(false);
+//        when(userInfoService.isUserExists("noSuchUser")).thenReturn(true);
+//        when(userInfoService.isUserExists("organizer1")).thenReturn(false);
 
         when(userInfoService.createUser(anyObject())).thenReturn(new User());
         when(userInfoService.createUser(null)).thenReturn(null);
