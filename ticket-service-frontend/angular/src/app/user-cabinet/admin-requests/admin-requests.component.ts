@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-admin-requests',
@@ -7,9 +7,12 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class AdminRequestsComponent implements OnInit {
 
-  constructor() { }
+  constructor() {
+  }
 
   @Input() requests: Event[];
+  requestSelected: boolean = false;
+  page = 1;
 
   ngOnInit() {
   }

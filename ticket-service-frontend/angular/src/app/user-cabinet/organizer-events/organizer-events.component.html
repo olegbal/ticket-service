@@ -1,13 +1,24 @@
-<div class="events-short-description-list">
-  <div *ngFor="let event of events" class="event-item">
-    <div (click)="enableEventDetails(event.id)" class="">
-      <div>{{event.title}}</div>
-      <div>Date of event: {{event.date}}</div>
-      <div><img src="{{event.imgUrl}}"></div>
-      <div>Tickets price diapason: {{event.minPrice}} - {{event.maxPrice}}</div>
-      <div>{{event.eventPlace.placeAddress}}</div>
-      <div>{{event.eventPlace.placeName}}</div>
-      <br>
+<div class="row events-tab-inner-container">
+  <div *ngIf="!eventSelected" class="col-md-8 event-details-placeholder">
+    <h3 class="text-center">Select an event</h3>
+  </div>
+  <div *ngIf="eventSelected" class="col-md-8 event-details">
+
+  </div>
+  <div class="col-md-4 events-list">
+    <div *ngFor="let event of events | paginate: { itemsPerPage: 6, currentPage: page}" class="event-item">
+      <div (click)="enableEventDetails(event.id)" class="">
+        <div>{{event.title}}</div>
+        <div>Date of event: {{event.date}}</div>
+        <div><img src="{{event.imgUrl}}"></div>
+        <div>Tickets price diapason: {{event.minPrice}} - {{event.maxPrice}}</div>
+        <div>{{event.eventPlace.placeAddress}}</div>
+        <div>{{event.eventPlace.placeName}}</div>
+        <br>
+      </div>
+    </div>
+    <div class="event-list-pagination-block">
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
     </div>
   </div>
 </div>

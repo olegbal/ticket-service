@@ -12,6 +12,8 @@ export class OrganizerEventsComponent implements OnInit {
   }
 
   @Input() events: Event[];
+  eventSelected: boolean = false;
+  page = 1;
 
   ngOnInit() {
   }
