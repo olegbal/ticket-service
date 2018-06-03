@@ -1,8 +1,7 @@
-import {Injectable} from '@angular/core';
-import {CookieService} from "ngx-cookie-service";
-import {Router} from "@angular/router";
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {User} from "../data/User";
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { User } from "../data/User";
+import { ChangePasswordDto } from "../data/ChangePasswordDto";
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -16,6 +15,10 @@ export class UserService {
 
   updateUser(user: User) {
     return this.http.put("/api/v1/users", JSON.stringify(user), httpOptions)
+  }
+
+  changePassword(changePasswordDto: ChangePasswordDto) {
+    return this.http.put("/api/v1/users/change-password", JSON.stringify(changePasswordDto), httpOptions);
   }
 
 }

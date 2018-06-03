@@ -77,14 +77,20 @@
         <button (click)="cancelAccountInfoEditing();">Cancel</button>
       </div>
       <div class="change-password-block">
-        <button (click)="newPasswordEnabled= true">Change password</button>
+        <button (click)="enableChangePassword()">Change password</button>
         <form *ngIf="newPasswordEnabled" #changePasswrodForm="ngForm">
-          <label>new password</label>
-          <input type="text" name="change-password-input" id="change-password-input"
+          <label>Current password</label>
+          <input type="text" name="current-password-input" id="current-password-input"
                  class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
-                 [(ngModel)]="user.password" #password="ngModel" pattern="" required>
-          <button>Change</button>
-          <button (click)="newPasswordEnabled= false;">Cancel</button>
+                 [(ngModel)]="changePasswordDto.currentPassword" #currentPassword="ngModel"
+                 pattern="^[a-zA-Z0-9]{6,15}$" required>
+          <label>New password</label>
+          <input type="text" name="new-password-input" id="new-password-input"
+                 class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
+                 [(ngModel)]="changePasswordDto.newPassword" #newPassword="ngModel" pattern="^[a-zA-Z0-9]{6,15}$"
+                 required>
+          <button (click)="cancelChangePassword()">Cancel</button>
+          <button (click)="sendChangePasswordRequest()">Change</button>
         </form>
       </div>
     </form>

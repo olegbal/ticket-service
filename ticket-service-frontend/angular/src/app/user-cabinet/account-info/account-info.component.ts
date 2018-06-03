@@ -1,6 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {User} from "../../data/User";
-import {UserService} from "../user.service";
+import { Component, Input, OnInit } from '@angular/core';
+import { User } from "../../data/User";
+import { UserService } from "../user.service";
+import { ChangePasswordDto } from "../../data/ChangePasswordDto";
 
 @Component({
   selector: 'app-account-info',
@@ -16,6 +17,7 @@ export class AccountInfoComponent implements OnInit {
   editingUser: User;
   accountInfoEditing: boolean = false;
   newPasswordEnabled: boolean = false;
+  changePasswordDto: ChangePasswordDto = new ChangePasswordDto(0, "", "");
 
   ngOnInit() {
   }
@@ -37,5 +39,27 @@ export class AccountInfoComponent implements OnInit {
       this.accountInfoEditing = false;
     });
   }
+
+  enableChangePassword() {
+    this.newPasswordEnabled = true;
+  }
+
+  cancelChangePassword() {
+    this.newPasswordEnabled = false;
+    this.changePasswordDto = new ChangePasswordDto(0, "", "");
+  }
+
+  sendChangePasswordRequest() {
+    this.changePasswordDto.id = this.user.id;
+    this.userService.changePassword(this.changePasswordDto).subscribe((receivedUser: User) => {
+        this.user = receivedUser;
+        this.cancelChangePassword();
+      },
+      error => {
+        //TODO ADD TOASTER
+        alert("Failed while changing password");
+      });
+  }
+
 
 }

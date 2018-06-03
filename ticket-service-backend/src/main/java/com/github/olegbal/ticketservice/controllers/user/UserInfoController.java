@@ -1,5 +1,6 @@
 package com.github.olegbal.ticketservice.controllers.user;
 
+import com.github.olegbal.ticketservice.data.ChangePasswordDto;
 import com.github.olegbal.ticketservice.data.auth.UserDto;
 import com.github.olegbal.ticketservice.entities.User;
 import com.github.olegbal.ticketservice.services.user.UserInfoService;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import javax.websocket.server.PathParam;
@@ -21,6 +23,7 @@ public class UserInfoController {
 
     private final UserInfoService userInfoService;
     private final ConversionService conversionService;
+    private final BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @GetMapping(path = "/users/{id}")
     public ResponseEntity getUserById(@PathVariable long id) {
@@ -61,6 +64,24 @@ public class UserInfoController {
         UserDto updatedDto = conversionService.convert(user, UserDto.class);
 
         return new ResponseEntity<>(updatedDto, HttpStatus.OK);
+    }
+
+    @PutMapping(path = "/users/change-password")
+    public ResponseEntity changePassword(@RequestBody ChangePasswordDto changePasswordDto) {
+
+        User user = userInfoService.getUserById(changePasswordDto.getId());
+
+        if (!bCryptPasswordEncoder.matches(changePasswordDto.getCurrentPassword(), user.getPassword())) {
+            return new ResponseEntity(HttpStatus.NOT_MODIFIED);
+        }
+
+        String newCryptedPassword = bCryptPasswordEncoder.encode(changePasswordDto.getNewPassword());
+        user.setPassword(newCryptedPassword);
+        user = userInfoService.updateUser(user);
+
+        UserDto convertedUser = conversionService.convert(user, UserDto.class);
+
+        return new ResponseEntity<>(convertedUser, HttpStatus.OK);
     }
 
     @DeleteMapping(path = "/users/{id}")
