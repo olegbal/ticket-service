@@ -1,0 +1,20 @@
+.orders-tab-inner-container {
+  height: 400px;
+}
+
+.order-list-column {
+  overflow-y: scroll;
+  direction: rtl;
+}
+
+.order-item {
+  direction: ltr;
+  border: 1px solid black;
+  padding: 3px;
+  margin: 10px 5px;
+  height: 100px;
+}
+
+.order-list-pagination-block {
+  direction: ltr;
+}

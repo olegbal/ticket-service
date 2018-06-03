@@ -1,7 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {OrderService} from "../../order/order.service";
-import {Order} from "../../data/Order";
-import {ActivatedRoute} from "@angular/router";
+import { Component, Input, OnInit } from '@angular/core';
+import { Order } from "../../data/Order";
 
 @Component({
   selector: 'app-user-order-details',
@@ -10,21 +8,14 @@ import {ActivatedRoute} from "@angular/router";
 })
 export class UserOrderDetailsComponent implements OnInit {
 
-  constructor(private orderService: OrderService,
-              private activatedRoute: ActivatedRoute) {
+  constructor() {
   }
 
-  order: Order = new Order(0, new Date(), null, []);
+  @Input() order: Order;
   totalPrice: number = 0;
 
   ngOnInit() {
-    this.activatedRoute.params.subscribe((receivedParams) => {
-      let params = receivedParams;
-      this.orderService.getOrderById(params.orderId).subscribe((receivedOrder: Order) => {
-        this.order = receivedOrder;
-        this.calculateTotalPrice();
-      });
-    });
+    this.calculateTotalPrice();
   }
 
   calculateTotalPrice() {

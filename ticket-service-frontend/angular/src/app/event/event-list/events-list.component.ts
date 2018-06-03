@@ -16,7 +16,7 @@ export class EventsListComponent implements OnInit {
   }
 
   rowCount: Array<number>;
-  events: Event[];
+  events: Event[] = [];
   page = 1;
 
   ngOnInit() {

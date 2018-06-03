@@ -1,6 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
-import {Order} from "../../data/Order";
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
+import { Order } from "../../data/Order";
+import { OrderService } from "../../order/order.service";
 
 @Component({
   selector: 'app-user-orders',
@@ -9,16 +10,21 @@ import {Order} from "../../data/Order";
 })
 export class UserOrdersComponent implements OnInit {
 
-  constructor(private router: Router) {
+  constructor(private router: Router,
+              private orderService: OrderService) {
   }
 
   @Input() orders: Order[];
+  orderSelected: boolean = false;
+  selectedOrder = new Order(0, new Date(Date.now()), null, []);
+  page = 1;
 
   ngOnInit() {
   }
 
-  enableOrderDetails(orderId: number) {
-    this.router.navigate(["/cabinet/orders", orderId]);
+  selectOrder(order: Order) {
+    if (order.id != 0) this.orderSelected = true;
+    this.selectedOrder = order;
   }
 
 }
