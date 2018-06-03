@@ -7,10 +7,10 @@
           <input type="text" name="login" id="signin-login-input"
                  class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
                  [(ngModel)]="loginData.login" placeholder="{{'login.username.placeholder' | translate}}"
-                 #login="ngModel" required>
+                 #login="ngModel" pattern="^[a-zA-Z0-9]{4,15}$" required>
           <div *ngIf="login.touched && login.invalid"
                class="alert alert-danger">
-            Message and styles must be here!
+            {{'login.common.error' | translate}}
           </div>
         </div>
       </div>
@@ -19,11 +19,11 @@
           <label class="block-label" for="signin-pass-input">{{'login.password.label' | translate}}</label>
           <input type="password" name="password" id="signin-pass-input"
                  class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
-                 [(ngModel)]="loginData.password"
-                 placeholder="{{'login.password.placeholder' | translate}}" #password="ngModel" required>
+                 [(ngModel)]="loginData.password" placeholder="{{'login.password.placeholder' | translate}}"
+                 #password="ngModel" pattern="^[a-zA-Z0-9]{6,15}$" required>
           <div *ngIf="password.touched && password.invalid"
                class="alert alert-danger">
-            Message and styles must be here!
+            {{'login.common.error' | translate}}
           </div>
         </div>
       </div>

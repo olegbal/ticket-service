@@ -7,6 +7,7 @@
 	"header.cart-entry.items-description": "У вас {{number}} билетов в корзине",
 	"header.events.search.placeholder": "Поиск мероприятий",
 	"header.language.select": "Выбор языка",
+
 	"login.button": "Войти",
 	"login.other.forgotten-password": "Забыли пароль?",
 	"login.other.registration": "Если у вас нет аккаунта, то ",
@@ -17,6 +18,8 @@
 	"login.username.label": "E-mail адресс/логин",
 	"login.username.placeholder": "Введите свой email или login",
 	"login.username.validation.common": "",
+  "login.common.error": "Введено некорректное значение",
+
 	"registration.button": "Регистрация",
 	"registration.error.common": "",
 	"registration.form.code.label": "Ключ активации аккаунта",
@@ -35,5 +38,7 @@
 	"registration.form.password.placeholder": "ваш пароль",
 	"registration.form.phonenumber.label": "Телефон",
 	"registration.form.phonenumber.placeholder": "телефон для связи",
-	"registration.other.social-networks": "Или зарегистрируйтесь через"
+	"registration.other.social-networks": "Или зарегистрируйтесь через",
+
+  "registration.form.error.common": "Введено некорректное значение"
 }

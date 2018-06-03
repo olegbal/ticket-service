@@ -9,7 +9,7 @@
            [(ngModel)]="registrationData.login" #login="ngModel" pattern="^[a-zA-Z0-9]{4,15}$" required>
     <div *ngIf="login.touched && login.invalid"
          class="alert alert-danger">
-      Message and styles must be here!
+      {{'registration.form.error.common' | translate}}
     </div>
   </div>
   <div class="registration-input-block">
@@ -22,7 +22,7 @@
            [(ngModel)]="registrationData.email" #email="ngModel" email="true" required>
     <div *ngIf="email.touched && email.invalid"
          class="alert alert-danger">
-      Message and styles must be here!
+      {{'registration.form.error.common' | translate}}
     </div>
   </div>
   <div class="registration-input-block">
@@ -36,7 +36,7 @@
            pattern="^[a-zA-Z0-9]{6,15}$" required>
     <div *ngIf="password.touched && password.invalid"
          class="alert alert-danger">
-      Message and styles must be here!
+      {{'registration.form.error.common' | translate}}
     </div>
   </div>
   <div class="registration-input-block">
@@ -49,7 +49,7 @@
            [(ngModel)]="registrationData.firstName" #firstName="ngModel">
     <div *ngIf="firstName.touched && firstName.invalid"
          class="alert alert-danger">
-      Message and styles must be here!
+      {{'registration.form.error.common' | translate}}
     </div>
   </div>
   <div class="registration-input-block">
@@ -62,7 +62,7 @@
            [(ngModel)]="registrationData.lastName" #lastName="ngModel">
     <div *ngIf="lastName.touched && lastName.invalid"
          class="alert alert-danger">
-      Message and styles must be here!
+      {{'registration.form.error.common' | translate}}
     </div>
   </div>
   <div class="registration-input-block">
@@ -75,7 +75,7 @@
            [(ngModel)]="registrationData.organization" #organization="ngModel">
     <div *ngIf="organization.touched && organization.invalid"
          class="alert alert-danger">
-      Message and styles must be here!
+      {{'registration.form.error.common' | translate}}
     </div>
   </div>
   <div class="registration-input-block">
@@ -88,7 +88,7 @@
            [(ngModel)]="registrationData.phoneNumber" #phone="ngModel">
     <div *ngIf="phone.touched && phone.invalid"
          class="alert alert-danger">
-      Message and styles must be here!
+      {{'registration.form.error.common' | translate}}
     </div>
   </div>
   <div class="register-special-account-checkbox text-center">
@@ -105,7 +105,7 @@
            [(ngModel)]="registrationData.secretCode" #secretCode="ngModel">
     <div *ngIf="secretCode.touched && secretCode.invalid"
          class="alert alert-danger">
-      Message and styles must be here!
+      {{'registration.form.error.common' | translate}}
     </div>
   </div>
   <div id="registration-submit-button" class="submit-button text-center">
