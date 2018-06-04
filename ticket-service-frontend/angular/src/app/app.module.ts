@@ -45,6 +45,8 @@ import { EventEditorComponent } from './user-cabinet/event-editor/event-editor.c
 import { NgxPaginationModule } from 'ngx-pagination';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
+import { FileUploadModule } from 'ng2-file-upload';
+import { ImageUploaderService } from "./uploader/image-uploader.service";
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -90,6 +92,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     NgxPaginationModule,
     OwlDateTimeModule,
     OwlNativeDateTimeModule,
+    FileUploadModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -108,6 +111,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     TicketService,
     OrderService,
     UserService,
+    ImageUploaderService,
   ],
   bootstrap: [AppComponent]
 })

@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from "../../event/event.service";
-import { Event } from "../../data/Event";
+import { Ticket } from "../../data/Ticket";
+import { EventPlace } from "../../data/EventPlace";
+import { FileUploader } from "ng2-file-upload";
+import { ImageUploaderService } from "../../uploader/image-uploader.service";
+import { HttpResponse } from "@angular/common/http";
 
 @Component({
   selector: 'app-event-editor',
@@ -9,7 +13,8 @@ import { Event } from "../../data/Event";
 })
 export class EventEditorComponent implements OnInit {
 
-  constructor(private eventService: EventService) {
+  constructor(private eventService: EventService,
+              private uploadService: ImageUploaderService) {
   }
 
   ngOnInit() {
@@ -17,12 +22,15 @@ export class EventEditorComponent implements OnInit {
 
 
   editorFormEnabled: boolean = false;
-  creatingEvent: Event;
   dateOfEvent: Date = new Date();
+  ticketList: Ticket[] = [];
+  eventPlace: EventPlace = new EventPlace(0, "", "");
+  imgUrl: string = "";
+  uploader: FileUploader = new FileUploader({url: URL});
+  imageUrl: string = "assets/images/event-empty-image.jpg";
 
   startEditing() {
     this.editorFormEnabled = true;
-    this.creatingEvent = new Event(-1, "Event title", new Date(Date.now()), "", null, 0, 0, false)
   }
 
   clearContent() {
@@ -32,4 +40,20 @@ export class EventEditorComponent implements OnInit {
   saveContent() {
 
   }
+
+  selectFile(event) {
+    const file = event.target.files.item(0);
+    if (file.type.match('image.*')) {
+      this.uploadService.pushFileToStorage(file).subscribe(loadEvent => {
+        if (loadEvent instanceof HttpResponse) {
+          console.log('File is completely uploaded!');
+          this.imageUrl = "/api/v1/images/" + file.name;
+        }
+      })
+    } else {
+      alert('invalid format!');
+    }
+  }
 }
+
+const URL = '/api/v1/images/upload';

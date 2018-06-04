@@ -58,6 +58,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(V1 + "/users**").permitAll()
                 .antMatchers(V1 + "/users/**").permitAll()
                 //                END OF USERS
+
+                //                IMAGE UPLOADER URLS
+                .antMatchers(V1 + "/images/**").permitAll()
+                //                END OF IMAGE UPLOADER URLS
                 .anyRequest().authenticated()
                 .and()
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)

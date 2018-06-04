@@ -12,6 +12,10 @@ spring:
       hibernate:
         dialect: org.hibernate.dialect.MySQL5Dialect
     generate-ddl: true
+  http:
+    multipart:
+      max-file-size: 500KB
+      max-request-size: 500KB
 token:
   cookie-name: auth
   secret: MY_SECRET_TSS
