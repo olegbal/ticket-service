@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 
 import java.math.BigDecimal;
 import java.util.Comparator;
-import java.util.function.Supplier;
 
 @Component
 public class EventToEventDtoConverter implements Converter<Event, EventDto> {
@@ -24,22 +23,26 @@ public class EventToEventDtoConverter implements Converter<Event, EventDto> {
         eventDto.setApproved(source.isApproved());
         eventDto.setEventPlace(source.getEventPlace());
 
-//        Ticket minPriceTicket = source.getTickets().stream().min(Comparator.comparing(Ticket::getTicketPrice))
-//                .orElseGet(null);
-//
-//        BigDecimal minPrice = minPriceTicket == null ? new BigDecimal(0) : minPriceTicket.getTicketPrice();
-//
-//        Ticket maxPriceTicket = source.getTickets().stream().max(Comparator.comparing(Ticket::getTicketPrice))
-//                .orElseGet(null);
-//
-//        BigDecimal maxPrice = maxPriceTicket == null ? new BigDecimal(0) : maxPriceTicket.getTicketPrice();
-//
-//        eventDto.setMinPrice(minPrice);
-//        eventDto.setMaxPrice(maxPrice);
-        //FIXME  ADD REAL DATA
+        if (source.getTickets() == null || source.getTickets().size() == 0) {
+            //FIXME Fast crutch because of lack of time
+            eventDto.setMinPrice(new BigDecimal(0));
+            eventDto.setMaxPrice(new BigDecimal(0));
+            return eventDto;
+        }
 
-        eventDto.setMinPrice(new BigDecimal(0));
-        eventDto.setMaxPrice(new BigDecimal(1000));
+        Ticket minPriceTicket = source.getTickets().stream().min(Comparator.comparing(Ticket::getTicketPrice))
+                .orElseGet(null);
+
+        BigDecimal minPrice = minPriceTicket == null ? new BigDecimal(0) : minPriceTicket.getTicketPrice();
+
+        Ticket maxPriceTicket = source.getTickets().stream().max(Comparator.comparing(Ticket::getTicketPrice))
+                .orElseGet(null);
+
+        BigDecimal maxPrice = maxPriceTicket == null ? new BigDecimal(0) : maxPriceTicket.getTicketPrice();
+
+        eventDto.setMinPrice(minPrice);
+        eventDto.setMaxPrice(maxPrice);
+
         return eventDto;
     }
 }
