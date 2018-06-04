@@ -43,6 +43,8 @@ import { UserOrdersComponent } from './user-cabinet/user-orders/user-orders.comp
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { EventEditorComponent } from './user-cabinet/event-editor/event-editor.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -77,6 +79,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     FormsModule,
     AppRoutingModule,
     AuthRougingModule,
@@ -85,6 +88,8 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     UserCabinetRoutingModule,
     HttpClientModule,
     NgxPaginationModule,
+    OwlDateTimeModule,
+    OwlNativeDateTimeModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

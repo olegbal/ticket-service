@@ -18,6 +18,7 @@ export class EventEditorComponent implements OnInit {
 
   editorFormEnabled: boolean = false;
   creatingEvent: Event;
+  dateOfEvent: Date = new Date();
 
   startEditing() {
     this.editorFormEnabled = true;

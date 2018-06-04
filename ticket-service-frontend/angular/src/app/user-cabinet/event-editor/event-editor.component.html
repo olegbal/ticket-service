@@ -7,7 +7,11 @@
     </div>
     <div class="row">
       <div class="col-md-6 date-picker-container">
-        <label>Date of event:</label>
+        <label>
+          Date of event:
+          <input [(ngModel)]="dateOfEvent" [owlDateTimeTrigger]="dt5" [owlDateTime]="dt5">
+          <owl-date-time [pickerMode]="'dialog'" #dt5></owl-date-time>
+        </label>
       </div>
       <div class="col-md-6 file-uploader-container">
 
