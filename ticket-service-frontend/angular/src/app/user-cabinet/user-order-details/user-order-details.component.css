@@ -1,0 +1,15 @@
+.order-info-ticket_list{
+  width: 40%;
+}
+.order-info-ticket_list>div{
+  border-bottom: 1px solid #dadada;
+}
+.order-info-ticket_list span{
+  font-style: italic;
+  margin-right: 5px;
+  min-width: 150px;
+  display: inline-block;
+}
+.order-info-price{
+  font-weight: 700;
+}
