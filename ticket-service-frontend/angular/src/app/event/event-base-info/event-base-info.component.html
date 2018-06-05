@@ -10,9 +10,10 @@
     <div class="event-date-and-place-info-container text-center">
       <p>
         <span class="event-date-info">{{selectedEvent.date}}</span>
+        <br>
         <span class="event-place-info">
-                {{selectedEvent.eventPlace.placeAddress}}<br>
-                {{selectedEvent.eventPlace.placeName}}
+          {{selectedEvent.eventPlace.placeName}}
+          {{selectedEvent.eventPlace.city}}
               </span>
       </p>
       <button class="btn btn-success">Добавить в календарь</button>

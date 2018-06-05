@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
+import {Event} from '../../data/Event.ts';
 
 @Component({
   selector: 'app-event-place-map',

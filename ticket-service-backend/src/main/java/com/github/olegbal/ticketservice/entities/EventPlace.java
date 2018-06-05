@@ -21,6 +21,12 @@ public class EventPlace {
     @Column(name = "event_place_name")
     private String placeName;
 
-    @Column(name = "event_place_address")
-    private String placeAddress;
+    @Column(name = "event_street_name")
+    private String streetAddress;
+
+    @Column(name = "event_city_name")
+    private String city;
+
+    @Column(name = "event_country_name")
+    private String country;
 }

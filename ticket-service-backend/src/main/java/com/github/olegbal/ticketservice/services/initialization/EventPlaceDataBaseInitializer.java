@@ -26,7 +26,7 @@ public class EventPlaceDataBaseInitializer implements DataBaseInitializer {
 
 
     private void createEventPlace(int i) {
-        EventPlace eventPlace = new EventPlace(i, "placeName" + i, "address " + i);
+        EventPlace eventPlace = new EventPlace(i, "placeName" + i, "Soviet street " + i, "Hrodno", "Belarus");
         eventPlaceService.createEventPlace(eventPlace);
     }
 }
