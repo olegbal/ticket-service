@@ -1,0 +1,14 @@
+.account-info-details-form-container{
+  max-width: 500px;
+  margin: 0 auto;
+  background: #fff;
+  padding: 30px 40px;
+  box-shadow: 0 3px 10px 3px #dadada;
+  border-radius: 5px ;
+  margin-bottom: 30px;
+}
+
+.account-info-details-form-container label{
+  min-width: 120px;
+  font-weight: 700;
+}
