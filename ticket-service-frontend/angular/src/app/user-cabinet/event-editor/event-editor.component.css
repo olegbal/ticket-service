@@ -1,0 +1,9 @@
+.file-uploader-image {
+  display: block;
+  height: 200px;
+  width: 200px;
+}
+
+.file-uploader-input {
+  display: block;
+}

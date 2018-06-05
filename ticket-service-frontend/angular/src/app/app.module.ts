@@ -47,6 +47,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { FileUploadModule } from 'ng2-file-upload';
 import { ImageUploaderService } from "./uploader/image-uploader.service";
+import { NG_SELECT_DEFAULT_CONFIG, NgSelectModule } from '@ng-select/ng-select';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -82,6 +83,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    NgSelectModule,
     FormsModule,
     AppRoutingModule,
     AuthRougingModule,
@@ -112,6 +114,12 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     OrderService,
     UserService,
     ImageUploaderService,
+    {
+      provide: NG_SELECT_DEFAULT_CONFIG,
+      useValue: {
+        notFoundText: 'Custom not found'
+      }
+    }
   ],
   bootstrap: [AppComponent]
 })

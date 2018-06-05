@@ -54,6 +54,14 @@ export class EventEditorComponent implements OnInit {
       alert('invalid format!');
     }
   }
+
+  openTicketEditor() {
+
+  }
+
+  openEventPlaceSelector() {
+
+  }
 }
 
 const URL = '/api/v1/images/upload';
