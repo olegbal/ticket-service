@@ -2,6 +2,26 @@
   height: 400px;
   margin: 10px auto;
   background-color: white;
+  box-shadow: 0 4px 10px 3px #dadada;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+.event-item-title{
+  text-align: center;
+}
+.event-item-address{
+  font-size: 14px;
+  font-style: italic;
+}
+.event-item-prices{
+  font-weight: 700;
+  font-style: italic;
+  text-align: right;
+}
+
+
+.event-list-item p{
+  margin: 0;
 }
 
 .event-item-image img {
