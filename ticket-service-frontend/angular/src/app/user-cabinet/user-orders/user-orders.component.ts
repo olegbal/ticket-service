@@ -23,6 +23,7 @@ export class UserOrdersComponent implements OnInit {
   }
 
   selectOrder(order: Order) {
+    if (order.id != 0) this.orderSelected = true;
     this.selectedOrder = order;
 
   }

@@ -11,7 +11,7 @@
   </div>
   <div class="col-md-4 order-list-column">
     <div *ngFor="let order of orders | paginate: { itemsPerPage: 6, currentPage: page }" class="order-item text-center">
-      <div (click)="selectOrder(order); orderSelected =!orderSelected">
+      <div (click)="selectOrder(order);">
         <div>#{{order.id}}</div>
         <div>Ordered: {{order.orderDate}}</div>
         <br>
