@@ -2,6 +2,7 @@ package com.github.olegbal.ticketservice.services.user;
 
 import com.github.olegbal.ticketservice.entities.User;
 import com.github.olegbal.ticketservice.repositories.UserRepository;
+import com.github.olegbal.ticketservice.services.event.EventService;
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
@@ -18,12 +19,14 @@ public class DefaultUserInfoServiceUnitTest {
 
     private UserRepository userRepository;
     private UserInfoService userInfoService;
+    private EventService eventService;
 
     @Before
     public void setUp() {
 
         userRepository = Mockito.mock(UserRepository.class);
-        userInfoService = new DefaultUserInfoService(userRepository, new BCryptPasswordEncoder());
+        eventService = Mockito.mock(EventService.class);
+        userInfoService = new DefaultUserInfoService(userRepository, new BCryptPasswordEncoder(), eventService);
 
         when(userRepository.findOne(1L)).thenReturn(createUserWithRoleOrganizer(1L, "login1"));
 

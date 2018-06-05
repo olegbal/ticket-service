@@ -1,8 +1,9 @@
-div {
-  outline: 1px red dotted;
+img#event-info-main-image {
+  width: 400px;
+  height: 400px;
+  box-shadow: 0 4px 10px 3px #dadada;
 }
 
-img#event-info-main-image {
-  width: 300px;
-  height: 350px;
+.event-info-main-image-container {
+  padding-top: 20px;
 }

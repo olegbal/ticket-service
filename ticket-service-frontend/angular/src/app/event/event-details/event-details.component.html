@@ -6,7 +6,19 @@
     <div class="event-right-side-content col-md-4">
       <app-event-place-map [selectedEvent]="event"></app-event-place-map>
       <div class="event-organizer-info">
-        Organizer info
+
+        <div class="organizer-info-title-block">
+          <span class="">Organizer info:</span>
+        </div>
+        <div class="organizer-info-organization-name">
+          <span class="">Organization: </span>{{organizer.organization}}
+        </div>
+        <div class="organizer-info-email">
+          <span class="">Email: </span>{{organizer.email}}
+        </div>
+        <div class="organizer-info-phone-number">
+          <span class="">Phone: </span>{{organizer.phoneNumber}}
+        </div>
       </div>
     </div>
   </div>

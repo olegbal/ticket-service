@@ -14,6 +14,8 @@ public interface UserInfoService extends UserDetailsService {
 
     User getUserByEmail(String email);
 
+    User getUserByEventId(long eventId);
+
     List<User> getUsersByRoles(Set<Role> rolesSet);
 
     User createUser(User user);

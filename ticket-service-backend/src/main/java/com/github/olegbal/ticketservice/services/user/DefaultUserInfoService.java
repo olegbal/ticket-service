@@ -1,8 +1,10 @@
 package com.github.olegbal.ticketservice.services.user;
 
+import com.github.olegbal.ticketservice.entities.Event;
 import com.github.olegbal.ticketservice.entities.Role;
 import com.github.olegbal.ticketservice.entities.User;
 import com.github.olegbal.ticketservice.repositories.UserRepository;
+import com.github.olegbal.ticketservice.services.event.EventService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -18,6 +20,7 @@ public class DefaultUserInfoService implements UserInfoService {
 
     private final UserRepository userRepository;
     private final BCryptPasswordEncoder bCryptPasswordEncoder;
+    private final EventService eventService;
 
     @Override
     public User getUserById(final long id) {
@@ -32,6 +35,17 @@ public class DefaultUserInfoService implements UserInfoService {
     @Override
     public User getUserByEmail(String email) {
         return userRepository.findByEmail(email);
+    }
+
+    @Override
+    public User getUserByEventId(long eventId) {
+        Event event = eventService.getEventById(eventId);
+
+        if (event != null) {
+            return event.getUser();
+        }
+
+        return null;
     }
 
     @Override

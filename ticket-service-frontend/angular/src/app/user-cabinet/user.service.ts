@@ -13,6 +13,10 @@ export class UserService {
   constructor(private http: HttpClient) {
   }
 
+  getOrganizerInfo(eventId: number) {
+    return this.http.get("/api/v1/users?eventId=" + eventId);
+  }
+
   updateUser(user: User) {
     return this.http.put("/api/v1/users", JSON.stringify(user), httpOptions)
   }

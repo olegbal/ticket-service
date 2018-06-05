@@ -44,6 +44,14 @@ public class UserInfoController {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
     }
 
+    @GetMapping(path = "/users", params = "eventId")
+    public ResponseEntity getUserByEventId(@PathParam(value = "eventId") long eventId) {
+        User user = userInfoService.getUserByEventId(eventId);
+        UserDto userDto = conversionService.convert(user, UserDto.class);
+
+        return new ResponseEntity<>(userDto, HttpStatus.OK);
+    }
+
     @PostMapping(path = "/users")
     public ResponseEntity createUser(@RequestBody UserDto user) {
         return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
