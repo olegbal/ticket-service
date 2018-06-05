@@ -8,5 +8,6 @@ div.footer-component-container {
 }
 
 div.main-content-component-container {
-  background-color: #f5f6f6
+  background-color: #f5f6f6;
+  padding: 30px 40px;
 }

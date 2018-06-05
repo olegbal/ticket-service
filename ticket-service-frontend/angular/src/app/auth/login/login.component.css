@@ -1,8 +1,11 @@
 #login-form {
   width: 50%;
-  padding-top: 15px;
   margin: 0 auto;
-  background-color: #c33123 !important;
+  max-width: 600px;
+  background: #fff;
+  padding: 30px 40px;
+  box-shadow: 0 3px 10px 3px #dadada;
+  border-radius: 5px;
 }
 
 .login-form-div input {
@@ -22,4 +25,9 @@
 .social-login-images {
   display: flex;
   margin: 0 auto;
+}
+
+label {
+  min-width: 120px;
+  font-weight: 700;
 }
