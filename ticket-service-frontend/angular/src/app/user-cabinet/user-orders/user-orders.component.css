@@ -1,7 +1,3 @@
-.orders-tab-inner-container {
-  height: 400px;
-}
-
 .order-list-column {
   overflow-y: scroll;
   direction: rtl;
@@ -15,6 +11,19 @@
   height: 100px;
 }
 
+.order-item:hover {
+  border: 1px solid #DC4C46;
+}
+
+.order-item-selected {
+  border: 1px solid #DC4C46;
+}
+
 .order-list-pagination-block {
   direction: ltr;
+}
+
+.order-details-column {
+  max-height: 400px;
+  overflow-y: scroll;
 }

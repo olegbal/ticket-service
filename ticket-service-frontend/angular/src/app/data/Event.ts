@@ -11,6 +11,4 @@ export class Event {
                      public approved: boolean) {
 
   }
-
-
 }

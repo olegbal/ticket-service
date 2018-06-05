@@ -1,5 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Order } from "../../data/Order";
+import {Component, Input, OnInit} from '@angular/core';
+import {Order} from "../../data/Order";
 
 @Component({
   selector: 'app-user-order-details',

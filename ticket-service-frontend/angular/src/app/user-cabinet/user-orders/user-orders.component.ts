@@ -1,7 +1,7 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { Router } from "@angular/router";
-import { Order } from "../../data/Order";
-import { OrderService } from "../../order/order.service";
+import {Component, Input, OnInit} from '@angular/core';
+import {Router} from "@angular/router";
+import {Order} from "../../data/Order";
+import {OrderService} from "../../order/order.service";
 
 @Component({
   selector: 'app-user-orders',
@@ -23,8 +23,8 @@ export class UserOrdersComponent implements OnInit {
   }
 
   selectOrder(order: Order) {
-    if (order.id != 0) this.orderSelected = true;
     this.selectedOrder = order;
+
   }
 
 }

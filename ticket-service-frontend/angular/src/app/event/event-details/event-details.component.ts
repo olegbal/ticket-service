@@ -19,7 +19,7 @@ export class EventDetailsComponent implements OnInit {
               private router: Router) {
   }
 
-  event: Event = new Event(0, "", null, "", new EventPlace(0, "", ""), 0, 0, true);
+  event: Event = new Event(0, "", null, "", new EventPlace(0, "", "", "", ""), 0, 0, true);
   organizer: User = new User(0, "", "", "", "", "", "", "", []);
 
   ngOnInit() {
