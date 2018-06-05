@@ -6,21 +6,27 @@
   padding-top: 10px;
   padding-bottom: 10px;
 }
-.event-item-title{
+
+.event-list-item:hover {
+  outline: 2px solid #DC4C46;
+}
+
+.event-item-title {
   text-align: center;
 }
-.event-item-address{
+
+.event-item-address {
   font-size: 14px;
   font-style: italic;
 }
-.event-item-prices{
+
+.event-item-prices {
   font-weight: 700;
   font-style: italic;
   text-align: right;
 }
 
-
-.event-list-item p{
+.event-list-item p {
   margin: 0;
 }
 
