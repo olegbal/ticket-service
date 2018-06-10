@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Router} from "@angular/router";
+import { Component, Input, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-organizer-events',
@@ -12,7 +12,6 @@ export class OrganizerEventsComponent implements OnInit {
   }
 
   @Input() events: Event[];
-  eventSelected: boolean = false;
   page = 1;
 
   ngOnInit() {

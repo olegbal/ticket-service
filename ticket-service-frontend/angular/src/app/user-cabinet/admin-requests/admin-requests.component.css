@@ -1,0 +1,29 @@
+.reqests-tab-inner-container {
+  max-height: 500px;
+}
+
+.requests-list {
+  overflow-y: scroll;
+  margin: 0 auto;
+}
+
+.request-item {
+  background-color: white;
+  box-shadow: 0 3px 10px 3px #dadada;
+  margin: 10px 10px;
+}
+
+.request-item:hover {
+  border: 1px solid #DC4C46;
+}
+
+.request-image-container img {
+  height: 200px;
+  width: 200px;
+}
+
+.request-text-info-container {
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: 20px;
+}

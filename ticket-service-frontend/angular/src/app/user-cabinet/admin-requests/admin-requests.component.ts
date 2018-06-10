@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from "@angular/router";
 
 @Component({
   selector: 'app-admin-requests',
@@ -7,14 +8,17 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class AdminRequestsComponent implements OnInit {
 
-  constructor() {
+  constructor(private router: Router) {
   }
 
   @Input() requests: Event[];
-  requestSelected: boolean = false;
   page = 1;
 
   ngOnInit() {
+  }
+
+  enableRequestDetails(id: number) {
+    this.router.navigate(["/events/", id])
   }
 
 }

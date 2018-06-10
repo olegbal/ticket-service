@@ -1,20 +1,32 @@
 <div class="row reqests-tab-inner-container">
-  <div *ngIf="!requestSelected" class="col-md-8 request-details-inner-container">
-    <h3 class="text-center">Select a request</h3>
-  </div>
-  <div *ngIf="requestSelected" class="col-md-8 request-details">
-
-  </div>
-  <div class="col-md-4 events-list">
+  <div class="col-md-8 text-center requests-list">
+    <div class="request-list-pagination-block">
+      <pagination-controls (pageChange)="page = $event"></pagination-controls>
+    </div>
     <div *ngFor="let event of requests | paginate: { itemsPerPage: 6, currentPage: page}" class="request-item">
-      <div (click)="enableEventDetails(event.id)" class="">
-        <div>{{event.title}}</div>
-        <div>Date of event: {{event.date | date:'yyyy-MM-dd HH:mm a'}}</div>
-        <div><img src="{{event.imgUrl}}"></div>
-        <div>Tickets price diapason: {{event.minPrice}} - {{event.maxPrice}}</div>
-        <div>{{event.eventPlace.city}} ,{{ event.eventPlace.streetAddress}}</div>
-        <div>{{event.eventPlace.placeName}}</div>
-        <br>
+      <div (click)="enableRequestDetails(event.id)" class="">
+        <div class="row">
+          <div class="request-title-container col-md-12">
+            {{event.title}}
+          </div>
+          <div class=" col-md-12 request-date-container">
+            Date of event: {{event.date | date:'yyyy-MM-dd HH:mm a'}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="request-image-container col-md-6"><img src="{{event.imgUrl}}"></div>
+          <div class="request-text-info-container col-md-6">
+            <div class="request-price-diapason-container">Tickets price diapason: {{event.minPrice}} -
+              {{event.maxPrice}}
+            </div>
+            <div class="request-address-container">
+              {{event.eventPlace.city}} ,{{ event.eventPlace.streetAddress}}
+            </div>
+            <div class="request-place-name-container">
+              {{event.eventPlace.placeName}}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
     <div class="request-list-pagination-block">

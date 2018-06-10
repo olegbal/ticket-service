@@ -3,6 +3,7 @@ import { Event } from "../../data/Event";
 import { ActivatedRoute, Router } from "@angular/router";
 import { EventService } from "../event.service";
 import { AccountEntryService } from "../../header/account-entry/account-entry.service";
+import { User } from "../../data/User";
 
 @Component({
   selector: 'app-event-base-info',
@@ -20,7 +21,11 @@ export class EventBaseInfoComponent implements OnInit {
   @Input() selectedEvent: Event;
 
   ngOnInit() {
+    this.accountEntryService.checkUserToken().subscribe((user: User) => {
+      this.accountEntryService.checkRoles(user.roles);
+    });
   }
+
 
   buyTickets() {
     this.router.navigate(['tickets'], {relativeTo: this.activeRoute});
@@ -33,6 +38,7 @@ export class EventBaseInfoComponent implements OnInit {
 
     this.eventService.updateEvent(event).subscribe((updatedEvent: Event) => {
       this.selectedEvent = updatedEvent;
+      this.approveButtonEnabled = false;
     });
   }
 }

@@ -26,8 +26,15 @@
         <span class="font-italic">Price diapason:</span>
         <span>{{selectedEvent.minPrice}} - {{selectedEvent.maxPrice}}</span>
       </p>
-      <button class="btn btn-success buy-ticket-button" (click)="buyTickets()">Buy</button>
+      <button *ngIf="accountEntryService.hasUserRole" class="btn btn-success buy-ticket-button" (click)="buyTickets()">
+        Buy
+      </button>
+    </div>
+    <div *ngIf="accountEntryService.hasAdminRole && !selectedEvent.approved;"
+         class="approve-button-container text-center">
+      <button class="btn btn-lg btn-success approve-button"
+              (click)="approveEvent()">Approve
+      </button>
     </div>
   </div>
-  <button *ngIf="!selectedEvent.approved && accountEntryService.isAdmin" (click)="approveEvent()">Approve</button>
 </div>
