@@ -1,7 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Event } from "../../data/Event";
 import { ActivatedRoute, Router } from "@angular/router";
-import {EventService} from "../event.service";
+import { EventService } from "../event.service";
+import { AccountEntryService } from "../../header/account-entry/account-entry.service";
 
 @Component({
   selector: 'app-event-base-info',
@@ -12,7 +13,8 @@ export class EventBaseInfoComponent implements OnInit {
 
   constructor(private router: Router,
               private activeRoute: ActivatedRoute,
-              private eventService:EventService) {
+              private eventService: EventService,
+              private accountEntryService: AccountEntryService) {
   }
 
   @Input() selectedEvent: Event;

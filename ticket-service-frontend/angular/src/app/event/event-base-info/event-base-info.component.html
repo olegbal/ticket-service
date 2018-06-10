@@ -29,5 +29,5 @@
       <button class="btn btn-success buy-ticket-button" (click)="buyTickets()">Buy</button>
     </div>
   </div>
-  <button *ngIf="!selectedEvent.approved" (click)="approveEvent()">Approve</button>
+  <button *ngIf="!selectedEvent.approved && accountEntryService.isAdmin" (click)="approveEvent()">Approve</button>
 </div>

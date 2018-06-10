@@ -1,0 +1,29 @@
+.events-tab-inner-container {
+  max-height: 500px;
+}
+
+.events-list {
+  overflow-y: scroll;
+  margin: 0 auto;
+}
+
+.event-item {
+  background-color: white;
+  box-shadow: 0 3px 10px 3px #dadada;
+  margin: 10px 10px;
+}
+
+.event-item:hover {
+  border: 1px solid #DC4C46;
+}
+
+.event-image-container img {
+  height: 200px;
+  width: 200px;
+}
+
+.event-text-info-container {
+  margin-top: auto;
+  margin-bottom: auto;
+  font-size: 20px;
+}
