@@ -19,7 +19,7 @@
 	"login.password.label": "Password",
 	"login.password.placeholder": "Enter password",
   "login.password.error": "",
-  "login.username.label": "Emaul or username",
+  "login.username.label": "Email or username",
   "login.username.placeholder": "Enter your Email or login",
   "login.username.validation.common": "",
   "login.common.error": "Entered incorrect value",

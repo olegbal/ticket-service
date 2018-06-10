@@ -36,3 +36,7 @@ label {
   min-width: 120px;
   font-weight: 700;
 }
+
+.submit-button {
+  width: 300px;
+}

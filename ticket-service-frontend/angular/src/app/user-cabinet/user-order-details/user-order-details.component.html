@@ -1,7 +1,6 @@
 <div class="order-info">
   <div class="text-center"><span>Order №</span> {{order.id}}</div>
   <div class="text-center"><span>Purchased:</span> {{order.orderDate | date:'yyyy-MM-dd HH:mm a'}}</div>
-  <div style="background-color:red">will be event somewhere</div>
   <div class="order-info-ticket_list" *ngFor="let ticket of order.ticketList">
     <div><span>Ticket description:</span>{{ticket.ticketType.ticketDescription}}</div>
     <div><span>Type:</span> {{ticket.ticketType.typeDescription}}</div>
