@@ -6,10 +6,10 @@
     </div>
   </div>
   <div class="event-info-text-container col-md-7">
-    <p class="font-weight-bold text-center">{{selectedEvent.title}}</p>
+    <h3 class="font-weight-bold text-center">{{selectedEvent.title}}</h3>
     <div class="event-date-and-place-info-container text-center">
       <p>
-        <span class="event-date-info-title">
+        <span class="event-date-info-title font-italic">
           Date of event:
         </span>
         <span class="event-date-info-details">{{selectedEvent.date | date:'yyyy-MM-dd HH:mm a'}}</span>
@@ -17,16 +17,16 @@
         <span class="event-place-info">
           {{selectedEvent.eventPlace.placeName}}
           {{selectedEvent.eventPlace.city}}
-              </span>
+        </span>
       </p>
-      <button class="btn btn-success">Add to calendar</button>
+      <button class="btn btn-success add-to-calendar-button">Add to calendar</button>
     </div>
     <div class="price-info text-center">
       <p>
-        <span>Price diapason</span><br>
+        <span class="font-italic">Price diapason:</span>
         <span>{{selectedEvent.minPrice}} - {{selectedEvent.maxPrice}}</span>
       </p>
-      <button class="btn btn-success" (click)="buyTickets()">Buy</button>
+      <button class="btn btn-success buy-ticket-button" (click)="buyTickets()">Buy</button>
     </div>
   </div>
   <button *ngIf="!selectedEvent.approved" (click)="approveEvent()">Approve</button>

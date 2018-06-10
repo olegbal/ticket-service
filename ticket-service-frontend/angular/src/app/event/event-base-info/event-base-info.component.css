@@ -7,3 +7,25 @@ img#event-info-main-image {
 .event-info-main-image-container {
   padding-top: 20px;
 }
+
+.price-info {
+  margin-top: 50px;
+}
+
+.event-date-and-place-info-container, .price-info {
+  font-size: 25px;
+}
+
+h3 {
+  margin-bottom: 50px;
+}
+
+.buy-ticket-button, .add-to-calendar-button {
+  width: 200px;
+  height: 50px;
+  font-size: 25px;
+}
+
+.add-to-calendar-button {
+  width: 300px;
+}

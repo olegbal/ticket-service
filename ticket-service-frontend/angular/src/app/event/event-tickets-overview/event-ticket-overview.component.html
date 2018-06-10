@@ -15,17 +15,21 @@
         <td>{{ticket.ticket.ticketPrice}}</td>
         <td>{{ticket.amount}}</td>
         <td>
-          <button (click)="incrementAmount(ticket);">plus</button>
+          <button (click)="incrementAmount(ticket);">
+            <img class="event-details-plusminus-buttons" src="assets/images/buttons/button_plus.png">
+          </button>
           {{ticket.selectedAmount}}
-          <button (click)="decrementAmount(ticket);">minus</button>
+          <button (click)="decrementAmount(ticket);">
+            <img class="event-details-plusminus-buttons" src="assets/images/buttons/button_minus.png">
+          </button>
         </td>
       </tr>
       </tbody>
     </table>
-    <button (click)="addToSelected()">Add tickets</button>
+    <button class="btn btn-success" (click)="addToSelected()">Add tickets</button>
   </div>
-  <div *ngIf="hasSelectedTickets()" class="event-selected-tickets row col-md-6">
-    <table class="table table-hover event-selected-tickets-table">
+  <div *ngIf="hasSelectedTickets()" class="event-ticket-list col-md-6">
+    <table class="table table-hover event-tickets-table">
       <thead>
       <tr>
         <th scope="col">Ticket Type</th>
@@ -38,10 +42,16 @@
         <td>{{ticket.ticket.ticketType.typeDescription}}</td>
         <td>{{ticket.ticket.ticketPrice}}</td>
         <td>{{ticket.selectedAmount}}</td>
-        <td><button (click)="removeSelection(ticket)">X</button></td>
+        <td>
+          <button (click)="removeSelection(ticket)">
+            <img class="event-details-plusminus-buttons" src="assets/images/buttons/button_delete.png">
+          </button>
+        </td>
       </tr>
       </tbody>
     </table>
-    <button (click)="prepareOrder(selectedTickets)">Add to cart</button>
+    <div class="text-right">
+      <button class="btn btn-success" (click)="prepareOrder(selectedTickets)">Add to cart</button>
+    </div>
   </div>
 </div>
