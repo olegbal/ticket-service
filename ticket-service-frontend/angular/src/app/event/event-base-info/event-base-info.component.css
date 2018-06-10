@@ -1,5 +1,5 @@
 img#event-info-main-image {
-  width: 400px;
+  width: 300px;
   height: 400px;
   box-shadow: 0 4px 10px 3px #dadada;
 }
@@ -13,19 +13,19 @@ img#event-info-main-image {
 }
 
 .event-date-and-place-info-container, .price-info {
-  font-size: 25px;
+  font-size: 20px;
 }
 
 h3 {
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 .buy-ticket-button, .add-to-calendar-button {
-  width: 200px;
-  height: 50px;
-  font-size: 25px;
+  width: 150px;
+  height: 40px;
+  font-size: 20px;
 }
 
 .add-to-calendar-button {
-  width: 300px;
+  width: 200px;
 }
