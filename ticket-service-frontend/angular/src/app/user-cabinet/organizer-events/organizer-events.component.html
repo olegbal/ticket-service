@@ -9,7 +9,7 @@
     <div *ngFor="let event of events | paginate: { itemsPerPage: 6, currentPage: page}" class="event-item">
       <div (click)="enableEventDetails(event.id)" class="">
         <div>{{event.title}}</div>
-        <div>Date of event: {{event.date}}</div>
+        <div>Date of event: {{event.date | date:'yyyy-MM-dd HH:mm a'}}</div>
         <div><img src="{{event.imgUrl}}"></div>
         <div>Tickets price diapason: {{event.minPrice}} - {{event.maxPrice}}</div>
         <div>{{event.eventPlace.city}} ,{{ event.eventPlace.streetAddress}}</div>

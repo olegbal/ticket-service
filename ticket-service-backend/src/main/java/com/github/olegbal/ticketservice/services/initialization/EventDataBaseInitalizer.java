@@ -9,12 +9,12 @@ import com.github.olegbal.ticketservice.services.event.EventPlaceService;
 import com.github.olegbal.ticketservice.services.event.EventService;
 import com.github.olegbal.ticketservice.services.user.UserInfoService;
 import lombok.RequiredArgsConstructor;
+import org.joda.time.DateTime;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
 import static com.github.olegbal.ticketservice.services.initialization.InitializationHelper.EVENT_PLACES_AMOUNT;
@@ -50,7 +50,7 @@ public class EventDataBaseInitalizer implements DataBaseInitializer {
 
     private void createEvent(int i, EventPlace eventPlace, User user) {
         //TODO ADD USERS
-        Event event = new Event(i, "Event" + i, new Date(2018, 5, 30),
+        Event event = new Event(i, "Event" + i, new DateTime(DateTime.now()),
                 "https://www.kvitki.by/imageGenerator/355ce3ac3f02f72dac89b1aef3f11956/concertShort", true, eventPlace, null, user);
         eventService.createEvent(event);
         event.setApproved(false);

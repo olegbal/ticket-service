@@ -9,7 +9,7 @@
         <p class="text-uppercase">{{event.title}}</p>
       </div>
       <div class="event-item-date">
-        <span class="font-weight-bold">{{event.date}}</span>
+        <span class="font-weight-bold">{{event.date | date:'yyyy-MM-dd HH:mm a'}}</span>
       </div>
       <div class="event-item-address">
         <!--ADD FULL ADDRESS-->

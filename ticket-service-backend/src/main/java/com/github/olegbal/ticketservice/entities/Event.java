@@ -3,9 +3,10 @@ package com.github.olegbal.ticketservice.entities;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
+import org.joda.time.DateTime;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.List;
 
 @Data
@@ -23,8 +24,9 @@ public class Event {
     @Column(name = "event_title")
     private String title;
 
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     @Column(name = "event_date")
-    private Date data;
+    private DateTime data;
 
     @Column(name = "event_img_url")
     private String imgUrl;

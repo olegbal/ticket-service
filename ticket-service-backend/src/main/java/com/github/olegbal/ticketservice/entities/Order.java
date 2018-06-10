@@ -3,9 +3,10 @@ package com.github.olegbal.ticketservice.entities;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Type;
+import org.joda.time.DateTime;
 
 import javax.persistence.*;
-import java.util.Date;
 import java.util.List;
 
 @Data
@@ -20,8 +21,9 @@ public class Order {
     @Column(name = "order_id")
     private long id;
 
+    @Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
     @Column(name = "order_date")
-    private Date orderDate;
+    private DateTime orderDate;
 
     @ManyToOne
     private User user;
