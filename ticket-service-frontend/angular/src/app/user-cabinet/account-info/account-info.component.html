@@ -61,36 +61,36 @@
                class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
                [(ngModel)]="user.phoneNumber" #phone="ngModel" pattern="" required>
       </div>
-      <div class="account-info-input-block">
-          <span>
-            You have permissions of:
-          </span>
-        <span *ngIf="isUser">User<br> </span>
-        <span *ngIf="isOrganizer">Organizer <br></span>
-        <span *ngIf="isAdmin">Administrator<br> </span>
+      <div *ngIf="!accountInfoEditing && !newPasswordEnabled">
+        <button class="btn btn-primary btn-block account-edit-button" (click)="enableAccountInfoEditing()">Edit</button>
       </div>
-      <div *ngIf="!accountInfoEditing">
-        <button (click)="enableAccountInfoEditing()">Edit</button>
-      </div>
-      <div *ngIf="accountInfoEditing">
-        <button (click)="submitUpdate()">Save</button>
-        <button (click)="cancelAccountInfoEditing();">Cancel</button>
+      <div class="account-editing-cancel-submit-buttons" *ngIf="accountInfoEditing">
+        <button class="btn btn-block btn-success" (click)="submitUpdate()">Save</button>
+        <button class="btn btn-block btn-danger" (click)="cancelAccountInfoEditing();">Cancel</button>
       </div>
       <div class="change-password-block">
-        <button (click)="enableChangePassword()">Change password</button>
+        <button *ngIf="!accountInfoEditing && !newPasswordEnabled"
+                class="btn btn-primary btn-block changepassword-button" (click)="enableChangePassword()">Change password
+        </button>
         <form *ngIf="newPasswordEnabled" #changePasswrodForm="ngForm">
-          <label>Current password</label>
+          <div class="text-center">
+            <label>Current password</label>
+          </div>
           <input type="text" name="current-password-input" id="current-password-input"
                  class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
                  [(ngModel)]="changePasswordDto.currentPassword" #currentPassword="ngModel"
                  pattern="^[a-zA-Z0-9]{6,15}$" required>
-          <label>New password</label>
+          <div class="text-center">
+            <label>New password</label>
+          </div>
           <input type="text" name="new-password-input" id="new-password-input"
                  class="form-control form-control-sm" aria-label="Small" aria-describedby="inputGroup-sizing-sm"
                  [(ngModel)]="changePasswordDto.newPassword" #newPassword="ngModel" pattern="^[a-zA-Z0-9]{6,15}$"
                  required>
-          <button (click)="cancelChangePassword()">Cancel</button>
-          <button (click)="sendChangePasswordRequest()">Change</button>
+          <div class="changepassword-save-cancel-buttons">
+            <button class="btn btn-block btn-success" (click)="sendChangePasswordRequest()">Change</button>
+            <button class="btn btn-block btn-danger" (click)="cancelChangePassword()">Cancel</button>
+          </div>
         </form>
       </div>
     </form>

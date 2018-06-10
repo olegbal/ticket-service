@@ -1,14 +1,22 @@
-.account-info-details-form-container{
+.account-info-details-form-container {
   max-width: 500px;
   margin: 0 auto;
   background: #fff;
   padding: 30px 40px;
   box-shadow: 0 3px 10px 3px #dadada;
-  border-radius: 5px ;
+  border-radius: 5px;
   margin-bottom: 30px;
 }
 
-.account-info-details-form-container label{
+.account-info-details-form-container label {
   min-width: 120px;
   font-weight: 700;
+}
+
+.account-edit-button, .account-editing-cancel-submit-buttons, .change-password-block, .changepassword-save-cancel-buttons {
+  margin: 5px 0;
+}
+
+.change-password-block form label {
+  margin: 0 auto;
 }
