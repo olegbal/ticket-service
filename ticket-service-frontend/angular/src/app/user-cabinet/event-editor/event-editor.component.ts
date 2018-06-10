@@ -27,7 +27,7 @@ export class EventEditorComponent implements OnInit {
   eventPlace: EventPlace = new EventPlace(0, "", "", "", "");
   imgUrl: string = "";
   uploader: FileUploader = new FileUploader({url: URL});
-  imageUrl: string = "assets/images/event-empty-image.jpg";
+  imageUrl: string = "assets/images/nophoto.png";
 
   startEditing() {
     this.editorFormEnabled = true;

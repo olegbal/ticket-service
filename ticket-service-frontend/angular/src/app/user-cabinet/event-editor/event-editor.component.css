@@ -2,6 +2,7 @@
   display: block;
   height: 200px;
   width: 200px;
+  outline: 1px solid black;
 }
 
 .file-uploader-input {

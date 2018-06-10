@@ -8,7 +8,8 @@
 <div *ngIf="accountEntryService.isLoggedIn" id="account-entry-container" class="dropdown">
   <a class="btn btn-secondary dropdown-toggle" href="#" id="dropdownMenuLink" data-toggle="dropdown"
      aria-haspopup="true" aria-expanded="false">
-    <img src="http://scma.com.ua/wp-content/uploads/2015/02/user.png" id="account-entry-image"> Username
+    <img src="http://scma.com.ua/wp-content/uploads/2015/02/user.png" id="account-entry-image">
+    {{accountEntryService.loggedUser? accountEntryService.loggedUser.login : Username}}
   </a>
   <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
     <a class="dropdown-item" routerLink="/cabinet">

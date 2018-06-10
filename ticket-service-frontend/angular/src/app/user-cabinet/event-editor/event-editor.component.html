@@ -14,7 +14,7 @@
         </label>
       </div>
       <div class="col-md-6 file-uploader-container">
-        <img class="file-uploader-image" src="{{imageUrl}}"/>
+        <img class="file-uploader-image" src="{{imageUrl}}" onerror="this.src='assets/images/nophoto.png';"/>
         <input class="file-uploader-input" type="file" ng2FileSelect [uploader]="uploader" (change)="selectFile($event)"/>
       </div>
     </div>
