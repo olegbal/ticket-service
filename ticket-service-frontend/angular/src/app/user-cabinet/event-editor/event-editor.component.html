@@ -2,7 +2,11 @@
   <div *ngIf="editorFormEnabled" class="create-event-form-container">
     <div class="row">
       <div class="col-md-12 text-center">
-        <label>Event title</label>
+        <label *ngIf="!titleEditing">{{eventTitle}}</label>
+        <input *ngIf="titleEditing" [(ngModel)]="eventTitle">
+        <button class="btn btn-primary" *ngIf="!titleEditing" (click)="editTitle()">Edit</button>
+        <button class="btn btn-success" *ngIf="titleEditing" (click)="saveTitle()">Save</button>
+        <button class="btn btn-danger" *ngIf="titleEditing" (click)="cancelEditingTitle()">Cancel</button>
       </div>
     </div>
     <div class="row">
@@ -12,25 +16,90 @@
           <input [(ngModel)]="dateOfEvent" [owlDateTimeTrigger]="dt5" [owlDateTime]="dt5">
           <owl-date-time [pickerMode]="'dialog'" #dt5></owl-date-time>
         </label>
+        <div class="event-place-editor-selector-container">
+          Event place
+          <ng-select [items]="availableEventPlaces"
+                     #select
+                     bindLabel="streetAddress"
+                     dropdownPosition="auto"
+                     placeholder="Select an event place"
+                     [(ngModel)]="eventPlace"
+                     [virtualScroll]="true">
+            <ng-template ng-option-tmp let-item="item" let-search="searchTerm">
+              <div>
+                <small><b>Place name: </b>{{item.placeName}}.</small>
+                <small><b>Street address: </b><span [ngOptionHighlight]="search">{{item.streetAddress}}.</span></small>
+              </div>
+              <small><b>City: </b> {{item.city}}.</small>
+              <small><b>Country: </b> {{item.country}}.</small>
+            </ng-template>
+          </ng-select>
+        </div>
       </div>
       <div class="col-md-6 file-uploader-container">
         <img class="file-uploader-image" src="{{imageUrl}}" onerror="this.src='assets/images/nophoto.png';"/>
-        <input class="file-uploader-input" type="file" ng2FileSelect [uploader]="uploader" (change)="selectFile($event)"/>
+        <input class="file-uploader-input" type="file" ng2FileSelect [uploader]="uploader"
+               (change)="selectFile($event)"/>
       </div>
     </div>
     <div class="row"></div>
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-md-12 text-left ticket-editor-container">
         Ticket editor
-        <button (click)="openTicketEditor()">Add ticket</button>
-      </div>
-      <div class="col-md-6">
-        Event place
-        <button (click)="openEventPlaceSelector()">Add place</button>
+        <div class="new-ticket-list">
+          <table class="table table-hover event-tickets-table">
+            <thead>
+            <tr>
+              <th scope="col">Ticket Description</th>
+              <th scope="col">Ticket Type Description</th>
+              <th scope="col">Price</th>
+              <th scope="col">Amount</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+              <td>Ticket description..</td>
+              <td>Vip zone</td>
+              <td>100</td>
+              <td>50</td>
+              <td>
+                <button (click)="removeSelection(ticket)">
+                  <img class="event-details-plusminus-buttons" src="assets/images/buttons/button_delete.png">
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>Ticket2 description..</td>
+              <td>Dance floor</td>
+              <td>50</td>
+              <td>100</td>
+              <td>
+                <button (click)="removeSelection(ticket)">
+                  <img class="event-details-plusminus-buttons" src="assets/images/buttons/button_delete.png">
+                </button>
+              </td>
+            </tr>
+            <tr>
+              <td>Ticket3 description..</td>
+              <td>Sector B</td>
+              <td>40</td>
+              <td>40</td>
+              <td>
+                <button (click)="removeSelection(ticket)">
+                  <img class="event-details-plusminus-buttons" src="assets/images/buttons/button_delete.png">
+                </button>
+              </td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+        <button class="btn btn-primary" (click)="openTicketEditor()">Add ticket</button>
       </div>
     </div>
   </div>
-  <button *ngIf="!editorFormEnabled" (click)="startEditing()" class="btn btn-primary">Create event</button>
-  <button *ngIf="editorFormEnabled" (click)="saveContent()">Save</button>
-  <button *ngIf="editorFormEnabled" (click)="clearContent()">Cancel</button>
+  <div class="text-center editor-main-buttons-container">
+    <button *ngIf="!editorFormEnabled" (click)="startEditing()" class="btn btn-primary">Create event</button>
+    <button *ngIf="editorFormEnabled" class="btn btn-success" (click)="saveContent()">Save</button>
+    <button *ngIf="editorFormEnabled" class="btn btn-danger" (click)="cancelContent()">Cancel</button>
+  </div>
 </div>

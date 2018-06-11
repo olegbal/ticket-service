@@ -1,10 +1,11 @@
-import {Component, OnInit} from '@angular/core';
-import {EventService} from "../../event/event.service";
-import {Ticket} from "../../data/Ticket";
-import {EventPlace} from "../../data/EventPlace";
-import {FileUploader} from "ng2-file-upload";
-import {ImageUploaderService} from "../../uploader/image-uploader.service";
-import {HttpResponse} from "@angular/common/http";
+import { Component, OnInit } from '@angular/core';
+import { EventService } from "../../event/event.service";
+import { Ticket } from "../../data/Ticket";
+import { EventPlace } from "../../data/EventPlace";
+import { FileUploader } from "ng2-file-upload";
+import { ImageUploaderService } from "../../uploader/image-uploader.service";
+import { HttpResponse } from "@angular/common/http";
+import { EventPlaceService } from "../../event/event-place.service";
 
 @Component({
   selector: 'app-event-editor',
@@ -13,32 +14,44 @@ import {HttpResponse} from "@angular/common/http";
 })
 export class EventEditorComponent implements OnInit {
 
-  constructor(private eventService: EventService,
-              private uploadService: ImageUploaderService) {
-  }
-
-  ngOnInit() {
-  }
-
-
-  editorFormEnabled: boolean = false;
+  eventTitle: string = "Event title";
+  titleEditing: boolean = false;
+  titleBeforeEditing: string = "";
+  ticketList: Ticket[] = null;
+  availableEventPlaces: EventPlace[] = [];
   dateOfEvent: Date = new Date();
-  ticketList: Ticket[] = [];
+  editorFormEnabled: boolean = true;
+
+  constructor(private eventService: EventService,
+              private uploadService: ImageUploaderService,
+              private eventPlaceService: EventPlaceService) {
+  }
   eventPlace: EventPlace = new EventPlace(0, "", "", "", "");
   imgUrl: string = "";
   uploader: FileUploader = new FileUploader({url: URL});
+
+  ngOnInit() {
+    this.eventPlaceService.getAllPlaces().subscribe((places: EventPlace[]) => {
+      this.availableEventPlaces = places;
+      this.eventPlace = this.availableEventPlaces[0] ? this.availableEventPlaces[0] : this.eventPlace;
+    });
+  }
   imageUrl: string = "assets/images/nophoto.png";
 
   startEditing() {
     this.editorFormEnabled = true;
   }
 
-  clearContent() {
-    this.editorFormEnabled = false;
-  }
-
   saveContent() {
 
+  }
+
+  cancelContent() {
+    this.editorFormEnabled = false;
+    this.eventTitle = "Event title";
+    this.eventPlace = this.availableEventPlaces[0] ? this.availableEventPlaces[0] : this.eventPlace;
+    this.ticketList = [];
+    this.imageUrl = "assets/images/nophoto.png";
   }
 
   selectFile(event) {
@@ -59,8 +72,24 @@ export class EventEditorComponent implements OnInit {
 
   }
 
-  openEventPlaceSelector() {
+  editTitle() {
+    this.titleEditing = true;
+    this.titleBeforeEditing = JSON.parse(JSON.stringify(this.eventTitle));
 
+  }
+
+  saveTitle() {
+    this.titleEditing = false;
+  }
+
+  cancelEditingTitle() {
+    this.eventTitle = JSON.parse(JSON.stringify(this.titleBeforeEditing));
+    this.titleEditing = false;
+
+  }
+
+  removeSelection(ticket: Ticket) {
+    this.ticketList = this.ticketList.filter(x => x.ticketType.typeDescription != ticket.ticketType.typeDescription);
   }
 }
 

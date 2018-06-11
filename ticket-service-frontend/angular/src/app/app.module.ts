@@ -48,6 +48,7 @@ import { OwlDateTimeModule, OwlNativeDateTimeModule } from 'ng-pick-datetime';
 import { FileUploadModule } from 'ng2-file-upload';
 import { ImageUploaderService } from "./uploader/image-uploader.service";
 import { NG_SELECT_DEFAULT_CONFIG, NgSelectModule } from '@ng-select/ng-select';
+import { EventPlaceService } from './event/event-place.service';
 
 // AoT requires an exported function for factories
 export function HttpLoaderFactory(httpClient: HttpClient) {
@@ -114,6 +115,7 @@ export function HttpLoaderFactory(httpClient: HttpClient) {
     OrderService,
     UserService,
     ImageUploaderService,
+    EventPlaceService,
     {
       provide: NG_SELECT_DEFAULT_CONFIG,
       useValue: {
