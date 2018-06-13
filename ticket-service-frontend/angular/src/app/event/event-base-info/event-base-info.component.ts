@@ -38,7 +38,6 @@ export class EventBaseInfoComponent implements OnInit {
 
     this.eventService.updateEvent(event).subscribe((updatedEvent: Event) => {
       this.selectedEvent = updatedEvent;
-      this.approveButtonEnabled = false;
     });
   }
 }
