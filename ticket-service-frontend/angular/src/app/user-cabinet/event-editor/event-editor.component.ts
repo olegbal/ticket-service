@@ -49,18 +49,17 @@ export class EventEditorComponent implements OnInit {
   }
 
   startEditing() {
-    this.editorFormEnabled = true;
+    this.editorFormEnabled = false;
   }
 
   saveContent() {
-
     let creatingEvent: Event = new Event(0, this.eventTitle, this.dateOfEvent, this.imageUrl, this.eventPlace, 0, 0, false);
 
     this.eventService.createEvent(creatingEvent, this.accountEntryService.loggedUser.id)
       .subscribe((receivedEvent: Event) => {
         this.ticketService.createTickets(this.ticketCreatorDtos, receivedEvent.id)
           .subscribe((listOfTickets: Ticket[]) => {
-            alert(listOfTickets);
+            this.editorFormEnabled = false;
           })
       });
   }
