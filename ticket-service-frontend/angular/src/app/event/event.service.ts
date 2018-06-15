@@ -1,6 +1,7 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from "@angular/common/http";
-import {EventHelper} from "./eventhelper";
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { EventHelper } from "./eventhelper";
+import { Event } from "../data/Event";
 
 const httpOptions = {
   headers: new HttpHeaders({'Content-Type': 'application/json'})
@@ -31,6 +32,10 @@ export class EventService {
 
   updateEvent(event: Event) {
     return this.http.put(EventHelper.apiEventUrl, JSON.stringify(event), httpOptions);
+  }
+
+  createEvent(event: Event, userId: number) {
+    return this.http.post(EventHelper.apiEventUrl + "?userId=" + userId, JSON.stringify(event), httpOptions)
   }
 
 }

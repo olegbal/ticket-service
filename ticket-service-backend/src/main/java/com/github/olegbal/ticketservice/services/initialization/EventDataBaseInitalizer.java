@@ -49,11 +49,8 @@ public class EventDataBaseInitalizer implements DataBaseInitializer {
     }
 
     private void createEvent(int i, EventPlace eventPlace, User user) {
-        //TODO ADD USERS
         Event event = new Event(i, "Event" + i, new DateTime(DateTime.now()),
                 "https://www.kvitki.by/imageGenerator/355ce3ac3f02f72dac89b1aef3f11956/concertShort", true, eventPlace, null, user);
-        eventService.createEvent(event);
-        event.setApproved(false);
         eventService.createEvent(event);
     }
 }

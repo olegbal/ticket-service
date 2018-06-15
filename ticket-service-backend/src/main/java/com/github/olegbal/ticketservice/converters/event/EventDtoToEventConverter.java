@@ -18,11 +18,16 @@ public class EventDtoToEventConverter implements Converter<EventDto, Event> {
     public Event convert(EventDto source) {
 
         Event event = eventService.getEventById(source.getId());
+        if (event == null) {
+            event = new Event();
+        }
+
         event.setData(source.getDate());
         event.setEventPlace(source.getEventPlace());
         event.setImgUrl(source.getImgUrl());
         event.setTitle(source.getTitle());
         event.setApproved(source.isApproved());
+
         return event;
     }
 }

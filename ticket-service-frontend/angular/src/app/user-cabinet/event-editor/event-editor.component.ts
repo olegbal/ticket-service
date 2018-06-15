@@ -1,11 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 import { EventService } from "../../event/event.service";
-import { Ticket } from "../../data/Ticket";
 import { EventPlace } from "../../data/EventPlace";
 import { FileUploader } from "ng2-file-upload";
 import { ImageUploaderService } from "../../uploader/image-uploader.service";
 import { HttpResponse } from "@angular/common/http";
 import { EventPlaceService } from "../../event/event-place.service";
+import { TicketCreatorDto } from "../../data/TicketCreatorDto";
+import { TicketType } from "../../data/TicketType";
+import { TicketService } from "../../ticket/ticket.service";
+import { Event } from "../../data/Event";
+import { Ticket } from "../../data/Ticket";
+import { AccountEntryService } from "../../header/account-entry/account-entry.service";
 
 @Component({
   selector: 'app-event-editor',
@@ -17,18 +22,15 @@ export class EventEditorComponent implements OnInit {
   eventTitle: string = "Event title";
   titleEditing: boolean = false;
   titleBeforeEditing: string = "";
-  ticketList: Ticket[] = null;
+  ticketCreatorDtos: TicketCreatorDto[] = [];
   availableEventPlaces: EventPlace[] = [];
   dateOfEvent: Date = new Date();
   editorFormEnabled: boolean = true;
-
-  constructor(private eventService: EventService,
-              private uploadService: ImageUploaderService,
-              private eventPlaceService: EventPlaceService) {
-  }
+  editingTicketItem: TicketCreatorDto = new TicketCreatorDto(new TicketType(0, "", ""), 0, 0);
   eventPlace: EventPlace = new EventPlace(0, "", "", "", "");
   imgUrl: string = "";
   uploader: FileUploader = new FileUploader({url: URL});
+  ticketCreatorEnabled: boolean = false;
 
   ngOnInit() {
     this.eventPlaceService.getAllPlaces().subscribe((places: EventPlace[]) => {
@@ -36,7 +38,15 @@ export class EventEditorComponent implements OnInit {
       this.eventPlace = this.availableEventPlaces[0] ? this.availableEventPlaces[0] : this.eventPlace;
     });
   }
+
   imageUrl: string = "assets/images/nophoto.png";
+
+  constructor(private eventService: EventService,
+              private uploadService: ImageUploaderService,
+              private eventPlaceService: EventPlaceService,
+              private ticketService: TicketService,
+              private accountEntryService: AccountEntryService) {
+  }
 
   startEditing() {
     this.editorFormEnabled = true;
@@ -44,13 +54,22 @@ export class EventEditorComponent implements OnInit {
 
   saveContent() {
 
+    let creatingEvent: Event = new Event(0, this.eventTitle, this.dateOfEvent, this.imageUrl, this.eventPlace, 0, 0, false);
+
+    this.eventService.createEvent(creatingEvent, this.accountEntryService.loggedUser.id)
+      .subscribe((receivedEvent: Event) => {
+        this.ticketService.createTickets(this.ticketCreatorDtos, receivedEvent.id)
+          .subscribe((listOfTickets: Ticket[]) => {
+            alert(listOfTickets);
+          })
+      });
   }
 
   cancelContent() {
     this.editorFormEnabled = false;
     this.eventTitle = "Event title";
     this.eventPlace = this.availableEventPlaces[0] ? this.availableEventPlaces[0] : this.eventPlace;
-    this.ticketList = [];
+    this.ticketCreatorDtos = [];
     this.imageUrl = "assets/images/nophoto.png";
   }
 
@@ -68,14 +87,9 @@ export class EventEditorComponent implements OnInit {
     }
   }
 
-  openTicketEditor() {
-
-  }
-
   editTitle() {
     this.titleEditing = true;
     this.titleBeforeEditing = JSON.parse(JSON.stringify(this.eventTitle));
-
   }
 
   saveTitle() {
@@ -88,8 +102,24 @@ export class EventEditorComponent implements OnInit {
 
   }
 
-  removeSelection(ticket: Ticket) {
-    this.ticketList = this.ticketList.filter(x => x.ticketType.typeDescription != ticket.ticketType.typeDescription);
+  removeSelection(ticket: TicketCreatorDto) {
+    this.ticketCreatorDtos = this.ticketCreatorDtos.filter(x => x.ticketType.typeDescription != ticket.ticketType.typeDescription);
+  }
+
+  openTicketEditor() {
+    this.ticketCreatorEnabled = true;
+    this.editingTicketItem = new TicketCreatorDto(new TicketType(0, "", ""), 0, 0);
+  }
+
+  saveCreatingTicket() {
+    this.ticketCreatorDtos.push(this.editingTicketItem);
+    this.editingTicketItem = new TicketCreatorDto(new TicketType(0, "", ""), 0, 0);
+    this.ticketCreatorEnabled = false;
+  }
+
+  cancelCreatingTicket() {
+    this.editingTicketItem = new TicketCreatorDto(new TicketType(0, "", ""), 0, 0);
+    this.ticketCreatorEnabled = false;
   }
 }
 

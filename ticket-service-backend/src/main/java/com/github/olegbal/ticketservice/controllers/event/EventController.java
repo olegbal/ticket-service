@@ -2,7 +2,9 @@ package com.github.olegbal.ticketservice.controllers.event;
 
 import com.github.olegbal.ticketservice.data.EventDto;
 import com.github.olegbal.ticketservice.entities.Event;
+import com.github.olegbal.ticketservice.entities.User;
 import com.github.olegbal.ticketservice.services.event.EventService;
+import com.github.olegbal.ticketservice.services.user.UserInfoService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.convert.ConversionService;
@@ -24,6 +26,7 @@ public class EventController {
 
     private final EventService eventService;
     private final ConversionService converter;
+    private final UserInfoService userInfoService;
 
     @GetMapping(path = "/events")
     public ResponseEntity getEvents() {
@@ -82,9 +85,10 @@ public class EventController {
         return new ResponseEntity<>(eventDto, HttpStatus.OK);
     }
 
-    @PostMapping(path = "/events")
-    public ResponseEntity createEvent(@RequestBody EventDto eventDto) {
+    @PostMapping(path = "/events", params = "userId")
+    public ResponseEntity createEvent(@RequestBody EventDto eventDto, @PathParam(value = "userId") long userId) {
         Event event = converter.convert(eventDto, Event.class);
+        event.setUser(userInfoService.getUserById(userId));
         event = eventService.createEvent(event);
         EventDto eventDto1 = converter.convert(event, EventDto.class);
         return new ResponseEntity<>(eventDto1, HttpStatus.OK);

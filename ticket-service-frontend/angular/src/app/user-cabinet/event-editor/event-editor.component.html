@@ -46,7 +46,7 @@
     <div class="row">
       <div class="col-md-12 text-left ticket-editor-container">
         Ticket editor
-        <div class="new-ticket-list">
+        <div *ngIf="ticketCreatorDtos.length>0 || ticketCreatorEnabled" class="new-ticket-list">
           <table class="table table-hover event-tickets-table">
             <thead>
             <tr>
@@ -57,35 +57,19 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-              <td>Ticket description..</td>
-              <td>Vip zone</td>
-              <td>100</td>
-              <td>50</td>
-              <td>
-                <button (click)="removeSelection(ticket)">
-                  <img class="event-details-plusminus-buttons" src="assets/images/buttons/button_delete.png">
-                </button>
-              </td>
+            <tr *ngIf="ticketCreatorEnabled" class="new-ticket-adding-row">
+              <td><input [(ngModel)]="editingTicketItem.ticketType.ticketDescription"></td>
+              <td><input [(ngModel)]="editingTicketItem.ticketType.typeDescription"></td>
+              <td><input [(ngModel)]="editingTicketItem.price"></td>
+              <td><input [(ngModel)]="editingTicketItem.amountOfTickets"></td>
             </tr>
-            <tr>
-              <td>Ticket2 description..</td>
-              <td>Dance floor</td>
-              <td>50</td>
-              <td>100</td>
+            <tr *ngFor="let creatorDto of ticketCreatorDtos">
+              <td>{{creatorDto.ticketType.ticketDescription}}</td>
+              <td>{{creatorDto.ticketType.typeDescription}}</td>
+              <td>{{creatorDto.price}}</td>
+              <td>{{creatorDto.amountOfTickets}}</td>
               <td>
-                <button (click)="removeSelection(ticket)">
-                  <img class="event-details-plusminus-buttons" src="assets/images/buttons/button_delete.png">
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>Ticket3 description..</td>
-              <td>Sector B</td>
-              <td>40</td>
-              <td>40</td>
-              <td>
-                <button (click)="removeSelection(ticket)">
+                <button (click)="removeSelection(creatorDto)">
                   <img class="event-details-plusminus-buttons" src="assets/images/buttons/button_delete.png">
                 </button>
               </td>
@@ -93,7 +77,10 @@
             </tbody>
           </table>
         </div>
-        <button class="btn btn-primary" (click)="openTicketEditor()">Add ticket</button>
+        <button *ngIf="!ticketCreatorEnabled" class="btn btn-primary" (click)="openTicketEditor()">Add ticket</button>
+        <button *ngIf="ticketCreatorEnabled" class="btn btn-primary" (click)="saveCreatingTicket()">Submit ticket
+        </button>
+        <button *ngIf="ticketCreatorEnabled" class="btn btn-primary" (click)="cancelCreatingTicket()">Cancel</button>
       </div>
     </div>
   </div>
